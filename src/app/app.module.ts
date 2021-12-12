@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateNewSuperheroComponent } from './create-new-superhero/create-new-superhero.component';
 import { SuperheroesService } from 'src/app/superheroes.service';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { SuperheroComponent } from './superheroes/superhero.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { SuperheroesComponent } from './superheroes/superheroes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateNewSuperheroComponent,
-    SuperheroComponent,
-    TopBarComponent
+    SuperheroesComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot([
+      {path: 'superheroes', component: SuperheroesComponent},
+      {path: 'create-new-superhero', component: CreateNewSuperheroComponent},
+      {path: 'homepage', component: HomepageComponent},
+    ]),
   ],
   providers: [
     SuperheroesService

@@ -3,8 +3,10 @@ import { SuperheroesService } from 'src/app/superheroes.service';
 
 @Component({
   selector: 'superheroes',
+  templateUrl: './superheroes.component.html',
+  styleUrls: ['./superheroes.component.css'],
   template: `
-    <h2>{{ title }}</h2>
+    <h2 style="color: white;">{{ title }}</h2>
     <ul>
       <li *ngFor="let superhero of superheroes">
         {{ superhero }}
@@ -12,7 +14,7 @@ import { SuperheroesService } from 'src/app/superheroes.service';
     </ul>    
     `
 })
-export class SuperheroComponent implements OnInit {
+export class SuperheroesComponent implements OnInit {
   title = "List of Superheroes:";
   superheroes;
   // constructor() {

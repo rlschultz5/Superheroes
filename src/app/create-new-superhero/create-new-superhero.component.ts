@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-create-new-superhero',
-  template: '<h2><h2>'
+  selector: 'create-new-superhero',
+  templateUrl: './create-new-superhero.component.html',
+  styleUrls: ['./create-new-superhero.component.css']
 })
 export class CreateNewSuperheroComponent implements OnInit {
 
