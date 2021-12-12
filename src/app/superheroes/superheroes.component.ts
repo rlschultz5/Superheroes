@@ -1,27 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { SuperheroesService } from 'src/app/superheroes.service';
+import { SuperheroesService } from 'src/app/superheroes/superheroes.service';
 
 @Component({
   selector: 'superheroes',
-  templateUrl: './superheroes.component.html',
   styleUrls: ['./superheroes.component.css'],
-  template: `
-    <h2 style="color: white;">{{ title }}</h2>
-    <ul>
-      <li *ngFor="let superhero of superheroes">
-        {{ superhero }}
-      </li>
-    </ul>    
-    `
+  templateUrl: './superheroes.component.html',
 })
 export class SuperheroesComponent implements OnInit {
   title = "List of Superheroes:";
+  // TODO: Get custom background color for each character
   superheroes;
-  // constructor() {
-  //   let service = new SuperheroesService();
-  //   this.superheroes = service.getSuperheroes();
-  // }
-  // Auto-constructs an instance and passes it in
+
+  // Auto-constructs an instance shared with app and passes it in
   constructor(service: SuperheroesService) {
     this.superheroes = service.getSuperheroes();
   }

@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateNewSuperheroComponent } from './create-new-superhero/create-new-superhero.component';
-import { SuperheroesService } from 'src/app/superheroes.service';
+import { SuperheroesService } from 'src/app/superheroes/superheroes.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SuperheroesComponent } from './superheroes/superheroes.component';
 
