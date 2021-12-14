@@ -5,15 +5,22 @@
     inspiring backstory!
 </p>
 
-<input class="createInputBoxes" placeholder="Name"><br>
-<input class="createInputBoxes" placeholder="Real Name"><br>
-<input class="createInputBoxes" placeholder="Powers"><br>
-<input class="createInputBoxes" placeholder="Description"><br>
-<input class="createInputBoxes" placeholder="Link"><br>
-<input class="createInputBoxes" placeholder="Color"><br>
+<input class="createInputBoxes" placeholder="Name" [(ngModel)]="superhero.name"><br>
+<input class="createInputBoxes" placeholder="Real Name" [(ngModel)]="superhero.realName"><br>
+<input class="createInputBoxes" placeholder="Powers" [(ngModel)]="superhero.powers"><br>
+<input class="createInputBoxes" placeholder="Description" [(ngModel)]="superhero.description"><br>
+<input class="createInputBoxes" placeholder="Link" [(ngModel)]="superhero.link"><br>
+<!-- <div class="form-group state_raw">
+    <label for="state_raw">State</label>
+    <select class="custom-select" name="state_raw" [(ngModel)]="merchant.state_raw" id="state_raw" required>
+      <option selected></option>
+      <option [value]="type" *ngFor="let type of types">{{type | formatType}}</option>
+    </select>
+  </div> -->
+<input class="createInputBoxes" placeholder="Color" [(ngModel)]="superhero.color"><br>
 
 <nav>
-    <button class="tw-blue-btn" routerLink="/superheroes">
+    <button class="tw-blue-btn"(click)="onCreateClick()">
         Create!
     </button>
     <button class="tw-blue-btn" routerLink="/homepage">
