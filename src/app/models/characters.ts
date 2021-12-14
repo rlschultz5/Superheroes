@@ -4,14 +4,14 @@ export interface Characters {
     powers: string[];
     description: string;
     link: string;
-    color: SVGAnimatedEnumeration;
+    color: Color;
   }
 
   enum Color { red = 0, green = 1, blue = 2, white = 3, purple = 4, yellow = 5 };  
 
 //   var string[] toString() => (){}
   
-  export const Superheroes = [
+  export const Superheroes: Characters[] = [
     {
       name: 'Beast',
       realName: 'Henry "Hank" McCoy',

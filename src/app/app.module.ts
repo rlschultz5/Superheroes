@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateNewSuperheroComponent } from './create-new-superhero/create-new-superhero.component';
-import { SuperheroesService } from 'src/app/superheroes/superheroes.service';
+import { SuperheroesService } from './services/superheroes.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SuperheroesComponent } from './superheroes/superheroes.component';
 
@@ -22,6 +21,7 @@ import { SuperheroesComponent } from './superheroes/superheroes.component';
       {path: 'superheroes', component: SuperheroesComponent},
       {path: 'create-new-superhero', component: CreateNewSuperheroComponent},
       {path: 'homepage', component: HomepageComponent},
+      {path: '', component: HomepageComponent}
     ]),
   ],
   providers: [

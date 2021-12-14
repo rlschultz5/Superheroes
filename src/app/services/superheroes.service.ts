@@ -1,7 +1,7 @@
-import { Characters, Superheroes } from './../characters';
+import { Characters, Superheroes } from '../models/characters';
 
 export class SuperheroesService {
-    getSuperheroes() {
+    getSuperheroes() : Characters[] {
         return Superheroes;
         // return ["Wolverine", "Captain America", "Storm"];
     }

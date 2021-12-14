@@ -1,3 +1,4 @@
+import { SuperheroesService } from '../services/superheroes.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SuperheroesComponent } from './superheroes.component';
@@ -8,7 +9,8 @@ describe('SuperheroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuperheroesComponent ]
+      declarations: [ SuperheroesComponent ],
+      providers: [SuperheroesService]
     })
     .compileComponents();
   });

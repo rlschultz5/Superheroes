@@ -7,14 +7,14 @@
     font-size: 2.2em; color: white;">
     {{ title }}
 </h2>
-    <ul>
-      <li *ngFor="let superhero of superheroes">
-        <h1 style=" color: white; font-size: 1.2em;">
-        {{ superhero.name }}
-        </h1>
-        {{'Real Name:  ' + superhero.realName }}
-      </li>
-    </ul>
+<ul style="margin-left: .5em">
+    <li *ngFor="let superhero of superheroes">
+    <h1 style="color: white; font-size: 1.2em;">
+    {{ superhero.name }}
+    </h1>
+    {{'Real Name:  ' + superhero.realName }}
+    </li>
+</ul>
 <nav>
     <button class="tw-blue-btn" routerLink="/create-new-superhero">
         Create a new Marvel character!

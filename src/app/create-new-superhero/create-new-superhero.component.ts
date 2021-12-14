@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'create-new-superhero',
+  selector: 'app-create-new-superhero',
   templateUrl: './create-new-superhero.component.html',
   styleUrls: ['./create-new-superhero.component.css']
 })
-export class CreateNewSuperheroComponent implements OnInit {
+export class CreateNewSuperheroComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
