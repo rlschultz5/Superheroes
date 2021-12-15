@@ -18,11 +18,31 @@ export class SuperheroesComponent {
   }
   
   superheroes: Character[];
+  superhero = {
+    id: '',
+    name: '',
+    realName: '',
+    powers: '',
+    description: '',
+    link: '',
+    color: ''
+  };
 
   // Auto-constructs an instance shared with app and passes it in
-  constructor(service: SuperheroesService) {
-    this.superheroes = service.getSuperheroes();
-    
+  constructor(private superheroesService: SuperheroesService) {
+    this.superheroes = superheroesService.getSuperheroes();
+  }
+  onShowClick(heroID: string) {
+    const currSuperhero: Character | undefined = this.superheroesService.findSuperhero(heroID);
+    if(currSuperhero != undefined){
+      this.superhero.id = currSuperhero.id;
+      this.superhero.name = currSuperhero.name;
+      this.superhero.realName = currSuperhero.realName;
+      [this.superhero.powers] = currSuperhero.powers;
+      this.superhero.description = currSuperhero.description;
+      this.superhero.color = currSuperhero.color;
+    }
+    alert("Superhero Info!")
   }
 
 }

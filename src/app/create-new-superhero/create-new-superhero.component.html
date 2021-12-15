@@ -1,3 +1,6 @@
+<!-- <div *ngIf="condition; else elseBlock">Content to render when condition is true.</div> -->
+<!-- <ng-template #elseBlock>Content to render when condition is false.</ng-template> -->
+
 <h2 style="color: white; font-size: 1.2em;">CREATE A NEW SUPERHERO!</h2>
 <p style="color: white;  font-size: 1.2em; font-family:
     'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
@@ -10,13 +13,6 @@
 <input class="createInputBoxes" placeholder="Powers" [(ngModel)]="superhero.powers"><br>
 <input class="createInputBoxes" placeholder="Description" [(ngModel)]="superhero.description"><br>
 <input class="createInputBoxes" placeholder="Link" [(ngModel)]="superhero.link"><br>
-<!-- <div class="form-group state_raw">
-    <label for="state_raw">State</label>
-    <select class="custom-select" name="state_raw" [(ngModel)]="merchant.state_raw" id="state_raw" required>
-      <option selected></option>
-      <option [value]="type" *ngFor="let type of types">{{type | formatType}}</option>
-    </select>
-  </div> -->
 <input class="createInputBoxes" placeholder="Color" [(ngModel)]="superhero.color"><br>
 
 <nav>

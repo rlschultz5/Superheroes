@@ -1,27 +1,30 @@
-<h2 style="color: white; font-size: 1.2em;">List of Favorite Marvel Superheroes!</h2>
-<p style="color: white;  font-size: 1.2em; font-family:
-    'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-    Edit, remove or create new Marvel superheroes here!
-</p>
-<h2 style="padding-top: 1em; padding-bottom: .5em; 
-    font-size: 2.2em; color: white;">
-    {{ title }}
-</h2>
-<ul style="margin-left: .5em">
-    <li *ngFor="let superhero of superheroes">
-        <button class="{{heroColorMap[superhero.color]}}">
-            <h1 style="color: white; font-size: 1.2em;">
-            {{ superhero.name }}
-            </h1>
-        {{'Real Name:  ' + superhero.realName }}
+<div class="tw-super-background">
+    <h2 style="color: white; font-size: 1.2em;">
+        List of Favorite Marvel Superheroes!</h2>
+    <p style="color: white;  font-size: 1.2em; font-family:
+        'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+        Edit, remove or create new Marvel superheroes here!
+    </p>
+    <h2 style="padding-top: 1em; padding-bottom: .5em; 
+        font-size: 2.2em; color: white;">
+        {{ title }}
+    </h2>
+    <ul style="margin-left: .5em">
+        <li *ngFor="let superhero of superheroes">
+            <button class="{{heroColorMap[superhero.color]}}" (click)="onShowClick(superhero.id)">
+                <h1 style="font-size: 1.2em;">
+                {{ superhero.name }}
+                </h1>
+            {{'Real Name:  ' + superhero.realName }}
+            </button>
+        </li>
+    </ul>
+    <nav>
+        <button class="tw-blue-btn" routerLink="/create-new-superhero">
+            Create a new Marvel character!
         </button>
-    </li>
-</ul>
-<nav>
-    <button class="tw-blue-btn" routerLink="/create-new-superhero">
-        Create a new Marvel character!
-    </button>
-    <button class="tw-blue-btn" routerLink="/homepage">
-        Main Menu
-    </button>
-</nav>
+        <button class="tw-blue-btn" routerLink="/homepage">
+            Main Menu
+        </button>
+    </nav>
+</div>

@@ -8,13 +8,15 @@ import { CreateNewSuperheroComponent } from './create-new-superhero/create-new-s
 import { SuperheroesService } from './services/superheroes.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SuperheroesComponent } from './superheroes/superheroes.component';
+import { UpdateSuperheroComponent } from './update-superhero/update-superhero.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateNewSuperheroComponent,
     SuperheroesComponent,
-    HomepageComponent
+    HomepageComponent,
+    UpdateSuperheroComponent
   ],
   imports: [
     BrowserModule,
