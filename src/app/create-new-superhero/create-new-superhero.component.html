@@ -1,10 +1,7 @@
 <div>
-    <h2 style="color: white; font-size: 1.2em;">CREATE A NEW SUPERHERO!</h2>
-    <p style="color: white;  font-size: 1.2em; font-family:
-        'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <h2 class="description">CREATE A NEW SUPERHERO!<br><br>
         Fill in your superhero's information, including a description and even an 
-        inspiring backstory!
-    </p>
+        inspiring backstory!</h2>
 
     <input class="createInputBoxes" placeholder="Name" required minlength="1" [(ngModel)]="superhero.name"><br>
     <input class="createInputBoxes" placeholder="Real Name" [(ngModel)]="superhero.realName"><br>
@@ -14,10 +11,10 @@
     <input class="createInputBoxes" placeholder="Color" [(ngModel)]="superhero.color"><br>
 
     <nav>
-        <button class="app-blue-btn"(click)="onCreateClick()">
+        <button class="white-btn"(click)="onCreateClick()">
             Create!
         </button>
-        <button class="app-blue-btn" routerLink="/homepage">
+        <button class="white-btn" routerLink="/homepage">
             Cancel
         </button>
     </nav>

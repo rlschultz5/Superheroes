@@ -1,8 +1,10 @@
 <div (click)="showEdit()">
-    <h1 style="color: black; font-size: 1.2em;">
+    <h1 class="hero-info">
         {{ hero.name }}
     </h1>
+    <h2 class="hero-sub-info">
     {{'Real Name:  ' + hero.realName }}
+    </h2>
 </div>
 
 <div *ngIf=!isHidden>

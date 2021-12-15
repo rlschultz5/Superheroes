@@ -1,0 +1,10 @@
+.hero-info {
+    @apply font-bold;
+    @apply text-black;
+}
+
+.hero-sub-info {
+    @apply font-bold;
+    @apply text-black;
+    @apply text-base;
+}
