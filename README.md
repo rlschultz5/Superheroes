@@ -1,5 +1,7 @@
 # Superheroes
 
+This application allows you to view a list of your favorite Marvel superheroes! You can create, read, update, and delete (CRUD) your superheroes!
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
 
 ## Development server
