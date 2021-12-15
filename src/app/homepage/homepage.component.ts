@@ -7,6 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomepageComponent {
-  // TODO: Make this appear as first page
 
 }

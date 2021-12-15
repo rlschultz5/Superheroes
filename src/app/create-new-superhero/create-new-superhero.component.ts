@@ -2,7 +2,7 @@ import { ColorType } from './../models/color-type';
 import { Character } from './../models/characters';
 import { SuperheroesService } from './../services/superheroes.service';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-new-superhero',
@@ -21,7 +21,8 @@ export class CreateNewSuperheroComponent {
     color: ''
   };
 
-  constructor(private superheroesService: SuperheroesService) { }
+  constructor(private readonly superheroesService: SuperheroesService, 
+              private readonly router: Router) { }
 
   onCreateClick() {
     const superhero: Character = {
@@ -38,7 +39,7 @@ export class CreateNewSuperheroComponent {
 
     // better ways to do this (toast messages)
     alert("Superhero created!")
-
+    this.router.navigate(['/', 'superheroes']);
   }
   
 

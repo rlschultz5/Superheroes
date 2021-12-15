@@ -2,31 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-.tw-blue-btn {
+.app-background {
+  @apply h-auto;
+  @apply bg-gradient-to-r from-sky-500 to-indigo-500;
+}
+
+.app-blue-btn {
     @apply py-2 px-3 m-2;
     @apply bg-blue-500 hover:bg-blue-700;
     @apply rounded-md;
     @apply text-black;
 }
-.tw-green-btn {
+.app-green-btn {
   @apply py-2 px-3 m-2;
   @apply bg-green-500 hover:bg-green-700;
   @apply rounded-md;
   @apply text-black;
 }
-.tw-red-btn {
+.app-red-btn {
   @apply py-2 px-3 m-2;
   @apply bg-red-500 hover:bg-red-700;
   @apply rounded-md;
   @apply text-black;
 }
-.tw-white-btn {
+.app-white-btn {
   @apply py-2 px-3 m-2;
-  @apply bg-white hover:bg-gray-400;
+  @apply bg-gray-500 hover:bg-gray-700;
   @apply rounded-md;
   @apply text-black;
 }
-.tw-yellow-btn {
+.app-yellow-btn {
   @apply py-2 px-3 m-2;
   @apply bg-yellow-400 hover:bg-yellow-600;
   @apply rounded-md;

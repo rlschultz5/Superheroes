@@ -1,1 +1,23 @@
-<p>update-superhero works!</p>
+<div (click)="showEdit()">
+    <h1 style="color: black; font-size: 1.2em;">
+        {{ hero.name }}
+    </h1>
+    {{'Real Name:  ' + hero.realName }}
+</div>
+
+<div *ngIf=!isHidden>
+    <h2 style="color: white; font-size: 1.2em;">Name:</h2>
+    <input class="createInputBoxes" placeholder="Name" [(ngModel)]="hero.name"><br>
+    <h2 style="color: white; font-size: 1.2em;">Real Name:</h2>
+    <input class="createInputBoxes" placeholder="Real Name" [(ngModel)]="hero.realName"><br>
+    <h2 style="color: white; font-size: 1.2em;">Powers:</h2>
+    <input class="createInputBoxes" placeholder="Powers" [(ngModel)]="hero.powers"><br>
+    <h2 style="color: white; font-size: 1.2em;">Description:</h2>
+    <input class="createInputBoxes" placeholder="Description" [(ngModel)]="hero.description"><br>
+    <h2 style="color: white; font-size: 1.2em;">Link:</h2>
+    <input class="createInputBoxes" placeholder="Link" [(ngModel)]="hero.link"><br>
+    <h2 style="color: white; font-size: 1.2em;">Color:</h2>
+    <input class="createInputBoxes" placeholder="Color" [(ngModel)]="hero.color"><br>
+    <button class="app-white-btn" (click)="saveUpdates()">Save</button>
+    <button class="app-white-btn" (click)="deleteHero()">Delete</button>
+</div>
