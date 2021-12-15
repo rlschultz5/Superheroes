@@ -3,6 +3,8 @@ import { Character } from './../models/characters';
 import { SuperheroesService } from './../services/superheroes.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {getCurrencySymbol} from '@taiga-ui/addon-commerce';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-new-superhero',

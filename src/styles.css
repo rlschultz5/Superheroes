@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.title {
+  @apply text-6xl;
+  @apply text-center;
+}
+
+.description {
+  @apply text-3xl;
+  @apply text-center;
+}
+
 .app-background {
   @apply h-auto;
   @apply bg-gradient-to-r from-sky-500 to-indigo-500;

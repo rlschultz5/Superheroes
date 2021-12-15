@@ -1,4 +1,3 @@
-.tw-super-back {
-  @apply bg-gradient-to-r from-red-50 to-red-900;
-  @apply h-auto;
+.list-title {
+  @apply gap-x-5
 }
