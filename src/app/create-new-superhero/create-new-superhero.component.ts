@@ -27,11 +27,11 @@ export class CreateNewSuperheroComponent {
     const superhero: Character = {
       id: '',
       name: this.superhero.name,
-      realName: this.superhero.description,
+      realName: this.superhero.realName,
       powers: [this.superhero.powers],
       description: this.superhero.description,
       link: this.superhero.link,
-      color: 'green'
+      color: 'white'
     };
     this.superheroesService.addSuperhero(superhero);
 
