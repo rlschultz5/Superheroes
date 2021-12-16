@@ -3,8 +3,14 @@
     @apply text-black;
 }
 
-.hero-sub-info {
+.hero-sub-info-black {
     @apply font-bold;
     @apply text-black;
+    @apply text-base;
+}
+
+.hero-sub-info-white {
+    @apply font-bold;
+    @apply text-white;
     @apply text-base;
 }
