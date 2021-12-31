@@ -3,6 +3,7 @@ import { Character } from './../models/characters';
 import { Superheroes } from '../models/my-superheroes';
 import * as uuid from 'uuid';
 
+// TODO: Turn into generic class
 export class SuperheroesService {
     superheroMap: Map<string,Character> = new Map();
 

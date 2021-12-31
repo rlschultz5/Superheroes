@@ -1,10 +1,20 @@
 <tui-root>
-<div>
-    <h1 class="title">
-        {{ title }}
-    </h1>
+    <nav class="nav-bg">
+        <h1 class="nav-title">
+            {{ title }}
+        </h1>
+        <ul class="app-center">
+            <li class='basic-btn basic-btn-w' routerLink='/homepage'>Home</li>
+            <li class='basic-btn basic-btn-w' routerLink='/superheroes'>My list!</li>
+            <li class='basic-btn basic-btn-w' routerLink='/create-new-superhero'>Create a new Marvel character!</li>
+        </ul>
+    </nav>
     <router-outlet></router-outlet>
-</div>
-
-
+    <footer class='footer'>
+        <address>
+            <p class='footer-txt'>Percent Invisible Assessment</p>
+            <p class='footer-txt'>by: Rob Schultz</p>
+            <p class='footer-txt'>Madison, WI</p>
+        </address>
+    </footer>
 </tui-root>

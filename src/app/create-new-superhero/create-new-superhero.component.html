@@ -1,21 +1,31 @@
 <div>
-    <h2 class="description">CREATE A NEW SUPERHERO!<br><br>
-        Fill in your superhero's information, including a description and even an 
-        inspiring backstory!</h2>
+    <h2 class="h2">CREATE A NEW SUPERHERO!
+    </h2>
+    <p>
+        (Fill in your superhero's information, including a description <br>which could include 
+        an inspiring backstory)
+    </p>
 
-    <input class="createInputBoxes" placeholder="Name" required minlength="1" [(ngModel)]="superhero.name"><br>
-    <input class="createInputBoxes" placeholder="Real Name" [(ngModel)]="superhero.realName"><br>
-    <input class="createInputBoxes" placeholder="Powers" [(ngModel)]="superhero.powers"><br>
-    <input class="createInputBoxes" placeholder="Description" [(ngModel)]="superhero.description"><br>
-    <input class="createInputBoxes" placeholder="Link" [(ngModel)]="superhero.link"><br>
-    <input class="createInputBoxes" placeholder="Color" [(ngModel)]="superhero.color"><br>
-
+    <div>
+        <!-- TODO: Verify Input -->
+        <input class="create-input-boxes" placeholder="Name" [(ngModel)]="superhero.name"><br>
+        <input class="create-input-boxes" placeholder="Real Name" [(ngModel)]="superhero.realName"><br>
+        <input class="create-input-boxes" placeholder="Powers" [(ngModel)]="superhero.powers"><br>
+        <input class="create-input-boxes" placeholder="Description" [(ngModel)]="superhero.description"><br>
+        <input class="create-input-boxes" placeholder="Link" [(ngModel)]="superhero.link"><br>
+        <!-- TODO: Implement dropdown menu for color -->
+        <input class="create-input-boxes" placeholder="Color" [(ngModel)]="superhero.color"><br>
+    </div>
     <nav>
-        <button class="white-btn" (click)="onCreateClick()">
+        <ul class="app-center">
+            <li class='basic-btn' (click)="onCreateClick()">Create!</li>
+            <li class='basic-btn' routerLink="/homepage">Cancel</li>
+        </ul>
+        <!-- <button class="white-btn" (click)="onCreateClick()">
             Create!
         </button>
         <button class="white-btn" routerLink="/homepage">
             Cancel
-        </button>
+        </button> -->
     </nav>
 </div>

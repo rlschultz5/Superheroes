@@ -1,12 +1,16 @@
-.list-title {
-  @apply gap-x-5
+.char-btn {
+  @apply py-2 px-6 mx-5 my-2;
+  @apply bg-opacity-50 bg-white hover:bg-opacity-90;
+  /* @apply border-2; */
+  @apply rounded-xl;
+  @apply text-lg;
+  @apply font-extrabold;
+  @apply text-center;
+  @apply cursor-pointer;
+  @apply text-black;
 }
 
-.list-btn {
-    @apply py-2 px-3 m-2;
-    @apply bg-white hover:bg-blue-300;
-    @apply rounded-md;
-    @apply text-2xl;
-    @apply text-black;
-    @apply text-center;
+.char-btn-w {
+  @apply text-black;
+  /* @apply shadow-2xl; */
 }

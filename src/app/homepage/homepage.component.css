@@ -1,8 +1,0 @@
-.home-btn {
-    @apply py-2 px-3 m-2;
-    @apply bg-white hover:bg-blue-300;
-    @apply rounded-md;
-    @apply text-2xl;
-    @apply text-black;
-    @apply text-center;
-}

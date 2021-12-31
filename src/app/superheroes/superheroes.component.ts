@@ -4,17 +4,17 @@ import { SuperheroesService } from '../services/superheroes.service';
 
 @Component({
   selector: 'app-superheroes',
-  styleUrls: ['./superheroes.component.css'],
   templateUrl: './superheroes.component.html',
+  styleUrls: ['./superheroes.component.css']
 })
 export class SuperheroesComponent {
   title: string = "List of Superheroes:";
   readonly heroColorMap = {
-    blue: 'app-blue-btn',
-    green: 'app-green-btn',
-    red: 'app-red-btn',
-    yellow: 'app-yellow-btn',
-    white: 'app-white-btn'
+    blue: 'app-btn btn-blue',
+    green: 'app-btn btn-green',
+    red: 'app-btn btn-red',
+    yellow: 'app-btn btn-yellow',
+    white: 'app-btn btn-white'
   }
   
   superheroes: Character[];

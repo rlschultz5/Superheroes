@@ -8,8 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-new-superhero',
-  templateUrl: './create-new-superhero.component.html',
-  styleUrls: ['./create-new-superhero.component.css']
+  templateUrl: './create-new-superhero.component.html'
 })
 
 export class CreateNewSuperheroComponent {

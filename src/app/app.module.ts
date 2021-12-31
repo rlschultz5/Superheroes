@@ -12,6 +12,7 @@ import { SuperheroesService } from './services/superheroes.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SuperheroesComponent } from './superheroes/superheroes.component';
 import { UpdateSuperheroComponent } from './update-superhero/update-superhero.component';
+import { ModifyCharacterComponent } from './modify-character/modify-character.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UpdateSuperheroComponent } from './update-superhero/update-superhero.co
     CreateNewSuperheroComponent,
     SuperheroesComponent,
     HomepageComponent,
-    UpdateSuperheroComponent
+    UpdateSuperheroComponent,
+    ModifyCharacterComponent
   ],
   imports: [
     BrowserModule,

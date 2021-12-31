@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-superhero',
-  templateUrl: './update-superhero.component.html',
-  styleUrls: ['./update-superhero.component.css']
+  templateUrl: './update-superhero.component.html'
 })
 export class UpdateSuperheroComponent {
   @Input() hero!: Character; // decorate the property with @Input()

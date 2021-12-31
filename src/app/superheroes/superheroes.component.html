@@ -1,25 +1,28 @@
 <div>
-    <h2 class="description">List of Favorite Marvel Superheroes!<br>
-        Edit, remove or create new Marvel superheroes here!
+    <!-- TODO: Change font -->
+    <h2 class="h2">List of Favorite Marvel Superheroes!
     </h2>
-    <h2 style="padding-top: 1em; padding-bottom: .5em; 
-        font-size: 2.2em; color: white;margin-left: .5em;">
-        <!-- <h2 class=""> -->
+    <p>
+        (Edit, remove or create new Marvel superheroes here)
+    </p><br>
+    <div>
+        <h3 class="h3">
         {{ title }}
-    </h2>
-    <ul style="margin-left: .5em">
-        <li *ngFor="let superhero of superheroes">
-            <div class="{{heroColorMap[superhero.color]}}">
-                <app-update-superhero [hero]="superhero"></app-update-superhero>
-            </div>
-        </li>
-    </ul>
-    <nav>
-        <button class="list-btn" routerLink="/create-new-superhero">
-            Create a new Marvel character!
-        </button>
-        <button class="list-btn" routerLink="/homepage">
-            Main Menu
-        </button>
-    </nav>
+        </h3>
+        <!-- TODO: Evenly space grid/center grid -->
+            <ul class="app-grid app-center">
+            <li *ngFor="let superhero of superheroes">
+                <div class="{{heroColorMap[superhero.color]}}">
+                    <!-- FIXME: trying modify-character -->
+                    <app-modify-character></app-modify-character>
+                    <app-update-superhero [hero]="superhero"></app-update-superhero>
+                    <!-- FIXME: Trial Code -->
+                    <ul class="app-center">
+                        <button class='char-btn' routerLink='/homepage'>Details</button>
+                        <button class='char-btn' routerLink='/superheroes'>Modify</button>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>

@@ -2,36 +2,208 @@
 @tailwind components;
 @tailwind utilities;
 
-.title {
-  @apply text-6xl;
-  @apply text-center;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+code,
+del,
+dfn,
+img,
+ins,
+kbd,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  cursor: default;
 }
 
-.description {
+/* nav {
+  @apply w-screen;
+  @apply object-top;
+  @apply fixed;
+} */
+
+/* body {
+  @apply p-3;
+} */
+
+.nav-bg {
+  @apply bg-slate-700;
+  @apply block;
+  @apply py-3;
+  @apply bg-fixed;
+  @apply h-40;
+  @apply bg-fixed;
+  @apply bg-top;
+}
+
+.nav-title {
+  @apply text-5xl;
+  @apply text-center;
+  @apply font-extrabold;
+  @apply text-white;
+  @apply m-2;
+  /* @apply cursor-default; */
+  /* @apply py-2; */
+}
+
+.basic-btn {
+  @apply py-2 px-6 mx-5 my-2;
+  @apply bg-transparent hover:bg-gray-400;
+  @apply border-2;
+  @apply rounded-xl;
+  @apply text-lg;
+  @apply font-extrabold;
+  @apply text-center;
+  @apply cursor-pointer;
+}
+
+.basic-btn-w {
+  @apply text-white;
+  /* @apply shadow-2xl; */
+}
+
+.footer {
+  @apply p-5;
+  @apply mt-16
+}
+
+.footer-txt {
+  @apply flex;
+  @apply justify-center;
+  @apply text-xs;
+}
+
+.h2 {
   @apply text-3xl;
+  @apply font-bold;
   @apply text-center;
+  @apply pt-3;
+  @apply text-slate-700
+}
+.h2-list {
+  @apply text-xl;
+  @apply font-bold;
+  @apply text-center;
+  @apply pt-5;
+  @apply text-slate-700
 }
 
-.app-background {
-  @apply h-auto;
-  @apply bg-gradient-to-r from-sky-500 to-indigo-500;
+.h3 {
+  @apply ml-5;
+  @apply text-2xl;
+  @apply font-bold;
+  @apply pt-3;
+  @apply text-slate-700
+}
+
+p {
+  @apply mt-2;
+  @apply text-xl;
+  @apply text-center;
+  @apply font-bold;
+  /* @apply py-2; */
+  @apply text-slate-700
+}
+
+.app-center {
+  @apply flex;
+  @apply justify-center;
+  @apply py-2;
 }
 
 .hero-info {
-    @apply font-bold;
-    @apply text-black;
+  @apply font-bold;
+  @apply text-black;
 }
 
 .hero-sub-info-black {
-    @apply font-bold;
-    @apply text-black;
-    @apply text-lg;
+  @apply font-bold;
+  @apply text-black;
+  @apply text-base;
 }
 
 .hero-sub-info-white {
-    @apply font-bold;
-    @apply text-white;
-    @apply text-base;
+  @apply font-bold;
+  @apply text-white;
+  @apply text-base;
+}
+
+.list-title {
+  @apply gap-x-5
+}
+
+.list-btn {
+    @apply py-2 px-3 m-2;
+    @apply bg-white hover:bg-blue-300;
+    @apply rounded-md;
+    @apply text-2xl;
+    @apply text-black;
+    @apply text-center;
 }
 
 .white-btn {
@@ -43,38 +215,41 @@
     @apply text-center;
 }
 
-.app-blue-btn {
-    @apply py-2 px-3 m-2;
-    @apply bg-blue-500 hover:bg-blue-700;
-    @apply rounded-md;
-    @apply text-black;
-}
-.app-green-btn {
+.app-btn {
   @apply py-2 px-3 m-2;
-  @apply bg-green-500 hover:bg-green-700;
-  @apply rounded-md;
-  @apply text-black;
-}
-.app-red-btn {
-  @apply py-2 px-3 m-2;
-  @apply bg-red-500 hover:bg-red-700;
-  @apply rounded-md;
-  @apply text-black;
-}
-.app-white-btn {
-  @apply py-2 px-3 m-2;
-  @apply bg-gray-500 hover:bg-gray-700;
-  @apply rounded-md;
-  @apply text-black;
-}
-.app-yellow-btn {
-  @apply py-2 px-3 m-2;
-  @apply bg-yellow-400 hover:bg-yellow-600;
-  @apply rounded-md;
+  @apply rounded-xl;
   @apply text-black;
 }
 
-.createInputBoxes {
+.btn-blue {
+    @apply bg-blue-500 hover:bg-blue-700;
+}
+
+.btn-green {
+  @apply bg-green-500 hover:bg-green-700;
+}
+
+.btn-red {
+  @apply bg-red-500 hover:bg-red-700;
+}
+
+.btn-white {
+  @apply bg-gray-500 hover:bg-gray-700;
+}
+
+.btn-yellow {
+  @apply bg-yellow-400 hover:bg-yellow-600;
+}
+
+.app-grid {
+  @apply grid;
+  @apply grid-cols-3;
+  @apply gap-4;
+  @apply max-w-fit;
+  @apply ml-5;
+}
+
+.create-input-boxes {
     box-shadow: inset 0 1px 0 0 #ffffff;
     background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
     border-radius: 6px;
@@ -92,4 +267,5 @@
     text-shadow: 0 1px 0 #ffffff;
     outline: 0;
     @apply m-5;
+    @apply cursor-text;
 }
