@@ -4,7 +4,7 @@
     <ul class="app-grid app-center">
         <li *ngFor="let villain of villains">
             <div class="{{ characterColorMap[villain.color] }}">
-                <!-- FIXME: trying modify-character -->
+                <!-- FIXME: trying character-detail -->
                 <app-update-superhero [hero]="villain"></app-update-superhero>
                 <!-- FIXME: Trial Code -->
                 <ul class="app-center">

@@ -17,18 +17,19 @@ import { HeroService, VillainService } from './services/superheroes.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SuperheroesComponent } from './superheroes/superheroes.component';
 import { UpdateSuperheroComponent } from './update-superhero/update-superhero.component';
-import { ModifyCharacterComponent } from './modify-character/modify-character.component';
+import { CharacterDetailComponent } from './character-detail/character-detail.component';
 import { CharactersComponent } from './characters/characters.component';
 import { VillainsComponent } from './villains/villains.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        CharacterDetailComponent,
         CreateNewSuperheroComponent,
         SuperheroesComponent,
         HomepageComponent,
         UpdateSuperheroComponent,
-        ModifyCharacterComponent,
+        CharacterDetailComponent,
         CharactersComponent,
         VillainsComponent,
     ],
@@ -44,8 +45,8 @@ import { VillainsComponent } from './villains/villains.component';
             { path: 'homepage', component: HomepageComponent },
             { path: 'characters', component: CharactersComponent },
             {
-                path: 'modify-character/:id',
-                component: ModifyCharacterComponent,
+                path: 'character-detail/:id',
+                component: CharacterDetailComponent,
             },
             { path: '', component: HomepageComponent },
         ]),

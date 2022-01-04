@@ -1,14 +1,14 @@
-import { HeroService } from './../services/superheroes.service';
+import { HeroService } from '../services/superheroes.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Character } from '../models/character';
 
 @Component({
-    selector: 'app-modify-character',
-    templateUrl: './modify-character.component.html',
-    styleUrls: ['./modify-character.component.css'],
+    selector: 'app-character-detail',
+    templateUrl: './character-detail.component.html',
+    styleUrls: ['./character-detail.component.css'],
 })
-export class ModifyCharacterComponent implements OnInit {
+export class CharacterDetailComponent implements OnInit {
     hero?: Character;
     heroId?: string;
 
