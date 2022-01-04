@@ -1,4 +1,4 @@
-import { Character } from "./characters";
+import { Character } from "./character";
 
 export const Superheroes: Character[] = [
     {

@@ -1,0 +1,21 @@
+<div>
+    <h3 class="h3">{{ title }}</h3>
+    <!-- TODO: Evenly space grid/center grid -->
+    <ul class="app-grid app-center">
+        <li *ngFor="let villain of villains">
+            <div class="{{ characterColorMap[villain.color] }}">
+                <!-- FIXME: trying modify-character -->
+                <app-update-superhero [hero]="villain"></app-update-superhero>
+                <!-- FIXME: Trial Code -->
+                <ul class="app-center">
+                    <button class="char-btn" routerLink="/homepage">
+                        Details
+                    </button>
+                    <button class="char-btn" routerLink="/superheroes">
+                        Modify
+                    </button>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

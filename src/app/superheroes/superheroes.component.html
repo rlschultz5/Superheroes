@@ -1,28 +1,34 @@
 <div>
-    <!-- TODO: Change font -->
-    <h2 class="h2">List of Favorite Marvel Superheroes!
-    </h2>
-    <p>
-        (Edit, remove or create new Marvel superheroes here)
-    </p><br>
-    <div>
-        <h3 class="h3">
-        {{ title }}
-        </h3>
-        <!-- TODO: Evenly space grid/center grid -->
-            <ul class="app-grid app-center">
-            <li *ngFor="let superhero of superheroes">
-                <div class="{{heroColorMap[superhero.color]}}">
-                    <!-- FIXME: trying modify-character -->
-                    <app-modify-character></app-modify-character>
-                    <app-update-superhero [hero]="superhero"></app-update-superhero>
-                    <!-- FIXME: Trial Code -->
-                    <ul class="app-center">
-                        <button class='char-btn' routerLink='/homepage'>Details</button>
-                        <button class='char-btn' routerLink='/superheroes'>Modify</button>
-                    </ul>
+    <h3 class="h3">{{ title }}</h3>
+    <!-- TODO: Evenly space grid/center grid -->
+    <ul class="app-grid app-center">
+        <li *ngFor="let superhero of superheroes">
+            <div class="{{ characterColorMap[superhero.color] }} char-card">
+                <div class="char-name">
+                    {{ superhero.name }}
                 </div>
-            </li>
-        </ul>
-    </div>
+                <div class="char-realname">
+                    {{ superhero.realName }}
+                </div>
+                <!-- FIXME: trying modify-character -->
+                <!-- TODO: Implement DetailsComponent -->
+                <!-- <a
+                    class="char-btn"
+                    [routerLink]="'/modify-character/' + superhero.id"
+                    >Modify
+                </a> -->
+
+                <!-- <app-update-superhero [hero]='superhero'></app-update-superhero> -->
+                <!-- FIXME: Trial Code -->
+                <ul class="app-center">
+                    <button class="char-btn" routerLink="/homepage">
+                        Details
+                    </button>
+                    <button class="char-btn" routerLink="/modify-character">
+                        Modify
+                    </button>
+                </ul>
+            </div>
+        </li>
+    </ul>
 </div>

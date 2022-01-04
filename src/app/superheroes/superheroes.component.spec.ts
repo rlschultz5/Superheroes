@@ -1,16 +1,16 @@
-import { SuperheroesService } from '../services/superheroes.service';
+import { HeroService } from '../services/superheroes.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SuperheroesComponent } from './superheroes.component';
 
-describe('SuperheroComponent', () => {
+describe('SuperheroesComponent', () => {
   let component: SuperheroesComponent;
   let fixture: ComponentFixture<SuperheroesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SuperheroesComponent ],
-      providers: [SuperheroesService]
+      providers: [HeroService]
     })
     .compileComponents();
   });

@@ -139,7 +139,7 @@ video {
 }
 
 .h2 {
-  @apply text-3xl;
+  @apply text-4xl;
   @apply font-bold;
   @apply text-center;
   @apply pt-3;
@@ -155,7 +155,7 @@ video {
 
 .h3 {
   @apply ml-5;
-  @apply text-2xl;
+  @apply text-4xl;
   @apply font-bold;
   @apply pt-3;
   @apply text-slate-700
@@ -176,6 +176,12 @@ p {
   @apply py-2;
 }
 
+.center {
+  @apply block;
+  @apply ml-auto;
+  @apply mr-auto;
+}
+
 .hero-info {
   @apply font-bold;
   @apply text-black;
@@ -191,6 +197,59 @@ p {
   @apply font-bold;
   @apply text-white;
   @apply text-base;
+}
+
+.char-btn {
+  @apply py-2 px-6 mx-5;
+  @apply bg-opacity-50 bg-white hover:bg-opacity-90;
+  /* @apply border-2; */
+  @apply rounded-xl;
+  @apply text-lg;
+  @apply font-extrabold;
+  @apply text-center;
+  @apply cursor-pointer;
+  @apply text-slate-700;
+}
+
+.char-card {
+  @apply h-36 w-72;
+  border: 1px solid #d4d4d4;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.char-section {
+  /* @apply bg-slate-700; */
+  @apply bg-white;
+  @apply border-4 rounded-xl mx-5 border-slate-700;
+  @apply mb-8;
+  /* @apply max-h-96; */
+  /* border: 1px solid #d4d4d4; */
+  /* height: 150px; */
+  /* margin-bottom: 20px; */
+  /* position: relative; */
+}
+
+.char-name {
+  @apply text-white;
+  @apply text-4xl;
+  @apply text-center;
+  @apply mb-2;
+}
+
+.char-realname {
+  @apply text-white;
+  @apply text-lg;
+}
+
+.char-description {
+  @apply text-white;
+  @apply text-sm;
+}
+
+.char-btn-w {
+  @apply text-black;
+  /* @apply shadow-2xl; */
 }
 
 .list-title {
@@ -241,12 +300,15 @@ p {
   @apply bg-yellow-400 hover:bg-yellow-600;
 }
 
+.btn-purple {
+  @apply bg-purple-500 hover:bg-purple-700;
+}
+
 .app-grid {
   @apply grid;
-  @apply grid-cols-3;
+  @apply grid-cols-4;
   @apply gap-4;
-  @apply max-w-fit;
-  @apply ml-5;
+  @apply mx-12;
 }
 
 .create-input-boxes {

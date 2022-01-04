@@ -1,109 +1,137 @@
-import { ColorType } from './../models/color-type';
-import { Character } from './../models/characters';
-import { Superheroes } from '../models/my-superheroes';
+import { Character } from './../models/character';
+import { Superheroes } from '../models/default-superheroes';
 import * as uuid from 'uuid';
+import { Injectable } from '@angular/core';
 
 // TODO: Turn into generic class
-export class SuperheroesService {
-    superheroMap: Map<string,Character> = new Map();
+export abstract class DataService<DataT extends { id: string }> {
+    key: string;
+    data: Map<string, DataT> = new Map();
 
-    constructor() {
-        const json = localStorage.getItem('heroMap')
-        if(json !== null) {
-            this.superheroMap = JSON.parse(json, this.reviver);
+    constructor(key: string) {
+        this.key = key;
+        const json = localStorage.getItem(key);
+        if (json !== null) {
+            this.data = JSON.parse(json, this.reviver);
+            // } else {
+            //     for (let index = 0; index < Superheroes.length; index++) {
+            //         Superheroes[index].id = uuid.v4();
+            //         this.data.set(Superheroes[index].id, Superheroes[index]);
+            //     }
         }
-        else {
-            for (let index = 0; index < Superheroes.length; index++) {
-                Superheroes[index].id = uuid.v4();
-                this.superheroMap.set(Superheroes[index].id, Superheroes[index]);
-            }
-        }
-
     }
 
     /**
-    * Fetches an array of current favorite Characters
-    * @returns Character array of current favorite Characters
-    */
-    getSuperheroes(): Character[] {
-        // Function to return all Characters with no qualifications
-        return [...this.superheroMap].map(hero => hero[1]);
+     * Fetches an array of current favorite DataTs
+     * @returns DataT array of current favorite DataTs
+     */
+    getAll(): DataT[] {
+        // Function to return all DataTs with no qualifications
+        return [...this.data].map((character) => character[1]);
     }
 
     /**
-    * Fetches an array of current favorite Characters
-    * @returns Character array of current favorite Characters
-    */
-     getSuperhero(heroId: string): Character | undefined {
-        // Function to return all Characters with no qualifications
-        return this.superheroMap.get(heroId);
+     * Fetches an array of current favorite DataTs
+     * @returns DataT array of current favorite DataTs
+     */
+    getById(characterId: string): DataT | undefined {
+        // Function to return all DataTs with no qualifications
+        return this.data.get(characterId);
     }
 
     /**
-    * Deletes chosen character
-    * @param heroId ID of superhero to be removed
-    */
-    deleteSuperhero(heroId: string) {
-        this.superheroMap.delete(heroId);
-        localStorage.setItem('heroMap', JSON.stringify(this.superheroMap, this.replacer));
+     * Deletes chosen character
+     * @param characterId ID of superhero to be removed
+     */
+    delete(characterId: string) {
+        this.data.delete(characterId);
+        localStorage.setItem(
+            this.key,
+            JSON.stringify(this.data, this.replacer)
+        );
     }
 
     /**
-    * Adds a Character Object to add to superheroMap
-    * @param Character  Character Object to add to superheroMap
-    */
-    addSuperhero(character: Character) {
+     * Adds a DataT Object to add to characterMap
+     * @param DataT  DataT Object to add to characterMap
+     */
+    create(character: DataT) {
         character.id = uuid.v4();
-        character.color = 'green';
+        // TODO: Fix color issue
+        // character.color = 'green';
         // added with key to all lowercase for searchability
-        this.superheroMap.set(character.id, character);
-        localStorage.setItem('heroMap', JSON.stringify(this.superheroMap, this.replacer));
+        this.data.set(character.id, character);
+        localStorage.setItem(
+            this.key,
+            JSON.stringify(this.data, this.replacer)
+        );
     }
 
-    /**
-    * Searches through superheroMap to find Character by name
-    * @param findName Name of superhero to find in superheroMap
-    * @returns Character object found in superheroMap with same name, else 
-    *   undefined
-    */
-    findSuperhero(findName: string): Character | undefined {
-        for (let index = 0; index < Superheroes.length; index++) {
-            if(findName.toLowerCase == Superheroes[index].name.toLowerCase) {
-                return Superheroes[index];
-            }
+    isEmpty(): boolean {
+        if (this.data.size === 0) {
+            return true;
         }
-        return undefined;
+        return false;
     }
 
     /**
-    * Updates a Character object based on user changes
-    * @param id  Character Object to update
-    * @returns Character object is findname is found in superheroMap, else 
-    *   undefined
-    */
-    editSuperhero(hero: Character) {
-        this.superheroMap.set(hero.id, hero);
-        localStorage.setItem('heroMap', JSON.stringify(this.superheroMap, this.replacer));
+     * Searches through characterMap to find DataT by name
+     * @param findName Name of superhero to find in characterMap
+     * @returns DataT object found in characterMap with same name, else
+     *   undefined
+     */
+    // Only searching through predefined lists
+    // search(findName: string): DataT | undefined {
+    //     for (let index = 0; index < Superheroes.length; index++) {
+    //         if (findName.toLowerCase == Superheroes[index].name.toLowerCase) {
+    //             return Superheroes[index];
+    //         }
+    //     }
+    //     return undefined;
+    // }
+
+    /**
+     * Updates a DataT object based on user changes
+     * @param id  DataT Object to update
+     * @returns DataT object is findname is found in characterMap, else
+     *   undefined
+     */
+    update(hero: DataT) {
+        this.data.set(hero.id, hero);
+        localStorage.setItem(
+            this.key,
+            JSON.stringify(this.data, this.replacer)
+        );
     }
 
     private replacer(key: any, value: any) {
-        if(value instanceof Map) {
-          return {
-            dataType: 'Map',
-            value: Array.from(value.entries()), // or with spread: value: [...value]
-          };
+        if (value instanceof Map) {
+            return {
+                dataType: 'Map',
+                value: Array.from(value.entries()), // or with spread: value: [...value]
+            };
         } else {
-          return value;
+            return value;
         }
     }
-      private reviver(key: any, value: any) {
-        if(typeof value === 'object' && value !== null) {
-          if (value.dataType === 'Map') {
-            return new Map(value.value);
-          }
+    private reviver(key: any, value: any) {
+        if (typeof value === 'object' && value !== null) {
+            if (value.dataType === 'Map') {
+                return new Map(value.value);
+            }
         }
         return value;
-      }
-      
-
+    }
+}
+@Injectable()
+export class HeroService extends DataService<Character> {
+    constructor() {
+        super('heroDataTMap');
+    }
+}
+@Injectable()
+export class VillainService extends DataService<Character> {
+    constructor() {
+        super('villainDataTMap');
+    }
 }
