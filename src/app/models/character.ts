@@ -1,4 +1,4 @@
-import { ColorType } from "./color-type";
+import { ColorType } from './color-type';
 
 export interface Character {
     id: string;
@@ -8,4 +8,4 @@ export interface Character {
     description: string;
     link: string;
     color: ColorType;
-  }
+}

@@ -12,24 +12,19 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { CreateNewSuperheroComponent } from './create-new-superhero/create-new-superhero.component';
 import { HeroService, VillainService } from './services/superheroes.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SuperheroesComponent } from './superheroes/superheroes.component';
 import { UpdateSuperheroComponent } from './update-superhero/update-superhero.component';
-import { CharacterDetailComponent } from './character-detail/character-detail.component';
 import { CharactersComponent } from './characters/characters.component';
 import { VillainsComponent } from './villains/villains.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CharacterDetailComponent,
-        CreateNewSuperheroComponent,
         SuperheroesComponent,
         HomepageComponent,
         UpdateSuperheroComponent,
-        CharacterDetailComponent,
         CharactersComponent,
         VillainsComponent,
     ],
@@ -38,15 +33,11 @@ import { VillainsComponent } from './villains/villains.component';
         FormsModule,
         RouterModule.forRoot([
             { path: 'superheroes', component: SuperheroesComponent },
-            {
-                path: 'create-new-superhero',
-                component: CreateNewSuperheroComponent,
-            },
             { path: 'homepage', component: HomepageComponent },
             { path: 'characters', component: CharactersComponent },
             {
-                path: 'character-detail/:id',
-                component: CharacterDetailComponent,
+                path: 'character/:id',
+                component: CharacterComponent,
             },
             { path: '', component: HomepageComponent },
         ]),

@@ -4,11 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Character } from '../models/character';
 
 @Component({
-    selector: 'app-character-detail',
-    templateUrl: './character-detail.component.html',
-    styleUrls: ['./character-detail.component.css'],
+    selector: 'app-character',
+    templateUrl: './character.component.html',
+    styleUrls: ['./character.component.css'],
 })
-export class CharacterDetailComponent implements OnInit {
+export class CharacterComponent implements OnInit {
     hero?: Character;
     heroId?: string;
 
