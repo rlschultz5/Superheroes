@@ -1,3 +1,4 @@
+import { CharacterEditComponent } from './character-edit/character-edit.component';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -18,6 +19,7 @@ import { SuperheroesComponent } from './superheroes/superheroes.component';
 import { UpdateSuperheroComponent } from './update-superhero/update-superhero.component';
 import { CharactersComponent } from './characters/characters.component';
 import { VillainsComponent } from './villains/villains.component';
+import { CharacterDetailComponent } from './character-detail/character-detail.component';
 
 @NgModule({
     declarations: [
@@ -25,8 +27,10 @@ import { VillainsComponent } from './villains/villains.component';
         SuperheroesComponent,
         HomepageComponent,
         UpdateSuperheroComponent,
+        CharacterEditComponent,
         CharactersComponent,
         VillainsComponent,
+        CharacterDetailComponent,
     ],
     imports: [
         BrowserModule,
@@ -36,8 +40,12 @@ import { VillainsComponent } from './villains/villains.component';
             { path: 'homepage', component: HomepageComponent },
             { path: 'characters', component: CharactersComponent },
             {
-                path: 'character/:id',
-                component: CharacterComponent,
+                path: 'characters/:id/edit',
+                component: CharacterEditComponent,
+            },
+            {
+                path: 'characters/:id/detail',
+                component: CharacterEditComponent,
             },
             { path: '', component: HomepageComponent },
         ]),

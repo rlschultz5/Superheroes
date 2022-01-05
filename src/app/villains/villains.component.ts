@@ -25,7 +25,6 @@ export class VillainsComponent implements OnInit {
     constructor(private readonly villainService: VillainService) {}
 
     ngOnInit(): void {
-        console.log('hi');
         this.villains = this.villainService.getAll();
     }
 }

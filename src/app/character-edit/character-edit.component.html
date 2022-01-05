@@ -1,14 +1,28 @@
 <div>
-    Just a blank modify page!
-    <h1 class="hero-info">
+    <div>
+        {{ pageTitle }}
+    </div>
+
+    <div>
+        <form
+            novalidate
+            (ngSubmit)="saveCharacter()"
+            [formGroup]="characterForm"
+        ></form>
+    </div>
+</div>
+
+<!-- <div> -->
+<!-- Just a blank modify page! -->
+<!-- <h1 class="hero-info">
         {{ hero?.name }}
-    </h1>
-    <!-- <h2 class="hero-sub-info-black">
+    </h1> -->
+<!-- <h2 class="hero-sub-info-black">
     {{'Real Name:  ' + hero.realName }}
     </h2>
 </div>   -->
 
-    <!-- <div (click)="showEdit()">
+<!-- <div (click)="showEdit()">
     <h1 class="hero-info">
         {{ hero.name }}
     </h1>
@@ -33,4 +47,4 @@
     <button class="white-btn" (click)="saveUpdates()">Save</button>
     <button class="white-btn" (click)="deleteHero()">Delete</button>
 </div> -->
-</div>
+<!-- </div> -->

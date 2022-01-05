@@ -21,12 +21,24 @@
                 <!-- <app-update-superhero [hero]='superhero'></app-update-superhero> -->
                 <!-- FIXME: Trial Code -->
                 <ul class="app-center">
-                    <button class="char-btn" routerLink="/homepage">
+                    <button
+                        class="char-btn"
+                        [routerLink]="['/characters', superhero.id, 'detail']"
+                    >
                         Details
                     </button>
-                    <button class="char-btn" routerLink="/character/:id">
-                        Modify
+                    <button
+                        class="char-btn"
+                        [routerLink]="['/characters', superhero.id, 'edit']"
+                    >
+                        Edit
                     </button>
+                    <!-- <button
+                        class="btn btn-outline-primary btn-sm"
+                        [routerLink]="['/products', product.id, 'edit']"
+                    >
+                        Edit
+                    </button> -->
                 </ul>
             </div>
         </li>
