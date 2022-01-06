@@ -21,12 +21,18 @@
                 <!-- <app-update-superhero [hero]='superhero'></app-update-superhero> -->
                 <!-- FIXME: Trial Code -->
                 <ul class="app-center">
-                    <button
+                    <a
                         class="char-btn"
                         [routerLink]="['/characters', superhero.id, 'detail']"
                     >
                         Details
-                    </button>
+                    </a>
+
+                    <!-- // Displays detail info as button -->
+                    <!-- <app-character-detail [heroId]="superhero.id"
+                        >Details</app-character-detail
+                    > -->
+
                     <button
                         class="char-btn"
                         [routerLink]="['/characters', superhero.id, 'edit']"

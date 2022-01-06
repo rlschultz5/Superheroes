@@ -304,11 +304,58 @@ p {
   @apply bg-purple-500 hover:bg-purple-700;
 }
 
+
+
+.detail-blue {
+  @apply bg-blue-500;
+}
+
+.detail-green {
+@apply bg-green-500;
+}
+
+.detail-red {
+@apply bg-red-500;
+}
+
+.detail-white {
+@apply bg-gray-500;
+}
+
+.detail-yellow {
+@apply bg-yellow-400;
+/* @apply text-white; */
+@apply text-6xl;
+}
+
+.detail-purple {
+@apply bg-purple-500;
+}
+
+
 .app-grid {
   @apply grid;
   @apply grid-cols-4;
   @apply gap-4;
   @apply mx-12;
+}
+
+.detail-view {
+  @apply border-4 border-slate-700 rounded-2xl;
+  @apply bg-slate-300;
+  @apply text-white;
+  @apply p-6;
+  @apply mx-auto mt-12;
+  @apply max-w-4xl;
+  @apply place-content-center;
+}
+.detail-sub-view {
+  @apply border-4 border-slate-700 rounded-2xl;
+  @apply bg-white;
+  @apply p-6;
+  @apply mx-auto mt-12;
+  @apply max-w-4xl;
+  @apply place-content-center;
 }
 
 .create-input-boxes {

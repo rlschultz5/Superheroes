@@ -1,1 +1,15 @@
-<p>character-detail works!</p>
+<div class="detail-view border">
+    <h2 class="border {{ characterColorMap[character.color] }}">
+        {{ character?.name }}
+    </h2>
+    <div class="detail-view border {{ characterColorMap[character.color] }}">
+        <p>Real Name:</p>
+        <p class="p-sub">{{ character?.realName }}</p>
+        <p>Powers:</p>
+        <p class="p-sub">{{ character?.powers }}</p>
+        <p>Description:</p>
+        <p class="p-sub">{{ character?.description }}</p>
+        <p>Link:</p>
+        <p class="p-sub">{{ character?.link }}</p>
+    </div>
+</div>

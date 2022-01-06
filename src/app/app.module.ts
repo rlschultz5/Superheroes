@@ -40,11 +40,11 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
             { path: 'homepage', component: HomepageComponent },
             { path: 'characters', component: CharactersComponent },
             {
-                path: 'characters/:id/edit',
-                component: CharacterEditComponent,
+                path: 'characters/:id/detail',
+                component: CharacterDetailComponent,
             },
             {
-                path: 'characters/:id/detail',
+                path: 'characters/:id/edit',
                 component: CharacterEditComponent,
             },
             { path: '', component: HomepageComponent },

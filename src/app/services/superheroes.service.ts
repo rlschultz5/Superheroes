@@ -34,9 +34,9 @@ export abstract class DataService<DataT extends { id: string }> {
      * Fetches an array of current favorite DataTs
      * @returns DataT array of current favorite DataTs
      */
-    getById(characterId: string): DataT | undefined {
+    getById(characterId: string): DataT {
         // Function to return all DataTs with no qualifications
-        return this.data.get(characterId);
+        return this.data.get(characterId)!;
     }
 
     /**
