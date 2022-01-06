@@ -10,7 +10,7 @@ import {
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeroService, VillainService } from './services/superheroes.service';
@@ -35,16 +35,17 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot([
             { path: 'superheroes', component: SuperheroesComponent },
             { path: 'homepage', component: HomepageComponent },
             { path: 'characters', component: CharactersComponent },
             {
-                path: 'characters/:id/detail',
+                path: 'character/:id/detail',
                 component: CharacterDetailComponent,
             },
             {
-                path: 'characters/:id/edit',
+                path: 'character/:id/edit',
                 component: CharacterEditComponent,
             },
             { path: '', component: HomepageComponent },

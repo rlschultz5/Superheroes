@@ -341,13 +341,12 @@ p {
 }
 
 .detail-view {
-  @apply border-4 border-slate-700 rounded-2xl;
-  @apply bg-slate-300;
   @apply text-white;
   @apply p-6;
   @apply mx-auto mt-12;
   @apply max-w-4xl;
-  @apply place-content-center;
+  @apply bg-slate-700;
+  @apply shadow-2xl;
 }
 .detail-sub-view {
   @apply border-4 border-slate-700 rounded-2xl;
@@ -356,6 +355,45 @@ p {
   @apply mx-auto mt-12;
   @apply max-w-4xl;
   @apply place-content-center;
+}
+
+.p-sub {
+  @apply ml-10;
+  @apply text-xl;
+  @apply text-black;
+}
+
+.border {
+  @apply border-4 border-slate-700 rounded-2xl;
+}
+
+.trans-box {
+  @apply border-2 border-white rounded-xl;
+  @apply p-2;
+}
+
+.detail-blue {
+  @apply bg-blue-500;
+}
+
+.detail-green {
+@apply bg-green-500;
+}
+
+.detail-red {
+@apply bg-red-500;
+}
+
+.detail-white {
+@apply bg-gray-500;
+}
+
+.detail-yellow {
+@apply bg-yellow-400;
+}
+
+.detail-purple {
+@apply bg-purple-500;
 }
 
 .create-input-boxes {

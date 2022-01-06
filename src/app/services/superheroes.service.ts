@@ -1,7 +1,9 @@
 import { Character } from './../models/character';
 import { Superheroes } from '../models/default-superheroes';
+import * as rxjs from 'rxjs';
 import * as uuid from 'uuid';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 // TODO: Turn into generic class
 export abstract class DataService<DataT extends { id: string }> {
@@ -55,7 +57,8 @@ export abstract class DataService<DataT extends { id: string }> {
      * Adds a DataT Object to add to characterMap
      * @param DataT  DataT Object to add to characterMap
      */
-    create(character: DataT) {
+    //TODO: return DataT??
+    create(character: DataT): Observable<DataT> {
         character.id = uuid.v4();
         // TODO: Fix color issue
         // character.color = 'green';
@@ -65,6 +68,7 @@ export abstract class DataService<DataT extends { id: string }> {
             this.key,
             JSON.stringify(this.data, this.replacer)
         );
+        return rxjs.of(character);
     }
 
     isEmpty(): boolean {
@@ -96,12 +100,13 @@ export abstract class DataService<DataT extends { id: string }> {
      * @returns DataT object is findname is found in characterMap, else
      *   undefined
      */
-    update(hero: DataT) {
+    update(hero: DataT): Observable<DataT> {
         this.data.set(hero.id, hero);
         localStorage.setItem(
             this.key,
             JSON.stringify(this.data, this.replacer)
         );
+        return rxjs.of(hero);
     }
 
     private replacer(key: any, value: any) {

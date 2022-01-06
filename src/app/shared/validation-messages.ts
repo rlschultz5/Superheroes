@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
 
-export class CharacterValidator {
+export class ValidationMessages {
     constructor() {
         const validationMessages = {
             productName: {

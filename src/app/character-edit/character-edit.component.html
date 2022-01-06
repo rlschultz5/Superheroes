@@ -1,10 +1,135 @@
-<div>
-    <div>
-        {{ pageTitle }}
-    </div>
+<h2>{{ pageTitle }}:</h2>
+<div class="detail-view border">
+    <h3 class="border {{ characterColorMap[character!.color] }}">
+        {{ character?.name }}
+    </h3>
 
-    <div>
-        <form (ngSubmit)="saveCharacter()"></form>
+    <div class="detail-sub-view border">
+        <form
+            novalidate
+            (ngSubmit)="saveCharacter()"
+            [formGroup]="characterForm"
+        >
+            <div>
+                <label class="form-label" for="name">Name:</label>
+                <div>
+                    <input
+                        class="container border-sq"
+                        id="name"
+                        type="text"
+                        placeholder="Name (required)"
+                        formControlName="name"
+                        [ngModel]="character?.name"
+                        [ngClass]="{
+                            'is-invalid': 'displayMessage.name'
+                        }"
+                    />
+                    <span class="invalid-feedback">
+                        {{ "displayMessage.name" }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="space">
+                <label class="form-label" for="name">Real Name:</label>
+                <div>
+                    <input
+                        class="container border-sq"
+                        id="realName"
+                        type="text"
+                        placeholder="Real Name (required)"
+                        formControlName="realName"
+                        [ngModel]="character?.realName"
+                        [ngClass]="{
+                            'is-invalid': 'displayMessage.realName'
+                        }"
+                    />
+                    <span class="invalid-feedback">
+                        {{ "displayMessage.realName" }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="space">
+                <label class="form-label" for="name">Power:</label>
+                <div>
+                    <input
+                        class="container border-sq"
+                        id="power"
+                        type="text"
+                        placeholder="Power (required)"
+                        formControlName="powers"
+                        [ngModel]="character?.powers"
+                        [ngClass]="{
+                            'is-invalid': 'displayMessage.power'
+                        }"
+                    />
+                    <span class="invalid-feedback">
+                        {{ "displayMessage.power" }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="space">
+                <label class="form-label" for="name">Description:</label>
+                <div>
+                    <input
+                        class="container border-sq"
+                        id="description"
+                        type="text"
+                        placeholder="Description (required)"
+                        formControlName="description"
+                        [ngModel]="character?.description"
+                        [ngClass]="{
+                            'is-invalid': 'displayMessage.description'
+                        }"
+                    />
+                    <span class="invalid-feedback">
+                        {{ "displayMessage.description" }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="space">
+                <label class="form-label" for="name">Link:</label>
+                <div>
+                    <input
+                        class="container border-sq"
+                        id="link"
+                        type="text"
+                        placeholder="link"
+                        formControlName="link"
+                        [ngModel]="character?.link"
+                        [ngClass]="{
+                            'is-invalid': 'displayMessage.link'
+                        }"
+                    />
+                    <span class="invalid-feedback">
+                        {{ "displayMessage.link" }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="space">
+                <label class="form-label" for="name">Color:</label>
+                <div>
+                    <input
+                        class="container border-sq"
+                        id="color"
+                        type="text"
+                        placeholder="Color (required)"
+                        formControlName="color"
+                        [ngModel]="character?.color"
+                        [ngClass]="{
+                            'is-invalid': 'displayMessage.color'
+                        }"
+                    />
+                    <span class="invalid-feedback">
+                        {{ "displayMessage.color" }}
+                    </span>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

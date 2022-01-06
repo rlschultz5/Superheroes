@@ -32,11 +32,11 @@ export class CharacterDetailComponent implements OnInit {
         if (param) {
             this.characterId = param;
         }
-        // if (this.heroService.getById(this.heroId) !== undefined) {
-        this.character = this.heroService.getById(this.characterId);
-        console.log(this.character?.name);
-        // } else {
-        //     this.character = this.villainService.getById(this.heroId);
-        // }
+        if (this.heroService.getById(this.characterId) !== undefined) {
+            this.character = this.heroService.getById(this.characterId);
+            console.log(this.character?.name);
+        } else {
+            this.character = this.villainService.getById(this.characterId);
+        }
     }
 }
