@@ -1,3 +1,4 @@
+import { CharacterServiceResolve } from './character-edit/character-edit.resolve';
 import { CharacterEditComponent } from './character-edit/character-edit.component';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,12 +42,28 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
             { path: 'homepage', component: HomepageComponent },
             { path: 'characters', component: CharactersComponent },
             {
-                path: 'character/:id/detail',
+                path: 'heroes/:id/detail',
                 component: CharacterDetailComponent,
             },
             {
-                path: 'character/:id/edit',
+                path: 'heroes/:id/edit',
                 component: CharacterEditComponent,
+                resolve: { providers: CharacterServiceResolve },
+                data: {
+                    type: 'hero',
+                },
+            },
+            {
+                path: 'villains/:id/detail',
+                component: CharacterDetailComponent,
+            },
+            {
+                path: 'villains/:id/edit',
+                component: CharacterEditComponent,
+                resolve: { providers: CharacterServiceResolve },
+                data: {
+                    type: 'villain',
+                },
             },
             { path: '', component: HomepageComponent },
         ]),
@@ -58,6 +75,7 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
     providers: [
         HeroService,
         VillainService,
+        CharacterServiceResolve,
         { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     ],
     bootstrap: [AppComponent],

@@ -2,6 +2,7 @@ import { Superheroes } from './../models/default-superheroes';
 import { Character } from '../models/character';
 import { Component, OnInit } from '@angular/core';
 import { HeroService } from '../services/superheroes.service';
+import { characterColorMap } from '../models/characterColorMap';
 
 @Component({
     selector: 'app-superheroes',
@@ -13,14 +14,7 @@ export class SuperheroesComponent implements OnInit {
     hiddenHero: boolean = true;
     initialSuperheroes: boolean = true;
 
-    readonly characterColorMap = {
-        blue: 'app-btn btn-blue',
-        green: 'app-btn btn-green',
-        red: 'app-btn btn-red',
-        yellow: 'app-btn btn-yellow',
-        white: 'app-btn btn-white',
-        purple: 'app-btn btn-purple',
-    };
+    readonly characterColorMap = characterColorMap;
 
     // Auto-constructs an instance shared with app and passes it in
     constructor(private readonly heroService: HeroService) {}

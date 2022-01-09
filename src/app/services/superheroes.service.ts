@@ -10,21 +10,20 @@ export abstract class DataService<DataT extends { id: string }> {
     key: string;
     data: Map<string, DataT> = new Map();
 
+    /**
+     * Constructor that saves Map of data to local storage.
+     * @param key name of Map/storage data
+     */
     constructor(key: string) {
         this.key = key;
         const json = localStorage.getItem(key);
         if (json !== null) {
             this.data = JSON.parse(json, this.reviver);
-            // } else {
-            //     for (let index = 0; index < Superheroes.length; index++) {
-            //         Superheroes[index].id = uuid.v4();
-            //         this.data.set(Superheroes[index].id, Superheroes[index]);
-            //     }
         }
     }
 
     /**
-     * Fetches an array of current favorite DataTs
+     * Fetches array of all DataTs
      * @returns DataT array of current favorite DataTs
      */
     getAll(): DataT[] {
@@ -33,12 +32,12 @@ export abstract class DataService<DataT extends { id: string }> {
     }
 
     /**
-     * Fetches an array of current favorite DataTs
+     * Fetches a DataT by id
      * @returns DataT array of current favorite DataTs
      */
-    getById(characterId: string): DataT {
+    getById(dataId: string): DataT {
         // Function to return all DataTs with no qualifications
-        return this.data.get(characterId)!;
+        return this.data.get(dataId)!;
     }
 
     /**

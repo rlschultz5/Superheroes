@@ -1,8 +1,13 @@
-<h2>{{ pageTitle }}:</h2>
+<h2>{{ pageTitle }}</h2>
 <div class="detail-view border">
-    <h3 class="border {{ characterColorMap[character!.color] }}">
-        {{ character?.name }}
-    </h3>
+    <div *ngIf="!isNewCharacter">
+        <h3 class="border {{ characterColorMap[character!.color] }}">
+            {{ character?.name }}
+        </h3>
+    </div>
+    <div *ngIf="isNewCharacter">
+        <h3 class="border {{ characterColorMap.white }}">New Character</h3>
+    </div>
 
     <div class="detail-sub-view border">
         <form
@@ -127,6 +132,88 @@
                     <span class="invalid-feedback">
                         {{ "displayMessage.color" }}
                     </span>
+                </div>
+            </div>
+            <div *ngIf="isNewCharacter">
+                <div class="space">
+                    <label class="form-label" for="name">Link:</label>
+                    <div>
+                        <input
+                            class="container border-sq"
+                            id="link"
+                            type="text"
+                            placeholder="link"
+                            formControlName="link"
+                            [ngModel]="character?.link"
+                            [ngClass]="{
+                                'is-invalid': 'displayMessage.link'
+                            }"
+                        />
+                        <span class="invalid-feedback">
+                            {{ "displayMessage.link" }}
+                        </span>
+                    </div>
+                </div>
+                <label class="form-label" for="isHeroOrVillain"
+                    >Superhero or Villain:</label
+                >
+                <option value="Superhero">Superhero</option>
+                <option value="Villain">Villain</option>
+
+                <!-- <div>
+                    <input
+                        class="container border-sq row"
+                        id="heroOrVillain"
+                        type="text"
+                        placeholder="Color (required)"
+                        formControlName="color"
+                        [ngModel]="character?.color"
+                        [ngClass]="{
+                            'is-invalid': 'displayMessage.color'
+                        }"
+                    />
+                    <span class="invalid-feedback">
+                        {{ "displayMessage.color" }}
+                    </span>
+                </div> -->
+            </div>
+            <div>
+                <div>
+                    <button
+                        class="border btn-edit-char {{
+                            characterColorMap[character!.color]
+                        }}"
+                        type="submit"
+                        [title]="
+                            characterForm.valid
+                                ? 'Save your entered data'
+                                : 'Disabled until the form data is valid'
+                        "
+                        [disabled]="!characterForm.valid"
+                    >
+                        Save
+                    </button>
+                    <button
+                        class="border btn-edit-char {{
+                            characterColorMap[character!.color]
+                        }}"
+                        type="button"
+                        title="Cancel your edits"
+                        [routerLink]="['/characters']"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="border btn-edit-char {{
+                            characterColorMap[character!.color]
+                        }}"
+                        type="button"
+                        title="Delete this character"
+                        (click)="deleteCharacter()"
+                        [routerLink]="['/characters']"
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
         </form>

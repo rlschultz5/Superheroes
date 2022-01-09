@@ -1,4 +1,9 @@
-import { HeroService, VillainService } from '../services/superheroes.service';
+import { characterColorMap } from './../models/characterColorMap';
+import {
+    DataService,
+    HeroService,
+    VillainService,
+} from '../services/superheroes.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../models/character';
@@ -19,23 +24,18 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./character-edit.component.css'],
 })
 export class CharacterEditComponent implements OnInit {
-    pageTitle = 'Character Edit';
+    pageTitle!: string;
     isHeroOrVillain!: boolean;
     errorMessage!: string;
     characterForm!: FormGroup;
-    private characterId?: string;
+    private characterId!: string;
     private isHero: boolean = false;
+    isNewCharacter: boolean = false;
 
     character?: Character;
+    characterService!: DataService<any>;
 
-    readonly characterColorMap = {
-        blue: 'app-btn detail-blue',
-        green: 'app-btn detail-green',
-        red: 'app-btn detail-red',
-        yellow: 'app-btn detail-yellow',
-        white: 'app-btn detail-white',
-        purple: 'app-btn detail-purple',
-    };
+    readonly characterColorMap = characterColorMap;
 
     // private subscription: Subscription;
 
@@ -53,12 +53,21 @@ export class CharacterEditComponent implements OnInit {
 
     ngOnInit(): void {
         this.characterId = this.route.snapshot.paramMap.get('id') as string;
+        this.characterService = this.route.snapshot.data['providers'].service;
+        const character = this.characterService.getById(this.characterId);
+        console.log(character);
         if (this.heroService.getById(this.characterId) !== undefined) {
             this.character = this.heroService.getById(this.characterId);
             this.isHero = true;
             console.log(this.character?.name);
         } else {
             this.character = this.villainService.getById(this.characterId);
+        }
+        if (this.characterId === '0') {
+            this.isNewCharacter = true;
+            this.pageTitle = 'Create character';
+        } else {
+            this.pageTitle = `Edit character: ${this.character?.name}`;
         }
         this.characterForm = this.formBuilder.group({
             name: ['', [Validators.required, Validators.maxLength(25)]],
@@ -83,7 +92,7 @@ export class CharacterEditComponent implements OnInit {
         // console.log(this.heroId);
         // this.hero = this.heroService.getById(this.heroId);
     }
-    saveCharacter(): void {
+    async saveCharacter() {
         if (this.characterForm.valid) {
             if (this.characterForm.dirty) {
                 const p = { ...this.character, ...this.characterForm.value };
@@ -109,15 +118,25 @@ export class CharacterEditComponent implements OnInit {
                     //   });
                 } else {
                     if (this.isHero) {
-                        this.heroService.update(p).subscribe({
-                            next: () => this.onSaveComplete(),
-                            error: (err) => (this.errorMessage = err),
-                        });
+                        try {
+                            await this.heroService.update(p).toPromise();
+                        } catch (err) {
+                            console.error(err);
+                        }
+                        // this.heroService.update(p).subscribe({
+                        //     next: () => this.onSaveComplete(),
+                        //     error: (err) => (this.errorMessage = err),
+                        // });
                     } else {
-                        this.villainService.update(p).subscribe({
-                            next: () => this.onSaveComplete(),
-                            error: (err) => (this.errorMessage = err),
-                        });
+                        try {
+                            await this.villainService.update(p).toPromise();
+                        } catch (err) {
+                            console.error(err);
+                        }
+                        // this.villainService.update(p).subscribe({
+                        //     next: () => this.onSaveComplete(),
+                        //     error: (err) => (this.errorMessage = err),
+                        // });
                     }
                     // \/ old code
                     //   this.characterService.updateProduct(p).subscribe({
@@ -136,6 +155,15 @@ export class CharacterEditComponent implements OnInit {
         // Reset the form to clear the flags
         this.characterForm.reset();
         this.router.navigate(['/characters']);
+    }
+
+    deleteCharacter(): void {
+        if (this.isHero) {
+            this.heroService.delete(this.characterId);
+        } else {
+            this.villainService.delete(this.characterId);
+        }
+        alert('Superhero Successfully Deleted');
     }
 
     // this.subscription = this.route.paramMap.subscribe((params) => {

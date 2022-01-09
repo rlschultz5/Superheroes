@@ -41,3 +41,9 @@ p {
 .space {
     @apply mt-2;
 }
+
+.btn-edit-char {
+  @apply mx-8 p-2;
+  @apply text-5xl;
+  @apply row-span-full;
+}
