@@ -1,42 +1,41 @@
+<!-- TITLE -->
 <h2>{{ pageTitle }}</h2>
 <div class="detail-view border">
+    <!-- CHARACTER-COLORED BORDER -->
     <div *ngIf="!isNewCharacter">
         <h3 class="border {{ characterColorMap[character!.color] }}">
             {{ character?.name }}
         </h3>
     </div>
+    <!-- NEW CHARACTER BORDER -->
     <div *ngIf="isNewCharacter">
-        <h3 class="border {{ characterColorMap.white }}">New Character</h3>
+        <h3 class="border border-wht">New Character</h3>
     </div>
-
+    <!-- CHARACTER FORM -->
     <div class="detail-sub-view border">
         <form
             novalidate
             (ngSubmit)="saveCharacter()"
             [formGroup]="characterForm"
         >
-            <div>
-                <label class="form-label" for="name">Name:</label>
-                <div>
-                    <input
-                        class="container border-sq"
-                        id="name"
-                        type="text"
-                        placeholder="Name (required)"
-                        formControlName="name"
-                        [ngModel]="character?.name"
-                        [ngClass]="{
-                            'is-invalid': 'displayMessage.name'
-                        }"
-                    />
-                    <span class="invalid-feedback">
-                        {{ "displayMessage.name" }}
-                    </span>
-                </div>
-            </div>
+            Value: {{ characterForm.value | json }}
+            <mat-form-field>
+                <label class="form-label" for="charNameId">Name:</label>
+                <input
+                    matInput
+                    class="container border-sq"
+                    placeholder="Name (required)"
+                    formControlName="name"
+                    id="charNameId"
+                    type="text"
+                />
+                <!-- <span class="invalid-feedback">
+                    {{ "displayMessage.name" }}
+                </span> -->
+            </mat-form-field>
 
             <div class="space">
-                <label class="form-label" for="name">Real Name:</label>
+                <label class="form-label" for="realName">Real Name:</label>
                 <div>
                     <input
                         class="container border-sq"
@@ -54,26 +53,37 @@
                     </span>
                 </div>
             </div>
-
-            <div class="space">
-                <label class="form-label" for="name">Power:</label>
-                <div>
-                    <input
-                        class="container border-sq"
-                        id="power"
-                        type="text"
-                        placeholder="Power (required)"
-                        formControlName="powers"
-                        [ngModel]="character?.powers"
-                        [ngClass]="{
-                            'is-invalid': 'displayMessage.power'
-                        }"
-                    />
-                    <span class="invalid-feedback">
-                        {{ "displayMessage.power" }}
-                    </span>
+            <label class="form-label">Power:</label>
+            <div formArrayName="powers">
+                <div *ngFor="let power of powerForms.controls; let i = index">
+                    <label class="form-label" [attr.for]="i"
+                        >#{{ i + 1 }}</label
+                    >
+                    <div>
+                        <input
+                            class="container border-sq"
+                            [id]="i"
+                            type="text"
+                            placeholder="Power (required)"
+                            [formControlName]="i"
+                        />
+                    </div>
+                    <button
+                        class="basic-btn btn-remove-power"
+                        color="warn"
+                        (click)="removePower(i)"
+                    >
+                        Remove Power
+                    </button>
                 </div>
             </div>
+            <button
+                class="basic-btn btn-add-power"
+                color="primary"
+                (click)="addPower()"
+            >
+                Add Power
+            </button>
 
             <div class="space">
                 <label class="form-label" for="name">Description:</label>
@@ -159,31 +169,14 @@
                 >
                 <option value="Superhero">Superhero</option>
                 <option value="Villain">Villain</option>
-
-                <!-- <div>
-                    <input
-                        class="container border-sq row"
-                        id="heroOrVillain"
-                        type="text"
-                        placeholder="Color (required)"
-                        formControlName="color"
-                        [ngModel]="character?.color"
-                        [ngClass]="{
-                            'is-invalid': 'displayMessage.color'
-                        }"
-                    />
-                    <span class="invalid-feedback">
-                        {{ "displayMessage.color" }}
-                    </span>
-                </div> -->
             </div>
             <div>
+                <!-- SUBMIT/CANCEL/DELETE BUTTONS -->
                 <div>
                     <button
-                        class="border btn-edit-char {{
-                            characterColorMap[character!.color]
-                        }}"
+                        class="{{ this.buttonClass }}"
                         type="submit"
+                        (click)="saveCharacter()"
                         [title]="
                             characterForm.valid
                                 ? 'Save your entered data'
@@ -194,9 +187,7 @@
                         Save
                     </button>
                     <button
-                        class="border btn-edit-char {{
-                            characterColorMap[character!.color]
-                        }}"
+                        class="{{ this.buttonClass }}"
                         type="button"
                         title="Cancel your edits"
                         [routerLink]="['/characters']"
@@ -204,9 +195,8 @@
                         Cancel
                     </button>
                     <button
-                        class="border btn-edit-char {{
-                            characterColorMap[character!.color]
-                        }}"
+                        *ngIf="!isNewCharacter"
+                        class="{{ this.buttonClass }}"
                         type="button"
                         title="Delete this character"
                         (click)="deleteCharacter()"

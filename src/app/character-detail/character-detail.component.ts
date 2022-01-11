@@ -1,7 +1,12 @@
 import { Character } from './../models/character';
-import { HeroService, VillainService } from './../services/superheroes.service';
+import {
+    DataService,
+    HeroService,
+    VillainService,
+} from './../services/superheroes.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { characterColorMap } from '../models/characterColorMap';
 
 @Component({
     selector: 'app-character-detail',
@@ -9,17 +14,12 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./character-detail.component.css'],
 })
 export class CharacterDetailComponent implements OnInit {
-    @Input() characterId!: string;
+    characterId!: string;
     character!: Character;
+    charColor!: string;
+    characterService!: DataService<any>;
 
-    readonly characterColorMap = {
-        blue: 'app-btn detail-blue',
-        green: 'app-btn detail-green',
-        red: 'app-btn detail-red',
-        yellow: 'app-btn detail-yellow',
-        white: 'app-btn detail-white',
-        purple: 'app-btn detail-purple',
-    };
+    readonly characterColors = characterColorMap;
 
     constructor(
         private readonly route: ActivatedRoute,
@@ -38,5 +38,6 @@ export class CharacterDetailComponent implements OnInit {
         } else {
             this.character = this.villainService.getById(this.characterId);
         }
+        this.charColor = characterColorMap[this.character!.color];
     }
 }

@@ -9,3 +9,27 @@ p {
     @apply text-left;
 
 }
+
+.btn-blue {
+  @apply bg-blue-500;
+}
+
+.btn-green {
+@apply bg-green-500;
+}
+
+.btn-red {
+@apply bg-red-500;
+}
+
+.btn-white {
+@apply bg-gray-500;
+}
+
+.btn-yellow {
+@apply bg-yellow-400;
+}
+
+.btn-purple {
+@apply bg-purple-500;
+}

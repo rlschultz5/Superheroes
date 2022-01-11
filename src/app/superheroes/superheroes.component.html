@@ -1,6 +1,6 @@
 <div>
     <h3 class="h3">{{ title }}</h3>
-    <!-- TODO: Evenly space grid/center grid -->
+    <!-- GRID OF SUPERHEROES -->
     <ul class="app-grid app-center">
         <li *ngFor="let superhero of superheroes">
             <div class="{{ characterColorMap[superhero.color] }} char-card">
@@ -10,16 +10,7 @@
                 <div class="char-realname">
                     {{ superhero.realName }}
                 </div>
-                <!-- FIXME: trying character-detail -->
-                <!-- TODO: Implement DetailsComponent -->
-                <!-- <a
-                    class="char-btn"
-                    [routerLink]="'/character-detail/' + superhero.id"
-                    >Modify
-                </a> -->
-
-                <!-- <app-update-superhero [hero]='superhero'></app-update-superhero> -->
-                <!-- FIXME: Trial Code -->
+                <!-- DETAILS & EDIT LINKS -->
                 <ul class="app-center">
                     <a
                         class="char-btn"
@@ -27,24 +18,12 @@
                     >
                         Details
                     </a>
-
-                    <!-- // Displays detail info as button -->
-                    <!-- <app-character-detail [heroId]="superhero.id"
-                        >Details</app-character-detail
-                    > -->
-
-                    <button
+                    <a
                         class="char-btn"
                         [routerLink]="['/heroes', superhero.id, 'edit']"
                     >
                         Edit
-                    </button>
-                    <!-- <button
-                        class="btn btn-outline-primary btn-sm"
-                        [routerLink]="['/products', product.id, 'edit']"
-                    >
-                        Edit
-                    </button> -->
+                    </a>
                 </ul>
             </div>
         </li>

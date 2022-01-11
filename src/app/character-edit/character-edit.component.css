@@ -47,3 +47,87 @@ p {
   @apply text-5xl;
   @apply row-span-full;
 }
+
+.btn-create {
+  @apply text-slate-700;
+  @apply mx-8 p-2;
+  @apply text-5xl;
+  @apply row-span-full;
+  @apply cursor-pointer;
+}
+
+.border-wht {
+  @apply border-4 border-white rounded-xl;
+  @apply py-2 px-3 m-2;
+}
+
+.btn-blue {
+  @apply bg-blue-500;
+}
+
+.btn-green {
+@apply bg-green-500;
+}
+
+.btn-red {
+@apply bg-red-500;
+}
+
+.btn-white {
+@apply bg-gray-500;
+}
+
+.btn-yellow {
+@apply bg-yellow-400;
+}
+
+.btn-purple {
+@apply bg-purple-500;
+}
+
+.btn-blue-hover {
+  @apply bg-blue-500 hover:bg-blue-700;
+}
+
+.btn-green-hover {
+@apply bg-green-500 hover:bg-green-700;
+}
+
+.btn-red-hover {
+@apply bg-red-500 hover:bg-red-700;
+}
+
+.btn-white-hover {
+@apply bg-gray-500 hover:bg-gray-700;
+}
+
+.btn-yellow-hover {
+@apply bg-yellow-400 hover:bg-yellow-600;
+}
+
+.btn-purple-hover {
+@apply bg-purple-500 hover:bg-purple-700;
+}
+
+.basic-btn {
+  @apply py-2 px-6 mx-5 my-2;
+  @apply border-2;
+  @apply rounded-xl;
+  @apply text-lg;
+  @apply font-extrabold;
+  @apply text-center;
+  @apply cursor-pointer;
+}
+
+.btn-remove-power {
+  @apply bg-red-500 hover:bg-red-800;
+}
+
+.btn-add-power {
+  @apply bg-blue-500 hover:bg-blue-800;
+}
+
+.cursor-pt {
+  @apply cursor-pointer;
+}
+

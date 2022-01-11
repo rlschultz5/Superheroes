@@ -21,6 +21,11 @@ import { UpdateSuperheroComponent } from './update-superhero/update-superhero.co
 import { CharactersComponent } from './characters/characters.component';
 import { VillainsComponent } from './villains/villains.component';
 import { CharacterDetailComponent } from './character-detail/character-detail.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
     declarations: [
@@ -37,10 +42,20 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatChipsModule,
         RouterModule.forRoot([
             { path: 'superheroes', component: SuperheroesComponent },
             { path: 'homepage', component: HomepageComponent },
             { path: 'characters', component: CharactersComponent },
+            {
+                path: 'characters/create',
+                component: CharacterEditComponent,
+            },
             {
                 path: 'heroes/:id/detail',
                 component: CharacterDetailComponent,

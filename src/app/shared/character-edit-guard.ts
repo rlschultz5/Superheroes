@@ -13,7 +13,7 @@ export class CharacterEditGuard
         if (component.characterForm.dirty) {
             const productName =
                 component.characterForm.get('characterName')?.value ||
-                'New Product';
+                'New Character';
             return confirm(
                 'Navigate away and lose all changes to ${characterName}?'
             );
