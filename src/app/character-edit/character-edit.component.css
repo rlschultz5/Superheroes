@@ -23,6 +23,13 @@ p {
     @apply max-w-6xl;
 }
 
+.form-error {
+  @apply mt-8;
+  @apply text-red-600;
+  @apply text-xl;
+  @apply max-w-6xl;
+}
+
 .container {
     @apply text-slate-700;
     /* border-radius: 5px; */

@@ -18,39 +18,37 @@
             (ngSubmit)="saveCharacter()"
             [formGroup]="characterForm"
         >
-            Value: {{ characterForm.value | json }}
-            <mat-form-field>
+            <!-- Value: {{ characterForm.value | json }} -->
+            <div class="space">
                 <label class="form-label" for="charNameId">Name:</label>
                 <input
-                    matInput
                     class="container border-sq"
-                    placeholder="Name (required)"
                     formControlName="name"
                     id="charNameId"
+                    placeholder="Name (required)"
                     type="text"
                 />
-                <!-- <span class="invalid-feedback">
-                    {{ "displayMessage.name" }}
-                </span> -->
-            </mat-form-field>
+                <div class="form-error" *ngIf="name!.invalid && name?.touched">
+                    {{ displayMessage.characterName.required }}
+                </div>
+            </div>
 
             <div class="space">
-                <label class="form-label" for="realName">Real Name:</label>
-                <div>
-                    <input
-                        class="container border-sq"
-                        id="realName"
-                        type="text"
-                        placeholder="Real Name (required)"
-                        formControlName="realName"
-                        [ngModel]="character?.realName"
-                        [ngClass]="{
-                            'is-invalid': 'displayMessage.realName'
-                        }"
-                    />
-                    <span class="invalid-feedback">
-                        {{ "displayMessage.realName" }}
-                    </span>
+                <label class="form-label" for="charRealNameId"
+                    >Real Name:</label
+                >
+                <input
+                    class="container border-sq"
+                    formControlName="realName"
+                    id="charRealNameId"
+                    placeholder="Real Name (required)"
+                    type="text"
+                />
+                <div
+                    class="form-error"
+                    *ngIf="realName!.invalid && realName?.touched"
+                >
+                    {{ displayMessage.characterRealName.required }}
                 </div>
             </div>
             <label class="form-label">Power:</label>
@@ -86,92 +84,49 @@
             </button>
 
             <div class="space">
-                <label class="form-label" for="name">Description:</label>
-                <div>
-                    <input
-                        class="container border-sq"
-                        id="description"
-                        type="text"
-                        placeholder="Description (required)"
-                        formControlName="description"
-                        [ngModel]="character?.description"
-                        [ngClass]="{
-                            'is-invalid': 'displayMessage.description'
-                        }"
-                    />
-                    <span class="invalid-feedback">
-                        {{ "displayMessage.description" }}
-                    </span>
-                </div>
+                <label class="form-label" for="charDescriptionId"
+                    >Description:</label
+                >
+                <input
+                    class="container border-sq"
+                    formControlName="description"
+                    id="charDescriptionId"
+                    placeholder="Description"
+                    type="text"
+                />
             </div>
 
             <div class="space">
-                <label class="form-label" for="name">Link:</label>
-                <div>
-                    <input
-                        class="container border-sq"
-                        id="link"
-                        type="text"
-                        placeholder="link"
-                        formControlName="link"
-                        [ngModel]="character?.link"
-                        [ngClass]="{
-                            'is-invalid': 'displayMessage.link'
-                        }"
-                    />
-                    <span class="invalid-feedback">
-                        {{ "displayMessage.link" }}
-                    </span>
-                </div>
+                <label class="form-label" for="charLinkId">Link:</label>
+                <input
+                    class="container border-sq"
+                    formControlName="link"
+                    id="charLinkId"
+                    placeholder="Link"
+                    type="text"
+                />
             </div>
 
             <div class="space">
-                <label class="form-label" for="name">Color:</label>
-                <div>
-                    <input
-                        class="container border-sq"
-                        id="color"
-                        type="text"
-                        placeholder="Color (required)"
-                        formControlName="color"
-                        [ngModel]="character?.color"
-                        [ngClass]="{
-                            'is-invalid': 'displayMessage.color'
-                        }"
-                    />
-                    <span class="invalid-feedback">
-                        {{ "displayMessage.color" }}
-                    </span>
-                </div>
+                <label class="form-label" for="charColorId">Color:</label>
+                <input
+                    class="container border-sq"
+                    formControlName="color"
+                    id="charColorId"
+                    placeholder="color"
+                    type="text"
+                />
             </div>
+            <!-- SUPERHERO/VILLAIN SELECTOR IF NEW -->
             <div *ngIf="isNewCharacter">
-                <div class="space">
-                    <label class="form-label" for="name">Link:</label>
-                    <div>
-                        <input
-                            class="container border-sq"
-                            id="link"
-                            type="text"
-                            placeholder="link"
-                            formControlName="link"
-                            [ngModel]="character?.link"
-                            [ngClass]="{
-                                'is-invalid': 'displayMessage.link'
-                            }"
-                        />
-                        <span class="invalid-feedback">
-                            {{ "displayMessage.link" }}
-                        </span>
-                    </div>
-                </div>
                 <label class="form-label" for="isHeroOrVillain"
                     >Superhero or Villain:</label
                 >
                 <option value="Superhero">Superhero</option>
                 <option value="Villain">Villain</option>
             </div>
+            <!-- SUBMIT/CANCEL/DELETE BUTTONS -->
             <div>
-                <!-- SUBMIT/CANCEL/DELETE BUTTONS -->
                 <div>
                     <button
                         class="{{ this.buttonClass }}"

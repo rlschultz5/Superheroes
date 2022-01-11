@@ -1,3 +1,4 @@
+import { validationMessages } from './../shared/validation-messages';
 import { characterColorMap } from './../models/characterColorMap';
 import {
     DataService,
@@ -41,7 +42,7 @@ export class CharacterEditComponent implements OnInit {
 
     // private subscription: Subscription;
 
-    // displayMessage: { [key: string]: string } = {};
+    displayMessage = validationMessages;
     // private validationMessages: { [key: string]: { [key: string]: string } };
     // private genericValidator: GenericValidator;
 
@@ -77,23 +78,29 @@ export class CharacterEditComponent implements OnInit {
 
         this.characterForm = this.formBuilder.group({
             // id: this.character?.id,
-            name: [
-                this.character?.name,
+            name: [this.character?.name, [Validators.required]],
+            // heroOrVillain: ['', [Validators.required]],
+            realName: [
+                this.character?.realName,
                 [Validators.required, Validators.maxLength(25)],
             ],
-            // heroOrVillain: ['', [Validators.required]],
-            realName: ['', [Validators.required, Validators.maxLength(25)]],
             powers: this.formBuilder.array(this.character!.powers),
-            description: [''],
-            link: '',
-            color: '',
+            description: [this.character?.description],
+            link: [this.character?.link],
+            color: [this.character?.color],
         });
         this.characterForm.valueChanges.subscribe(console.log);
     }
 
+    get name() {
+        return this.characterForm.get('name');
+    }
+
+    get realName() {
+        return this.characterForm.get('realName');
+    }
+
     get powerForms() {
-        // console.log('FORM ARRAY:');
-        // console.log(this.characterForm.get('powers') as FormArray);
         return this.characterForm.get('powers') as FormArray;
     }
 
@@ -106,7 +113,19 @@ export class CharacterEditComponent implements OnInit {
 
     removePower(index: number) {
         this.powerForms.removeAt(index);
-        this.powerForms.markAsDirty();
+        // this.powerForms.markAsDirty();
+    }
+
+    get description() {
+        return this.characterForm.get('description');
+    }
+
+    get link() {
+        return this.characterForm.get('link');
+    }
+
+    get color() {
+        return this.characterForm.get('color');
     }
 
     async saveCharacter() {
