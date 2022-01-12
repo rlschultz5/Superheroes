@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CharacterEditPageComponent } from './character-edit-page.component';
 
-import { HomepageComponent } from './homepage.component';
-
-describe('TopBarComponent', () => {
-    let component: HomepageComponent;
-    let fixture: ComponentFixture<HomepageComponent>;
+describe('CharacterEditPageComponent', () => {
+    let component: CharacterEditPageComponent;
+    let fixture: ComponentFixture<CharacterEditPageComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [HomepageComponent],
+            declarations: [CharacterEditPageComponent],
         }).compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(HomepageComponent);
+        fixture = TestBed.createComponent(CharacterEditPageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

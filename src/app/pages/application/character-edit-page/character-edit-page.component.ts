@@ -1,13 +1,13 @@
-import { validationMessages } from './../shared/validation-messages';
-import { characterColorMap } from './../models/characterColorMap';
+import { validationMessages } from '../../../shared/validation-messages';
+import { characterColorMap } from '../../../shared/models/characterColorMap';
 import {
     DataService,
     HeroService,
     VillainService,
-} from '../services/superheroes.service';
+} from '../../../shared/services/superheroes.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character } from '../models/character';
+import { Character } from '../../../shared/models/character';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     FormBuilder,
@@ -21,10 +21,10 @@ import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-character-edit',
-    templateUrl: './character-edit.component.html',
-    styleUrls: ['./character-edit.component.css'],
+    templateUrl: './character-edit-page.component.html',
+    styleUrls: ['./character-edit-page.component.css'],
 })
-export class CharacterEditComponent implements OnInit {
+export class CharacterEditPageComponent implements OnInit {
     pageTitle!: string;
     isHeroOrVillain!: boolean;
     errorMessage!: string;
@@ -77,7 +77,7 @@ export class CharacterEditComponent implements OnInit {
         }
 
         this.characterForm = this.formBuilder.group({
-            // id: this.character?.id,
+            id: [this.character?.id],
             name: [this.character?.name, [Validators.required]],
             // heroOrVillain: ['', [Validators.required]],
             realName: [

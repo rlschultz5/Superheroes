@@ -1,9 +1,12 @@
-import { Character } from './../models/character';
-import { HeroService, VillainService } from './../services/superheroes.service';
+import { Character } from '../../../shared/models/character';
+import {
+    HeroService,
+    VillainService,
+} from '../../../shared/services/superheroes.service';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DataService } from '../services/superheroes.service';
+import { DataService } from '../../../shared/services/superheroes.service';
 
 @Injectable()
 export class CharacterServiceResolve

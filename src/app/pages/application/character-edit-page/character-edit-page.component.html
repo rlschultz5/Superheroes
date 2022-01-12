@@ -20,11 +20,11 @@
         >
             <!-- Value: {{ characterForm.value | json }} -->
             <div class="space">
-                <label class="form-label" for="charNameId">Name:</label>
+                <label class="form-label" for="characterName">Name:</label>
                 <input
                     class="container border-sq"
                     formControlName="name"
-                    id="charNameId"
+                    id="characterName"
                     placeholder="Name (required)"
                     type="text"
                 />
@@ -44,12 +44,17 @@
                     placeholder="Real Name (required)"
                     type="text"
                 />
-                <div
+                <!-- <div
                     class="form-error"
                     *ngIf="realName!.invalid && realName?.touched"
                 >
-                    {{ displayMessage.characterRealName.required }}
-                </div>
+                    {{
+                        displayMessage.realName.maxlength(
+                            realName?.errors.maxlength
+                        )
+                    }}
+                </div> -->
+                {{ realName?.errors | json }}
             </div>
             <label class="form-label">Power:</label>
             <div formArrayName="powers">
@@ -69,6 +74,7 @@
                     <button
                         class="basic-btn btn-remove-power"
                         color="warn"
+                        type="button"
                         (click)="removePower(i)"
                     >
                         Remove Power
@@ -78,6 +84,7 @@
             <button
                 class="basic-btn btn-add-power"
                 color="primary"
+                type="button"
                 (click)="addPower()"
             >
                 Add Power

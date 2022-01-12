@@ -1,4 +1,4 @@
-import { Character } from './../models/character';
+import { Character } from '../models/character';
 import { Superheroes } from '../models/default-superheroes';
 import * as rxjs from 'rxjs';
 import * as uuid from 'uuid';

@@ -1,8 +1,8 @@
-import { Superheroes } from './../models/default-superheroes';
-import { Character } from '../models/character';
+import { Superheroes } from '../../models/default-superheroes';
+import { Character } from '../../models/character';
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../services/superheroes.service';
-import { characterColorMap } from '../models/characterColorMap';
+import { HeroService } from '../../services/superheroes.service';
+import { characterColorMap } from '../../models/characterColorMap';
 
 @Component({
     selector: 'app-superheroes',
@@ -11,7 +11,6 @@ import { characterColorMap } from '../models/characterColorMap';
 export class SuperheroesComponent implements OnInit {
     title: string = 'List of Superheroes:';
     superheroes?: Character[];
-    hiddenHero: boolean = true;
     initialSuperheroes: boolean = true;
 
     readonly characterColorMap = characterColorMap;

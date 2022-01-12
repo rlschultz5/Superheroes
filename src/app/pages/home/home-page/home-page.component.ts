@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-homepage',
-    templateUrl: './homepage.component.html',
+    selector: 'app-home-page',
+    templateUrl: './home-page.component.html',
 })
-export class HomepageComponent {
+export class HomePageComponent {
     title: string = 'Favorite Marvel Characters!';
 }

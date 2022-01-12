@@ -1,17 +1,17 @@
-import { Character } from './../models/character';
+import { Character } from '../../../shared/models/character';
 import {
     DataService,
     HeroService,
     VillainService,
-} from './../services/superheroes.service';
+} from '../../../shared/services/superheroes.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { characterColorMap } from '../models/characterColorMap';
+import { characterColorMap } from '../../../shared/models/characterColorMap';
 
 @Component({
     selector: 'app-character-detail',
-    templateUrl: './character-detail.component.html',
-    styleUrls: ['./character-detail.component.css'],
+    templateUrl: './character-detail-page.component.html',
+    styleUrls: ['./character-detail-page.component.css'],
 })
 export class CharacterDetailComponent implements OnInit {
     characterId!: string;

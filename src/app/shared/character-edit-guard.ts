@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { CharacterEditComponent } from './../character-edit/character-edit.component';
 import { CanDeactivate } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CharacterEditPageComponent } from '../pages/application/character-edit-page/character-edit-page.component';
 
 @Injectable({ providedIn: 'root' })
 export class CharacterEditGuard
-    implements CanDeactivate<CharacterEditComponent>
+    implements CanDeactivate<CharacterEditPageComponent>
 {
     canDeactivate(
-        component: CharacterEditComponent
+        component: CharacterEditPageComponent
     ): Observable<boolean> | Promise<boolean> | boolean {
         if (component.characterForm.dirty) {
             const productName =

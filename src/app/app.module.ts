@@ -1,5 +1,3 @@
-import { CharacterServiceResolve } from './character-edit/character-edit.resolve';
-import { CharacterEditComponent } from './character-edit/character-edit.component';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -14,27 +12,30 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeroService, VillainService } from './services/superheroes.service';
-import { HomepageComponent } from './homepage/homepage.component';
-import { SuperheroesComponent } from './superheroes/superheroes.component';
-import { UpdateSuperheroComponent } from './update-superhero/update-superhero.component';
-import { CharactersComponent } from './characters/characters.component';
-import { VillainsComponent } from './villains/villains.component';
-import { CharacterDetailComponent } from './character-detail/character-detail.component';
+import {
+    HeroService,
+    VillainService,
+} from './shared/services/superheroes.service';
+import { HomePageComponent } from './pages/home/home-page/home-page.component';
+import { SuperheroesComponent } from './shared/components/superheroes/superheroes.component';
+import { CharactersPageComponent } from './pages/application/characters-page/characters-page.component';
+import { VillainsComponent } from './shared/components/villains/villains.component';
+import { CharacterDetailComponent } from './pages/application/character-detail-page/character-detail-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { CharacterEditPageComponent } from './pages/application/character-edit-page/character-edit-page.component';
+import { CharacterServiceResolve } from './pages/application/character-edit-page/character-edit-page.resolve';
 
 @NgModule({
     declarations: [
         AppComponent,
         SuperheroesComponent,
-        HomepageComponent,
-        UpdateSuperheroComponent,
-        CharacterEditComponent,
-        CharactersComponent,
+        HomePageComponent,
+        CharacterEditPageComponent,
+        CharactersPageComponent,
         VillainsComponent,
         CharacterDetailComponent,
     ],
@@ -50,11 +51,11 @@ import { MatChipsModule } from '@angular/material/chips';
         MatChipsModule,
         RouterModule.forRoot([
             { path: 'superheroes', component: SuperheroesComponent },
-            { path: 'homepage', component: HomepageComponent },
-            { path: 'characters', component: CharactersComponent },
+            { path: 'homepage', component: HomePageComponent },
+            { path: 'characters', component: CharactersPageComponent },
             {
                 path: 'characters/create',
-                component: CharacterEditComponent,
+                component: CharacterEditPageComponent,
             },
             {
                 path: 'heroes/:id/detail',
@@ -62,7 +63,7 @@ import { MatChipsModule } from '@angular/material/chips';
             },
             {
                 path: 'heroes/:id/edit',
-                component: CharacterEditComponent,
+                component: CharacterEditPageComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
                     type: 'hero',
@@ -74,13 +75,13 @@ import { MatChipsModule } from '@angular/material/chips';
             },
             {
                 path: 'villains/:id/edit',
-                component: CharacterEditComponent,
+                component: CharacterEditPageComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
                     type: 'villain',
                 },
             },
-            { path: '', component: HomepageComponent },
+            { path: '', component: HomePageComponent },
         ]),
         TuiRootModule,
         BrowserAnimationsModule,
