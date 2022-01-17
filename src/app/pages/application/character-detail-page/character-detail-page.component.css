@@ -10,26 +10,26 @@ p {
 
 }
 
-.btn-blue {
+.button-blue {
   @apply bg-blue-500;
 }
 
-.btn-green {
+.button-green {
 @apply bg-green-500;
 }
 
-.btn-red {
+.button-red {
 @apply bg-red-500;
 }
 
-.btn-white {
+.button-white {
 @apply bg-gray-500;
 }
 
-.btn-yellow {
+.button-yellow {
 @apply bg-yellow-400;
 }
 
-.btn-purple {
+.button-purple {
 @apply bg-purple-500;
 }

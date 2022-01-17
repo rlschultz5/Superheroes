@@ -1,0 +1,13 @@
+<!-- NAVIGATION HEADER -->
+<div class="navigation-display">
+    <h1 class="navigation-title">
+        {{ appTitle }}
+    </h1>
+    <ul class="app-center">
+        <li class="basic-button basic-button-white" routerLink="/homepage">Home</li>
+        <li class="basic-button basic-button-white" routerLink="/characters">My list!</li>
+        <li class="basic-button basic-button-white" [routerLink]="['/characters/create']">
+            Create a new Marvel character!
+        </li>
+    </ul>
+</div>

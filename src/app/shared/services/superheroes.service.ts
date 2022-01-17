@@ -46,10 +46,7 @@ export abstract class DataService<DataT extends { id: string }> {
      */
     delete(characterId: string) {
         this.data.delete(characterId);
-        localStorage.setItem(
-            this.key,
-            JSON.stringify(this.data, this.replacer)
-        );
+        localStorage.setItem(this.key, JSON.stringify(this.data, this.replacer));
     }
 
     /**
@@ -63,10 +60,7 @@ export abstract class DataService<DataT extends { id: string }> {
         // character.color = 'green';
         // added with key to all lowercase for searchability
         this.data.set(character.id, character);
-        localStorage.setItem(
-            this.key,
-            JSON.stringify(this.data, this.replacer)
-        );
+        localStorage.setItem(this.key, JSON.stringify(this.data, this.replacer));
         return rxjs.of(character);
     }
 
@@ -99,13 +93,10 @@ export abstract class DataService<DataT extends { id: string }> {
      * @returns DataT object is findname is found in characterMap, else
      *   undefined
      */
-    update(hero: DataT): Observable<DataT> {
-        this.data.set(hero.id, hero);
-        localStorage.setItem(
-            this.key,
-            JSON.stringify(this.data, this.replacer)
-        );
-        return rxjs.of(hero);
+    update(data: DataT): Observable<DataT> {
+        this.data.set(data.id, data);
+        localStorage.setItem(this.key, JSON.stringify(this.data, this.replacer));
+        return rxjs.of(data);
     }
 
     private replacer(key: any, value: any) {

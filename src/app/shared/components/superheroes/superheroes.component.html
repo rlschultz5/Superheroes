@@ -1,29 +1,19 @@
 <div>
-    <h3 class="h3">{{ title }}</h3>
+    <div class="h3">{{ title }}</div>
     <!-- GRID OF SUPERHEROES -->
     <ul class="app-grid app-center">
         <li *ngFor="let superhero of superheroes">
             <div class="{{ characterColorMap[superhero.color] }} char-card">
-                <div class="char-name">
+                <div class="character-name">
                     {{ superhero.name }}
                 </div>
-                <div class="char-realname">
+                <div class="character-realname">
                     {{ superhero.realName }}
                 </div>
                 <!-- DETAILS & EDIT LINKS -->
                 <ul class="app-center">
-                    <a
-                        class="char-btn"
-                        [routerLink]="['/heroes', superhero.id, 'detail']"
-                    >
-                        Details
-                    </a>
-                    <a
-                        class="char-btn"
-                        [routerLink]="['/heroes', superhero.id, 'edit']"
-                    >
-                        Edit
-                    </a>
+                    <a class="characer-button" [routerLink]="['/heroes', superhero.id, 'detail']"> Details </a>
+                    <a class="characer-button" [routerLink]="['/heroes', superhero.id, 'edit']"> Edit </a>
                 </ul>
             </div>
         </li>

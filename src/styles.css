@@ -81,6 +81,15 @@ video {
   cursor: default;
 }
 
+p {
+  @apply mt-2;
+  @apply text-xl;
+  @apply text-center;
+  @apply font-bold;
+  /* @apply py-2; */
+  @apply text-slate-700
+}
+
 /* nav {
   @apply w-screen;
   @apply object-top;
@@ -91,7 +100,7 @@ video {
   @apply p-3;
 } */
 
-.nav-bg {
+.navigation-display {
   @apply bg-slate-700;
   @apply block;
   @apply py-3;
@@ -101,7 +110,7 @@ video {
   @apply bg-top;
 }
 
-.nav-title {
+.navigation-title {
   @apply text-5xl;
   @apply text-center;
   @apply font-extrabold;
@@ -111,7 +120,7 @@ video {
   /* @apply py-2; */
 }
 
-.basic-btn {
+.basic-button {
   @apply py-2 px-6 mx-5 my-2;
   @apply bg-transparent hover:bg-gray-400;
   @apply border-2;
@@ -122,7 +131,7 @@ video {
   @apply cursor-pointer;
 }
 
-.basic-btn-w {
+.basic-button-white {
   @apply text-white;
   /* @apply shadow-2xl; */
 }
@@ -132,7 +141,7 @@ video {
   @apply mt-16
 }
 
-.footer-txt {
+.footer-text {
   @apply flex;
   @apply justify-center;
   @apply text-xs;
@@ -158,15 +167,6 @@ video {
   @apply text-4xl;
   @apply font-bold;
   @apply pt-3;
-  @apply text-slate-700
-}
-
-p {
-  @apply mt-2;
-  @apply text-xl;
-  @apply text-center;
-  @apply font-bold;
-  /* @apply py-2; */
   @apply text-slate-700
 }
 
@@ -199,7 +199,7 @@ p {
   @apply text-base;
 }
 
-.char-btn {
+.characer-button {
   @apply py-2 px-6 mx-5;
   @apply bg-opacity-50 bg-white hover:bg-opacity-90;
   /* @apply border-2; */
@@ -218,7 +218,7 @@ p {
   position: relative;
 }
 
-.char-section {
+.character-section {
   /* @apply bg-slate-700; */
   @apply bg-white;
   @apply border-4 rounded-xl mx-5 border-slate-700;
@@ -230,106 +230,52 @@ p {
   /* position: relative; */
 }
 
-.char-name {
+.character-name {
   @apply text-white;
   @apply text-4xl;
   @apply text-center;
   @apply mb-2;
 }
 
-.char-realname {
+.character-realname {
   @apply text-white;
   @apply text-lg;
 }
 
-.char-description {
+.character-description {
   @apply text-white;
   @apply text-sm;
 }
 
-.char-btn-w {
-  @apply text-black;
-  /* @apply shadow-2xl; */
-}
-
-.list-title {
-  @apply gap-x-5
-}
-
-.list-btn {
-    @apply py-2 px-3 m-2;
-    @apply bg-white hover:bg-blue-300;
-    @apply rounded-md;
-    @apply text-2xl;
-    @apply text-black;
-    @apply text-center;
-}
-
-.white-btn {
-    @apply py-2 px-3 m-2;
-    @apply bg-white hover:bg-blue-300;
-    @apply rounded-md;
-    @apply text-2xl;
-    @apply text-black;
-    @apply text-center;
-}
-
-.app-btn {
+.app-button {
   @apply py-2 px-3 m-2;
   @apply rounded-xl;
   @apply text-black;
 }
 
-.btn-blue {
+.button-blue {
     @apply bg-blue-500 hover:bg-blue-700;
 }
 
-.btn-green {
+.button-green {
   @apply bg-green-500 hover:bg-green-700;
 }
 
-.btn-red {
+.button-red {
   @apply bg-red-500 hover:bg-red-700;
 }
 
-.btn-white {
+.button-white {
   @apply bg-gray-500 hover:bg-gray-700;
 }
 
-.btn-yellow {
+.button-yellow {
   @apply bg-yellow-400 hover:bg-yellow-600;
 }
 
-.btn-purple {
+.button-purple {
   @apply bg-purple-500 hover:bg-purple-700;
 }
-
-.detail-blue {
-  @apply bg-blue-500;
-}
-
-.detail-green {
-@apply bg-green-500;
-}
-
-.detail-red {
-@apply bg-red-500;
-}
-
-.detail-white {
-@apply bg-gray-500;
-}
-
-.detail-yellow {
-@apply bg-yellow-400;
-/* @apply text-white; */
-@apply text-6xl;
-}
-
-.detail-purple {
-@apply bg-purple-500;
-}
-
 
 .app-grid {
   @apply grid;
@@ -346,7 +292,7 @@ p {
   @apply bg-slate-700;
   @apply shadow-2xl;
 }
-.detail-sub-view {
+.detail-subview {
   @apply border-4 border-slate-700 rounded-2xl;
   @apply bg-white;
   @apply p-6;
@@ -363,11 +309,6 @@ p {
 
 .border {
   @apply border-4 border-slate-700 rounded-2xl;
-}
-
-.trans-box {
-  @apply border-2 border-white rounded-xl;
-  @apply p-2;
 }
 
 .create-input-boxes {

@@ -18,14 +18,12 @@ export class SuperheroesComponent implements OnInit {
     // Auto-constructs an instance shared with app and passes it in
     constructor(private readonly heroService: HeroService) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         if (this.heroService.isEmpty()) {
             for (let index = 0; index < Superheroes.length; index++) {
                 this.heroService.create(Superheroes[index]);
-                console.log(this.initialSuperheroes);
             }
             this.initialSuperheroes = false;
-            console.log(this.initialSuperheroes);
         }
 
         this.superheroes = this.heroService.getAll();

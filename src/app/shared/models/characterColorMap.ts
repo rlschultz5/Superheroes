@@ -1,8 +1,8 @@
 export const characterColorMap = {
-    blue: 'app-btn btn-blue',
-    green: 'app-btn btn-green',
-    red: 'app-btn btn-red',
-    yellow: 'app-btn btn-yellow',
-    white: 'app-btn btn-white',
-    purple: 'app-btn btn-purple',
+    blue: 'app-button button-blue',
+    green: 'app-button button-green',
+    red: 'app-button button-red',
+    yellow: 'app-button button-yellow',
+    white: 'app-button button-white',
+    purple: 'app-button button-purple',
 };

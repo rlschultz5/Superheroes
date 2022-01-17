@@ -4,11 +4,33 @@
     <p>(View, modify, remove or create new Marvel characters here)</p>
     <br />
     <!-- SUPERHERO SECTION -->
-    <div class="char-section">
-        <app-superheroes></app-superheroes>
+    <div class="character-section">
+        <!-- superhero service to get the list -->
+        <!-- put in character component -->
+        <!-- grid -->
+        <div class="h3">List of Superheroes</div>
+        <!-- GRID OF SUPERHEROES -->
+        <ul class="app-grid app-center">
+            <li *ngFor="let superhero of superheroes">
+                <div class="{{ characterColorMap[superhero.color] }} char-card">
+                    <div class="character-name">
+                        {{ superhero.name }}
+                    </div>
+                    <div class="character-realname">
+                        {{ superhero.realName }}
+                    </div>
+                    <!-- DETAILS & EDIT LINKS -->
+                    <ul class="app-center">
+                        <a class="characer-button" [routerLink]="['/heroes', superhero.id, 'detail']"> Details </a>
+                        <a class="characer-button" [routerLink]="['/heroes', superhero.id, 'edit']"> Edit </a>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- <app-superheroes></app-superheroes> -->
     </div>
     <!-- VILLAIN SECTION -->
-    <div class="char-section">
+    <div class="character-section">
         <app-villains></app-villains>
     </div>
 </div>

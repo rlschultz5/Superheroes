@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { characterColorMap } from 'src/app/shared/models/characterColorMap';
 import { Character } from '../../../shared/models/character';
 import { HeroService } from '../../../shared/services/superheroes.service';
 
@@ -11,12 +12,10 @@ export class CharactersPageComponent implements OnInit {
 
     superheroes!: Character[];
     villains!: Character[];
+    characterColorMap = characterColorMap;
 
     // Auto-constructs an instance shared with app and passes it in
-    constructor(
-        private readonly service: HeroService,
-        private readonly service2: HeroService
-    ) {}
+    constructor(private readonly service: HeroService, private readonly service2: HeroService) {}
 
     ngOnInit(): void {
         this.superheroes = this.service.getAll();

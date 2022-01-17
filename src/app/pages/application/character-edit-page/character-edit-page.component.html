@@ -9,20 +9,16 @@
     </div>
     <!-- NEW CHARACTER BORDER -->
     <div *ngIf="isNewCharacter">
-        <h3 class="border border-wht">New Character</h3>
+        <h3 class="border border-white">New Character</h3>
     </div>
     <!-- CHARACTER FORM -->
-    <div class="detail-sub-view border">
-        <form
-            novalidate
-            (ngSubmit)="saveCharacter()"
-            [formGroup]="characterForm"
-        >
+    <div class="detail-subview border">
+        <form novalidate (ngSubmit)="saveCharacter()" [formGroup]="characterForm">
             <!-- Value: {{ characterForm.value | json }} -->
-            <div class="space">
+            <div class="top-space">
                 <label class="form-label" for="characterName">Name:</label>
                 <input
-                    class="container border-sq"
+                    class="container border-square"
                     formControlName="name"
                     id="characterName"
                     placeholder="Name (required)"
@@ -33,120 +29,136 @@
                 </div>
             </div>
 
-            <div class="space">
-                <label class="form-label" for="charRealNameId"
-                    >Real Name:</label
-                >
+            <div class="top-space">
+                <label class="form-label" for="characterRealName">Real Name:</label>
                 <input
-                    class="container border-sq"
+                    class="container border-square"
                     formControlName="realName"
-                    id="charRealNameId"
+                    id="characterRealName"
                     placeholder="Real Name (required)"
                     type="text"
                 />
-                <!-- <div
-                    class="form-error"
-                    *ngIf="realName!.invalid && realName?.touched"
-                >
-                    {{
-                        displayMessage.realName.maxlength(
-                            realName?.errors.maxlength
-                        )
-                    }}
-                </div> -->
-                {{ realName?.errors | json }}
+                <div class="form-error" *ngIf="realName!.invalid && realName?.touched">
+                    <span *ngIf="realName?.errors?.['required']">
+                        {{ displayMessage.realName.required }}
+                    </span>
+                    <span *ngIf="realName?.errors?.['maxlength']">
+                        {{ displayMessage.realName.maxlength(realName?.errors?.['maxlength']) }}
+                    </span>
+                    <!-- {{ displayMessage.realName(realName?.errors?.['required']) }} -->
+                    <!-- {{ displayMessage.realName | json }} -->
+                </div>
             </div>
             <label class="form-label">Power:</label>
             <div formArrayName="powers">
-                <div *ngFor="let power of powerForms.controls; let i = index">
-                    <label class="form-label" [attr.for]="i"
-                        >#{{ i + 1 }}</label
-                    >
+                <div *ngFor="let power of powerForms.controls; let powerIndex = index">
+                    <label class="form-label" [attr.for]="powerIndex">#{{ powerIndex + 1 }}</label>
                     <div>
                         <input
-                            class="container border-sq"
-                            [id]="i"
+                            class="container border-square"
+                            [id]="powerIndex"
                             type="text"
-                            placeholder="Power (required)"
-                            [formControlName]="i"
+                            placeholder="Power"
+                            [formControlName]="powerIndex"
                         />
                     </div>
                     <button
-                        class="basic-btn btn-remove-power"
+                        class="basic-button button-remove-power"
                         color="warn"
                         type="button"
-                        (click)="removePower(i)"
+                        (click)="removePower(powerIndex)"
                     >
                         Remove Power
                     </button>
                 </div>
             </div>
-            <button
-                class="basic-btn btn-add-power"
-                color="primary"
-                type="button"
-                (click)="addPower()"
-            >
+            <button class="basic-button button-add-power" color="primary" type="button" (click)="addPower()">
                 Add Power
             </button>
 
-            <div class="space">
-                <label class="form-label" for="charDescriptionId"
-                    >Description:</label
-                >
+            <div class="top-space">
+                <label class="form-label" for="characterDescription">Description:</label>
                 <input
-                    class="container border-sq"
+                    class="container border-square"
                     formControlName="description"
-                    id="charDescriptionId"
+                    id="characterDescription"
                     placeholder="Description"
                     type="text"
                 />
             </div>
 
-            <div class="space">
-                <label class="form-label" for="charLinkId">Link:</label>
+            <div class="top-space">
+                <label class="form-label" for="characterLink">Link:</label>
                 <input
-                    class="container border-sq"
+                    class="container border-square"
                     formControlName="link"
-                    id="charLinkId"
+                    id="characterLink"
                     placeholder="Link"
                     type="text"
                 />
             </div>
 
-            <div class="space">
-                <label class="form-label" for="charColorId">Color:</label>
-                <input
-                    class="container border-sq"
-                    formControlName="color"
-                    id="charColorId"
-                    placeholder="color"
-                    type="text"
-                />
-            </div>
+            <fieldset class="container border-square top-space">
+                <legend>Color:</legend>
+                <label for="red"
+                    ><input type="radio" formControlName="color" name="color" value="red" id="red" />Red</label
+                ><br />
+                <label for="green"
+                    ><input type="radio" formControlName="color" name="color" value="green" id="green" />Green</label
+                ><br />
+                <label for="blue"
+                    ><input type="radio" formControlName="color" name="color" value="blue" id="blue" />Blue</label
+                ><br />
+                <label for="yellow"
+                    ><input type="radio" formControlName="color" name="color" value="yellow" id="yellow" />Yellow</label
+                ><br />
+                <label for="white"
+                    ><input type="radio" formControlName="color" name="color" value="white" id="white" />White</label
+                ><br />
+                <label for="purple"
+                    ><input type="radio" formControlName="color" name="color" value="purple" id="purple" />Purple</label
+                ><br />
+            </fieldset>
+
             <!-- SUPERHERO/VILLAIN SELECTOR IF NEW -->
-            <div *ngIf="isNewCharacter">
-                <label class="form-label" for="isHeroOrVillain"
-                    >Superhero or Villain:</label
-                >
-                <option value="Superhero">Superhero</option>
-                <option value="Villain">Villain</option>
+            <div *ngIf="isNewCharacter" class="top-space">
+                <fieldset class="container border-square">
+                    <legend>Superhero or Villain:</legend>
+                    <label for="superhero"
+                        ><input
+                            type="radio"
+                            formControlName="heroOrVillain"
+                            name="heroOrVillain"
+                            value="Superhero"
+                            id="superhero"
+                        />Superhero</label
+                    ><br />
+                    <label for="villain"
+                        ><input
+                            type="radio"
+                            formControlName="heroOrVillain"
+                            name="heroOrVillain"
+                            value="Villain"
+                            id="villain"
+                        />Villain</label
+                    >
+                </fieldset>
+                <div class="form-error" *ngIf="heroOrVillain?.touched && !heroOrVillainCheck(heroOrVillain?.value)">
+                    Must be either a Superhero or Villain
+                </div>
             </div>
             <!-- SUBMIT/CANCEL/DELETE BUTTONS -->
-            <div>
+            <div class="top-space">
                 <div>
                     <button
                         class="{{ this.buttonClass }}"
-                        type="submit"
                         (click)="saveCharacter()"
                         [title]="
-                            characterForm.valid
-                                ? 'Save your entered data'
-                                : 'Disabled until the form data is valid'
+                            characterForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'
                         "
-                        [disabled]="!characterForm.valid"
+                        [disabled]="characterForm.pristine || !characterForm.valid || !characterDetermined"
                     >
-                        Save
+                        {{ characterDetermined }}
                     </button>
                     <button
                         class="{{ this.buttonClass }}"
@@ -168,43 +180,8 @@
                     </button>
                 </div>
             </div>
+            <span class="form-error" *ngIf="character?.id && !characterForm.valid">Form Not Valid</span>
+            <span class="form-error" *ngIf="isNewCharacter && !characterForm.valid">Form Not Valid</span>
         </form>
     </div>
 </div>
-
-<!-- <div> -->
-<!-- Just a blank modify page! -->
-<!-- <h1 class="hero-info">
-        {{ hero?.name }}
-    </h1> -->
-<!-- <h2 class="hero-sub-info-black">
-    {{'Real Name:  ' + hero.realName }}
-    </h2>
-</div>   -->
-
-<!-- <div (click)="showEdit()">
-    <h1 class="hero-info">
-        {{ hero.name }}
-    </h1>
-    <h2 class="hero-sub-info-black">
-    {{'Real Name:  ' + hero.realName }}
-    </h2>
-</div>
-
-<div *ngIf=!isHidden>
-    <h2 class="hero-sub-info-white">Name:</h2>
-    <input class="create-input-boxes" placeholder="Name" [(ngModel)]="hero.name"><br>
-    <h2 class="hero-sub-info-white">Real Name:</h2>
-    <input class="create-input-boxes" placeholder="Real Name" [(ngModel)]="hero.realName"><br>
-    <h2 class="hero-sub-info-white">Powers:</h2>
-    <input class="create-input-boxes" placeholder="Powers" [(ngModel)]="hero.powers"><br>
-    <h2 class="hero-sub-info-white">Description:</h2>
-    <input class="create-input-boxes" placeholder="Description" [(ngModel)]="hero.description"><br>
-    <h2 class="hero-sub-info-white">Link:</h2>
-    <input class="create-input-boxes" placeholder="Link" [(ngModel)]="hero.link"><br>
-    <h2 class="hero-sub-info-white">Color:</h2>
-    <input class="create-input-boxes" placeholder="Color" [(ngModel)]="hero.color"><br>
-    <button class="white-btn" (click)="saveUpdates()">Save</button>
-    <button class="white-btn" (click)="deleteHero()">Delete</button>
-</div> -->
-<!-- </div> -->

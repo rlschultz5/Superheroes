@@ -1,19 +1,19 @@
 <div>
-    <h3 class="h3">{{ title }}</h3>
-    <!-- TODO: Evenly space grid/center grid -->
+    <div class="h3">{{ title }}</div>
+    <!-- GRID OF SUPERHEROES -->
     <ul class="app-grid app-center">
         <li *ngFor="let villain of villains">
-            <div class="{{ characterColorMap[villain.color] }}">
-                <!-- FIXME: trying character-detail -->
-                <!-- <app-update-superhero [hero]="villain"></app-update-superhero> -->
-                <!-- FIXME: Trial Code -->
+            <div class="{{ characterColorMap[villain.color] }} char-card">
+                <div class="character-name">
+                    {{ villain.name }}
+                </div>
+                <div class="character-realname">
+                    {{ villain.realName }}
+                </div>
+                <!-- DETAILS & EDIT LINKS -->
                 <ul class="app-center">
-                    <button class="char-btn" routerLink="/homepage">
-                        Details
-                    </button>
-                    <button class="char-btn" routerLink="/superheroes">
-                        Modify
-                    </button>
+                    <a class="characer-button" [routerLink]="['/villains', villain.id, 'detail']"> Details </a>
+                    <a class="characer-button" [routerLink]="['/villains', villain.id, 'edit']"> Edit </a>
                 </ul>
             </div>
         </li>

@@ -1,33 +1,27 @@
-import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-    TuiRootModule,
-    TuiDialogModule,
-    TuiNotificationsModule,
-    TUI_SANITIZER,
-} from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import {
-    HeroService,
-    VillainService,
-} from './shared/services/superheroes.service';
-import { HomePageComponent } from './pages/home/home-page/home-page.component';
-import { SuperheroesComponent } from './shared/components/superheroes/superheroes.component';
-import { CharactersPageComponent } from './pages/application/characters-page/characters-page.component';
-import { VillainsComponent } from './shared/components/villains/villains.component';
-import { CharacterDetailComponent } from './pages/application/character-detail-page/character-detail-page.component';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { TuiDialogModule, TuiNotificationsModule, TuiRootModule, TUI_SANITIZER } from '@taiga-ui/core';
+import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
+import { AppComponent } from './app.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { HeaderComponent } from './core/header/header.component';
+import { CharacterDetailComponent } from './pages/application/character-detail-page/character-detail-page.component';
 import { CharacterEditPageComponent } from './pages/application/character-edit-page/character-edit-page.component';
-import { CharacterServiceResolve } from './pages/application/character-edit-page/character-edit-page.resolve';
+import { CharactersPageComponent } from './pages/application/characters-page/characters-page.component';
+import { HomePageComponent } from './pages/home/home-page/home-page.component';
+import { CharactersSharedModule } from './shared/characters/characters-shared.module';
+import { SuperheroesComponent } from './shared/components/superheroes/superheroes.component';
+import { VillainsComponent } from './shared/components/villains/villains.component';
+import { CharacterServiceResolve } from './shared/resolves/character.resolve';
+import { HeroService, VillainService } from './shared/services/superheroes.service';
 
 @NgModule({
     declarations: [
@@ -38,6 +32,8 @@ import { CharacterServiceResolve } from './pages/application/character-edit-page
         CharactersPageComponent,
         VillainsComponent,
         CharacterDetailComponent,
+        HeaderComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,
@@ -49,6 +45,7 @@ import { CharacterServiceResolve } from './pages/application/character-edit-page
         MatSelectModule,
         MatCheckboxModule,
         MatChipsModule,
+        CharactersSharedModule,
         RouterModule.forRoot([
             { path: 'superheroes', component: SuperheroesComponent },
             { path: 'homepage', component: HomePageComponent },
@@ -60,6 +57,10 @@ import { CharacterServiceResolve } from './pages/application/character-edit-page
             {
                 path: 'heroes/:id/detail',
                 component: CharacterDetailComponent,
+                resolve: { providers: CharacterServiceResolve },
+                data: {
+                    type: 'hero',
+                },
             },
             {
                 path: 'heroes/:id/edit',
@@ -72,6 +73,10 @@ import { CharacterServiceResolve } from './pages/application/character-edit-page
             {
                 path: 'villains/:id/detail',
                 component: CharacterDetailComponent,
+                resolve: { providers: CharacterServiceResolve },
+                data: {
+                    type: 'villain',
+                },
             },
             {
                 path: 'villains/:id/edit',
