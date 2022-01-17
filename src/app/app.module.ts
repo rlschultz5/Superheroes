@@ -12,8 +12,8 @@ import { RouterModule } from '@angular/router';
 import { TuiDialogModule, TuiNotificationsModule, TuiRootModule, TUI_SANITIZER } from '@taiga-ui/core';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { AppComponent } from './app.component';
-import { CharacterDetailComponent } from './shared/characters/character-detail-page/character-detail-page.component';
-import { CharacterEditPageComponent } from './shared/characters/character-edit-page/character-edit-page.component';
+import { CharacterDetailComponent } from './shared/characters/character-detail/character-detail.component';
+import { CharacterFormComponent } from './shared/characters/character-form/character-form.component';
 import { CharactersPageComponent } from './pages/application/characters-page/characters-page.component';
 import { HomePageComponent } from './pages/home/home-page/home-page.component';
 import { CharactersSharedModule } from './shared/characters/characters-shared.module';
@@ -23,15 +23,7 @@ import { CharacterServiceResolve } from './shared/resolves/character.resolve';
 import { HeroService, VillainService } from './shared/services/superheroes.service';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        SuperheroesComponent,
-        HomePageComponent,
-        CharacterEditPageComponent,
-        CharactersPageComponent,
-        VillainsComponent,
-        CharacterDetailComponent,
-    ],
+    declarations: [AppComponent, SuperheroesComponent, HomePageComponent, CharactersPageComponent, VillainsComponent],
     imports: [
         BrowserModule,
         FormsModule,
@@ -50,10 +42,10 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
             { path: 'characters', component: CharactersPageComponent },
             {
                 path: 'characters/create',
-                component: CharacterEditPageComponent,
+                component: CharacterFormComponent,
             },
             {
-                path: 'heroes/:id/detail',
+                path: 'superheroes/:id/detail',
                 component: CharacterDetailComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
@@ -61,8 +53,8 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
                 },
             },
             {
-                path: 'heroes/:id/edit',
-                component: CharacterEditPageComponent,
+                path: 'superheroes/:id/edit',
+                component: CharacterFormComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
                     type: 'hero',
@@ -78,7 +70,7 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
             },
             {
                 path: 'villains/:id/edit',
-                component: CharacterEditPageComponent,
+                component: CharacterFormComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
                     type: 'villain',

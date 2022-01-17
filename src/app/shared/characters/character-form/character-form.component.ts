@@ -7,11 +7,11 @@ import { Character } from '../../models/character';
 import { FormBuilder, FormControl, FormArray, Validators, FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'app-character-edit',
-    templateUrl: './character-edit-page.component.html',
-    styleUrls: ['./character-edit-page.component.css'],
+    selector: 'app-character-form',
+    templateUrl: './character-form.component.html',
+    styleUrls: ['./character-form.component.css'],
 })
-export class CharacterEditPageComponent implements OnInit {
+export class CharacterFormComponent implements OnInit {
     pageTitle!: string;
     isHero!: boolean;
     errorMessage!: string;

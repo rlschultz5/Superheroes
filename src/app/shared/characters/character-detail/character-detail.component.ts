@@ -6,8 +6,8 @@ import { characterColorMap } from '../../models/characterColorMap';
 
 @Component({
     selector: 'app-character-detail',
-    templateUrl: './character-detail-page.component.html',
-    styleUrls: ['./character-detail-page.component.css'],
+    templateUrl: './character-detail.component.html',
+    styleUrls: ['./character-detail.component.css'],
 })
 export class CharacterDetailComponent implements OnInit {
     characterId!: string;
