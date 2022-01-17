@@ -1,9 +1,9 @@
-import { validationMessages } from '../../../shared/validation-messages';
-import { characterColorMap } from '../../../shared/models/characterColorMap';
-import { DataService, HeroService, VillainService } from '../../../shared/services/superheroes.service';
+import { validationMessages } from '../../validation-messages';
+import { characterColorMap } from '../../models/characterColorMap';
+import { DataService, HeroService, VillainService } from '../../services/superheroes.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character } from '../../../shared/models/character';
+import { Character } from '../../models/character';
 import { FormBuilder, FormControl, FormArray, Validators, FormGroup } from '@angular/forms';
 
 @Component({

@@ -1,8 +1,8 @@
-import { Character } from '../../../shared/models/character';
-import { DataService } from '../../../shared/services/superheroes.service';
+import { Character } from '../../models/character';
+import { DataService } from '../../services/superheroes.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { characterColorMap } from '../../../shared/models/characterColorMap';
+import { characterColorMap } from '../../models/characterColorMap';
 
 @Component({
     selector: 'app-character-detail',

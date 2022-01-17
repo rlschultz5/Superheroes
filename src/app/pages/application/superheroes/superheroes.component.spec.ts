@@ -1,4 +1,4 @@
-import { HeroService } from '../../services/superheroes.service';
+import { HeroService } from '../../../shared/services/superheroes.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SuperheroesComponent } from './superheroes.component';

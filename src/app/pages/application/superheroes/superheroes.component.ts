@@ -1,8 +1,8 @@
-import { Superheroes } from '../../models/default-superheroes';
-import { Character } from '../../models/character';
+import { Superheroes } from '../../../shared/models/default-superheroes';
+import { Character } from '../../../shared/models/character';
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../../services/superheroes.service';
-import { characterColorMap } from '../../models/characterColorMap';
+import { HeroService } from '../../../shared/services/superheroes.service';
+import { characterColorMap } from '../../../shared/models/characterColorMap';
 
 @Component({
     selector: 'app-superheroes',
@@ -28,4 +28,6 @@ export class SuperheroesComponent implements OnInit {
 
         this.superheroes = this.heroService.getAll();
     }
+
+    // TODO: listen for an emit from charatcer card and route to detail/edit
 }

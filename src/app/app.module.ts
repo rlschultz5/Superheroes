@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,15 +12,13 @@ import { RouterModule } from '@angular/router';
 import { TuiDialogModule, TuiNotificationsModule, TuiRootModule, TUI_SANITIZER } from '@taiga-ui/core';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './core/footer/footer.component';
-import { HeaderComponent } from './core/header/header.component';
-import { CharacterDetailComponent } from './pages/application/character-detail-page/character-detail-page.component';
-import { CharacterEditPageComponent } from './pages/application/character-edit-page/character-edit-page.component';
+import { CharacterDetailComponent } from './shared/characters/character-detail-page/character-detail-page.component';
+import { CharacterEditPageComponent } from './shared/characters/character-edit-page/character-edit-page.component';
 import { CharactersPageComponent } from './pages/application/characters-page/characters-page.component';
 import { HomePageComponent } from './pages/home/home-page/home-page.component';
 import { CharactersSharedModule } from './shared/characters/characters-shared.module';
-import { SuperheroesComponent } from './shared/components/superheroes/superheroes.component';
-import { VillainsComponent } from './shared/components/villains/villains.component';
+import { SuperheroesComponent } from './pages/application/superheroes/superheroes.component';
+import { VillainsComponent } from './pages/application/villains/villains.component';
 import { CharacterServiceResolve } from './shared/resolves/character.resolve';
 import { HeroService, VillainService } from './shared/services/superheroes.service';
 
@@ -32,8 +31,6 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
         CharactersPageComponent,
         VillainsComponent,
         CharacterDetailComponent,
-        HeaderComponent,
-        FooterComponent,
     ],
     imports: [
         BrowserModule,
@@ -46,6 +43,7 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
         MatCheckboxModule,
         MatChipsModule,
         CharactersSharedModule,
+        CoreModule,
         RouterModule.forRoot([
             { path: 'superheroes', component: SuperheroesComponent },
             { path: 'homepage', component: HomePageComponent },

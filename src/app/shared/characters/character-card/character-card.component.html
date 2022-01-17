@@ -1,1 +1,14 @@
-<p>character-card works!</p>
+<div class="{{ characterColorMap[character.color] }} char-card">
+    <div class="character-name">
+        {{ character.name }}
+    </div>
+    <div class="character-realname">
+        {{ character.realName }}
+    </div>
+    <!-- DETAILS & EDIT LINKS -->
+    <!-- // TODO: Set up emitter to send info back (Don't want to route) -->
+    <ul class="app-center">
+        <a class="characer-button" [routerLink]="['/heroes', character.id, 'detail']"> Details </a>
+        <a class="characer-button" [routerLink]="['/heroes', character.id, 'edit']"> Edit </a>
+    </ul>
+</div>

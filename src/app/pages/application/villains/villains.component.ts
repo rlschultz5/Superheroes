@@ -1,8 +1,8 @@
-import { Villains } from './../../models/default-villains';
+import { Villains } from '../../../shared/models/default-villains';
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../../models/character';
-import { characterColorMap } from '../../models/characterColorMap';
-import { VillainService } from '../../services/superheroes.service';
+import { Character } from '../../../shared/models/character';
+import { characterColorMap } from '../../../shared/models/characterColorMap';
+import { VillainService } from '../../../shared/services/superheroes.service';
 
 @Component({
     selector: 'app-villains',
@@ -30,4 +30,6 @@ export class VillainsComponent implements OnInit {
 
         this.villains = this.villainService.getAll();
     }
+
+    // TODO: listen for an emit from charatcer card and route to detail/edit
 }
