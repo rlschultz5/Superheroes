@@ -1,10 +1,12 @@
 import { validationMessages } from '../../validation-messages';
-import { characterColorMap } from '../../models/characterColorMap';
-import { DataService, HeroService, VillainService } from '../../services/superheroes.service';
+import { characterColorMap } from '../../../pages/application/models/characterColorMap';
+import { DataService } from '../../../pages/application/services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character } from '../../models/character';
+import { Character } from '../../../pages/application/models/character';
 import { FormBuilder, FormControl, FormArray, Validators, FormGroup } from '@angular/forms';
+import { SuperheroService } from 'src/app/pages/application/services/superhero.service';
+import { VillainService } from 'src/app/pages/application/services/villain.service';
 
 @Component({
     selector: 'app-character-form',
@@ -37,7 +39,7 @@ export class CharacterFormComponent implements OnInit {
         private readonly activatedRoute: ActivatedRoute,
         private readonly formBuilder: FormBuilder,
         private readonly router: Router,
-        private readonly heroService: HeroService,
+        private readonly superheroService: SuperheroService,
         private readonly villainService: VillainService
     ) {}
 
@@ -167,7 +169,7 @@ export class CharacterFormComponent implements OnInit {
                 if (this.isNewCharacter) {
                     if (this.isHero) {
                         try {
-                            await this.heroService.create(this.updatedCharacter).toPromise();
+                            await this.superheroService.create(this.updatedCharacter).toPromise();
                         } catch (error) {
                             console.log('error');
                             console.error(error);
@@ -185,7 +187,7 @@ export class CharacterFormComponent implements OnInit {
                     //     error: (err) => (this.errorMessage = err),
                     // });
                     // if (this.isHeroOrVillain) {
-                    //     this.heroService.create(updatedCharacter).subscribe({
+                    //     this.super.create(updatedCharacter).subscribe({
                     //         next: () => this.onSaveComplete(),
                     //         error: (err) => (this.errorMessage = err),
                     //     });
@@ -241,8 +243,8 @@ export class CharacterFormComponent implements OnInit {
     // });
 
     // getProduct(id: number): void {
-    //     if (this.heroService.getById(id.toString()) !== undefined) {
-    //         this.heroService.getById(id.toString()).subscribe({
+    //     if (this.superheroService.getById(id.toString()) !== undefined) {
+    //         this.superheroService.getById(id.toString()).subscribe({
     //             next: (product: Product) => this.displayProduct(product),
     //             error: (err) => (this.errorMessage = err),
     //         });

@@ -1,32 +1,33 @@
-import { Character } from '../../models/character';
-import { DataService } from '../../services/superheroes.service';
-import { Component, OnInit } from '@angular/core';
+import { Character } from '../../../pages/application/models/character';
+import { DataService } from '../../../pages/application/services/data.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { characterColorMap } from '../../models/characterColorMap';
+import { characterColorMap } from '../../../pages/application/models/characterColorMap';
 
 @Component({
     selector: 'app-character-detail',
     templateUrl: './character-detail.component.html',
     styleUrls: ['./character-detail.component.css'],
 })
-export class CharacterDetailComponent implements OnInit {
-    characterId!: string;
+export class CharacterDetailComponent {
+    @Input()
     character!: Character;
-    characterColor!: string;
-    characterService!: DataService<any>;
-
     readonly characterColorMap = characterColorMap;
 
-    constructor(private readonly activatedRoute: ActivatedRoute) {}
+    // characterId!: string;
+    // characterColor!: string;
+    // characterService!: DataService<any>;
 
-    ngOnInit(): void {
-        // Retrieve Id from URL
-        this.characterId = this.activatedRoute.snapshot.paramMap.get('id') as string;
-        // Use resolve to determine character type
-        this.characterService = this.activatedRoute.snapshot.data['providers'].service;
-        // Retrieve character
-        this.character = this.characterService.getById(this.characterId);
-        // Set character's custom color
-        this.characterColor = characterColorMap[this.character!.color];
-    }
+    constructor() {}
+
+    // ngOnInit(): void {
+    //     // Retrieve Id from URL
+    //     this.characterId = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    //     // Use resolve to determine character type
+    //     this.characterService = this.activatedRoute.snapshot.data['providers'].service;
+    //     // Retrieve character
+    //     this.character = this.characterService.getById(this.characterId);
+    //     // Set character's custom color
+    //     this.characterColor = characterColorMap[this.character!.color];
+    // }
 }

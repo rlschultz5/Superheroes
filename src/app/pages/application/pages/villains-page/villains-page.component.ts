@@ -1,14 +1,14 @@
-import { Villains } from '../../../shared/models/default-villains';
+import { Villains } from '../../../../shared/models/default-villains';
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../../../shared/models/character';
-import { characterColorMap } from '../../../shared/models/characterColorMap';
-import { VillainService } from '../../../shared/services/superheroes.service';
+import { Character } from '../../models/character';
+import { characterColorMap } from '../../models/characterColorMap';
+import { VillainService } from '../../services/villain.service';
 
 @Component({
     selector: 'app-villains',
-    templateUrl: './villains.component.html',
+    templateUrl: './villains-page.component.html',
 })
-export class VillainsComponent implements OnInit {
+export class VillainsPageComponent implements OnInit {
     title: string = 'List of Villains:';
     villains?: Character[] = [];
     initialVillains: boolean = true;
@@ -31,5 +31,5 @@ export class VillainsComponent implements OnInit {
         this.villains = this.villainService.getAll();
     }
 
-    // TODO: listen for an emit from charatcer card and route to detail/edit
+    // TODO: listen for an emit from character card and route to detail/form
 }

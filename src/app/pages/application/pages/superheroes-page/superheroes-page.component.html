@@ -1,0 +1,23 @@
+<div>
+    <div class="h3">{{ title }}</div>
+    <!-- GRID OF SUPERHEROES -->
+    <ul class="app-grid app-center">
+        <li *ngFor="let superhero of superheroes">
+            <!-- <app-character-card [character]="superhero" [buttonClicked]="routeToPage($event)"></app-character-card> -->
+            <app-character-card [character]="superhero"></app-character-card>
+            <!-- <div class="{{ characterColorMap[superhero.color] }} char-card">
+                <div class="character-name">
+                    {{ superhero.name }}
+                </div>
+                <div class="character-realname">
+                    {{ superhero.realName }}
+                </div> -->
+            <!-- DETAILS & FORM LINKS -->
+            <!-- <ul class="app-center">
+                    <a class="character-button" [routerLink]="['/superheroes', superhero.id, 'detail']"> Details </a>
+                    <a class="character-button" [routerLink]="['/superheroes', superhero.id, 'form']"> Edit </a>
+                </ul>
+            </div> -->
+        </li>
+    </ul>
+</div>

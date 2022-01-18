@@ -5,10 +5,10 @@
     <div class="character-realname">
         {{ character.realName }}
     </div>
-    <!-- DETAILS & EDIT LINKS -->
+    <!-- DETAILS & FORM LINKS -->
     <!-- // TODO: Set up emitter to send info back (Don't want to route) -->
     <ul class="app-center">
-        <a class="characer-button" [routerLink]="['/superheroes', character.id, 'detail']"> Details </a>
-        <a class="characer-button" [routerLink]="['/superheroes', character.id, 'edit']"> Edit </a>
+        <a class="character-button" (click)="goToDetail()">Details</a>
+        <a class="character-button">Edit</a>
     </ul>
 </div>

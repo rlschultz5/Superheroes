@@ -1,21 +1,21 @@
-import { HeroService } from '../../../shared/services/superheroes.service';
+import { SuperheroService } from '../../services/data.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuperheroesComponent } from './superheroes.component';
+import { SuperheroesPageComponent } from './superheroes-page.component';
 
 describe('SuperheroesComponent', () => {
-    let component: SuperheroesComponent;
-    let fixture: ComponentFixture<SuperheroesComponent>;
+    let component: SuperheroesPageComponent;
+    let fixture: ComponentFixture<SuperheroesPageComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [SuperheroesComponent],
-            providers: [HeroService],
+            declarations: [SuperheroesPageComponent],
+            providers: [SuperheroService],
         }).compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(SuperheroesComponent);
+        fixture = TestBed.createComponent(SuperheroesPageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

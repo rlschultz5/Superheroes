@@ -1,4 +1,4 @@
-import { Character } from './character';
+import { Character } from '../../pages/application/models/character';
 
 export const Villains: Character[] = [
     {

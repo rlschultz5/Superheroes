@@ -1,11 +1,9 @@
 import { Character } from '../models/character';
-import { Superheroes } from '../models/default-superheroes';
 import * as rxjs from 'rxjs';
 import * as uuid from 'uuid';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-// TODO: Turn into generic class
 export abstract class DataService<DataT extends { id: string }> {
     key: string;
     data: Map<string, DataT> = new Map();
@@ -24,11 +22,11 @@ export abstract class DataService<DataT extends { id: string }> {
 
     /**
      * Fetches array of all DataTs
-     * @returns DataT array of current favorite DataTs
+     * @returns DataT array of current DataTs
      */
     getAll(): DataT[] {
         // Function to return all DataTs with no qualifications
-        return [...this.data].map((character) => character[1]);
+        return [...this.data].map((data) => data[1]);
     }
 
     /**
@@ -41,17 +39,17 @@ export abstract class DataService<DataT extends { id: string }> {
     }
 
     /**
-     * Deletes chosen character
-     * @param characterId ID of superhero to be removed
+     * Deletes chosen DataT object
+     * @param dataId ID of DataT object to be removed
      */
-    delete(characterId: string) {
-        this.data.delete(characterId);
+    delete(dataId: string) {
+        this.data.delete(dataId);
         localStorage.setItem(this.key, JSON.stringify(this.data, this.replacer));
     }
 
     /**
-     * Adds a DataT Object to add to characterMap
-     * @param DataT  DataT Object to add to characterMap
+     * Adds a DataT Object to add to the DataT map
+     * @param DataT  DataT Object to add to DataT map
      */
     //TODO: return DataT??
     create(character: DataT): Observable<DataT> {
@@ -64,6 +62,10 @@ export abstract class DataService<DataT extends { id: string }> {
         return rxjs.of(character);
     }
 
+    /**
+     * Checks if DataT map is empty
+     * @returns true if empty, otherwise false
+     */
     isEmpty(): boolean {
         if (this.data.size === 0) {
             return true;
@@ -88,10 +90,9 @@ export abstract class DataService<DataT extends { id: string }> {
     // }
 
     /**
-     * Updates a DataT object based on user changes
+     * Updates a DataT object to new DataT object passed in with same id
      * @param id  DataT Object to update
-     * @returns DataT object is findname is found in characterMap, else
-     *   undefined
+     * @returns updated DataT object
      */
     update(data: DataT): Observable<DataT> {
         this.data.set(data.id, data);
@@ -116,17 +117,5 @@ export abstract class DataService<DataT extends { id: string }> {
             }
         }
         return value;
-    }
-}
-@Injectable()
-export class HeroService extends DataService<Character> {
-    constructor() {
-        super('heroDataTMap');
-    }
-}
-@Injectable()
-export class VillainService extends DataService<Character> {
-    constructor() {
-        super('villainDataTMap');
     }
 }

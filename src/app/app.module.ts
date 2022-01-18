@@ -14,16 +14,24 @@ import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { AppComponent } from './app.component';
 import { CharacterDetailComponent } from './shared/characters/character-detail/character-detail.component';
 import { CharacterFormComponent } from './shared/characters/character-form/character-form.component';
-import { CharactersPageComponent } from './pages/application/characters-page/characters-page.component';
+import { CharactersPageComponent } from './pages/application/pages/characters-page/characters-page.component';
 import { HomePageComponent } from './pages/home/home-page/home-page.component';
 import { CharactersSharedModule } from './shared/characters/characters-shared.module';
-import { SuperheroesComponent } from './pages/application/superheroes/superheroes.component';
-import { VillainsComponent } from './pages/application/villains/villains.component';
-import { CharacterServiceResolve } from './shared/resolves/character.resolve';
-import { HeroService, VillainService } from './shared/services/superheroes.service';
+import { SuperheroesPageComponent } from './pages/application/pages/superheroes-page/superheroes-page.component';
+import { VillainsPageComponent } from './pages/application/pages/villains-page/villains-page.component';
+import { CharacterServiceResolve } from './pages/application/resolves/character.resolve';
+import { HomePageModule } from './pages/home/home.module';
+import { SuperheroesModule } from './pages/application/pages/superheroes-page/superheroes.module';
+import { VillainsModule } from './pages/application/pages/villains-page/villains.module';
 
 @NgModule({
-    declarations: [AppComponent, SuperheroesComponent, HomePageComponent, CharactersPageComponent, VillainsComponent],
+    declarations: [
+        AppComponent,
+        SuperheroesPageComponent,
+        HomePageComponent,
+        CharactersPageComponent,
+        VillainsPageComponent,
+    ],
     imports: [
         BrowserModule,
         FormsModule,
@@ -36,8 +44,11 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
         MatChipsModule,
         CharactersSharedModule,
         CoreModule,
+        HomePageModule,
+        SuperheroesModule,
+        VillainsModule,
         RouterModule.forRoot([
-            { path: 'superheroes', component: SuperheroesComponent },
+            { path: 'superheroes', component: SuperheroesPageComponent },
             { path: 'homepage', component: HomePageComponent },
             { path: 'characters', component: CharactersPageComponent },
             {
@@ -53,7 +64,7 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
                 },
             },
             {
-                path: 'superheroes/:id/edit',
+                path: 'superheroes/:id/form',
                 component: CharacterFormComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
@@ -69,7 +80,7 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
                 },
             },
             {
-                path: 'villains/:id/edit',
+                path: 'villains/:id/form',
                 component: CharacterFormComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
@@ -83,12 +94,7 @@ import { HeroService, VillainService } from './shared/services/superheroes.servi
         TuiDialogModule,
         TuiNotificationsModule,
     ],
-    providers: [
-        HeroService,
-        VillainService,
-        CharacterServiceResolve,
-        { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
-    ],
+    providers: [CharacterServiceResolve, { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
