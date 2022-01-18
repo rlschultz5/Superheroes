@@ -160,12 +160,9 @@
                     >
                         {{ characterDetermined }}
                     </button>
-                    <button
-                        class="{{ this.buttonClass }}"
-                        type="button"
-                        title="Cancel your edits"
-                        [routerLink]="['/characters']"
-                    >
+                    <button class="{{ this.buttonClass }}" type="button" title="Cancel your edits">
+                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
+
                         Cancel
                     </button>
                     <button
@@ -174,8 +171,8 @@
                         type="button"
                         title="Delete this character"
                         (click)="deleteCharacter()"
-                        [routerLink]="['/characters']"
                     >
+                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
                         Delete
                     </button>
                 </div>

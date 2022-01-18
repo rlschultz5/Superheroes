@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Character } from '../../../pages/application/models/character';
-import { characterColorMap } from '../../../pages/application/models/characterColorMap';
+import { Character } from '../../models/character';
+import { characterColorMap } from '../../models/characterColorMap';
 
 @Component({
     selector: 'app-character-card',

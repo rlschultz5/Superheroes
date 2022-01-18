@@ -1,12 +1,12 @@
-import { validationMessages } from '../../validation-messages';
-import { characterColorMap } from '../../../pages/application/models/characterColorMap';
-import { DataService } from '../../../pages/application/services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character } from '../../../pages/application/models/character';
 import { FormBuilder, FormControl, FormArray, Validators, FormGroup } from '@angular/forms';
 import { SuperheroService } from 'src/app/pages/application/services/superhero.service';
 import { VillainService } from 'src/app/pages/application/services/villain.service';
+import { Character } from '../../models/character';
+import { DataService } from '../../services/data.service';
+import { characterColorMap } from '../../models/characterColorMap';
+import { validationMessages } from 'src/app/shared/validation-messages';
 
 @Component({
     selector: 'app-character-form',

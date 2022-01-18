@@ -1,8 +1,8 @@
-import { Character } from '../../../pages/application/models/character';
-import { DataService } from '../../../pages/application/services/data.service';
+import { Character } from '../../models/character';
+import { DataService } from '../../services/data.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { characterColorMap } from '../../../pages/application/models/characterColorMap';
+import { characterColorMap } from '../../models/characterColorMap';
 
 @Component({
     selector: 'app-character-detail',

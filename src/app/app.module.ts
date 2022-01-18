@@ -12,26 +12,17 @@ import { RouterModule } from '@angular/router';
 import { TuiDialogModule, TuiNotificationsModule, TuiRootModule, TUI_SANITIZER } from '@taiga-ui/core';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { AppComponent } from './app.component';
-import { CharacterDetailComponent } from './shared/characters/character-detail/character-detail.component';
-import { CharacterFormComponent } from './shared/characters/character-form/character-form.component';
 import { CharactersPageComponent } from './pages/application/pages/characters-page/characters-page.component';
 import { HomePageComponent } from './pages/home/home-page/home-page.component';
-import { CharactersSharedModule } from './shared/characters/characters-shared.module';
-import { SuperheroesPageComponent } from './pages/application/pages/superheroes-page/superheroes-page.component';
-import { VillainsPageComponent } from './pages/application/pages/villains-page/villains-page.component';
+import { CharactersSharedModule } from './pages/application/components/characters-shared.module';
 import { CharacterServiceResolve } from './pages/application/resolves/character.resolve';
 import { HomePageModule } from './pages/home/home.module';
-import { SuperheroesModule } from './pages/application/pages/superheroes-page/superheroes.module';
 import { VillainsModule } from './pages/application/pages/villains-page/villains.module';
+import { CharacterFormComponent } from './pages/application/components/character-form/character-form.component';
+import { CharactersModule } from './pages/application/pages/characters-page/characters.module';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        SuperheroesPageComponent,
-        HomePageComponent,
-        CharactersPageComponent,
-        VillainsPageComponent,
-    ],
+    declarations: [AppComponent, HomePageComponent],
     imports: [
         BrowserModule,
         FormsModule,
@@ -45,47 +36,14 @@ import { VillainsModule } from './pages/application/pages/villains-page/villains
         CharactersSharedModule,
         CoreModule,
         HomePageModule,
-        SuperheroesModule,
         VillainsModule,
+        CharactersModule,
         RouterModule.forRoot([
-            { path: 'superheroes', component: SuperheroesPageComponent },
             { path: 'homepage', component: HomePageComponent },
             { path: 'characters', component: CharactersPageComponent },
             {
                 path: 'characters/create',
                 component: CharacterFormComponent,
-            },
-            {
-                path: 'superheroes/:id/detail',
-                component: CharacterDetailComponent,
-                resolve: { providers: CharacterServiceResolve },
-                data: {
-                    type: 'hero',
-                },
-            },
-            {
-                path: 'superheroes/:id/form',
-                component: CharacterFormComponent,
-                resolve: { providers: CharacterServiceResolve },
-                data: {
-                    type: 'hero',
-                },
-            },
-            {
-                path: 'villains/:id/detail',
-                component: CharacterDetailComponent,
-                resolve: { providers: CharacterServiceResolve },
-                data: {
-                    type: 'villain',
-                },
-            },
-            {
-                path: 'villains/:id/form',
-                component: CharacterFormComponent,
-                resolve: { providers: CharacterServiceResolve },
-                data: {
-                    type: 'villain',
-                },
             },
             { path: '', component: HomePageComponent },
         ]),
