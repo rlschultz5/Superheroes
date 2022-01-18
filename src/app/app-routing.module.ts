@@ -5,7 +5,7 @@ const routes: Routes = [
     // TODO: lazy load - loads ondemand using loadChildren property
     // home
     // character
-    // hero
+    // superhero
     // villain
 ];
 

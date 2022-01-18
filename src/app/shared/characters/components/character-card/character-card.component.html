@@ -1,0 +1,14 @@
+<!-- CHARACTER CARD INFORMATION -->
+<div class="{{ characterColorMap[character.color] }}">
+    <div class="character-name">
+        {{ character.name }}
+    </div>
+    <div class="character-realname">
+        {{ character.realName }}
+    </div>
+    <!-- DETAILS & FORM LINKS -->
+    <ul class="app-center">
+        <a class="character-button" (click)="onClicked('detail')"> Details </a>
+        <a class="character-button" (click)="onClicked('form')"> Edit </a>
+    </ul>
+</div>
