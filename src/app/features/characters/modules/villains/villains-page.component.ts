@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../../../../shared/characters/types/character.interface';
 import { characterColorMap } from '../../../../shared/characters/configurations/character-color-map.config';
-import { defaultVillains } from '../configurations/default-villains.config';
+import { defaultVillains } from './configurations/default-villains.config';
 import { VillainService } from '../../../../shared/villains/villain.service';
 
 @Component({

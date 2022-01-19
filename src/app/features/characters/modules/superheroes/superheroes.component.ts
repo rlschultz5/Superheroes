@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../../../../shared/characters/types/character.interface';
+import { Router } from '@angular/router';
 import { characterColorMap } from '../../../../shared/characters/configurations/character-color-map.config';
+import { Character } from '../../../../shared/characters/types/character.interface';
 import { SuperheroService } from '../../../../shared/superheroes/superhero.service';
-import { defaultSuperheroes } from '../configurations/default-superheroes.config';
+import { defaultSuperheroes } from './configurations/default-superheroes.config';
 
 @Component({
     selector: 'app-superheroes',
@@ -21,6 +21,7 @@ export class SuperheroesComponent implements OnInit {
 
     ngOnInit() {
         if (this.superheroService.isEmpty()) {
+            // NOTE: Put this in assets or app.html
             for (let index = 0; index < defaultSuperheroes.length; index++) {
                 this.superheroService.create(defaultSuperheroes[index]);
             }

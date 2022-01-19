@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SuperheroService } from '../../../../shared/superheroes/superhero.service';
+import { SuperheroService } from '../../../../../shared/superheroes/superhero.service';
 
 import { SuperheroesComponent } from './superheroes.component';
 

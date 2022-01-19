@@ -72,7 +72,7 @@ export class CharacterFormComponent implements OnInit {
                 'cursor-pointer border button-edit-character ' + characterColorMap[this.character!.color] + '-hover';
             this.pageTitle = `Edit character: ${this.character?.name}`;
         }
-
+        // NOTE: create an empty form first and do a patch load if they exist
         this.characterForm = this.formBuilder.group({
             id: [this.character?.id],
             name: [this.character?.name, [Validators.required]],
@@ -100,7 +100,7 @@ export class CharacterFormComponent implements OnInit {
     }
 
     addPower() {
-        this.powerForms.push(new FormControl());
+        this.powerForms.push(new FormControl(null, [Validators.minLength(1), Validators.maxLength(30)]));
     }
 
     removePower(index: number) {

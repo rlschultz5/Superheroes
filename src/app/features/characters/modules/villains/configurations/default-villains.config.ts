@@ -1,4 +1,4 @@
-import { Character } from '../../../../shared/characters/types/character.interface';
+import { Character } from '../../../../../shared/characters/types/character.interface';
 
 export const defaultVillains: Character[] = [
     {

@@ -14,18 +14,27 @@ import { SuperheroesComponent } from './superheroes.component';
     imports: [
         CommonModule,
         CharactersSharedModule,
-        // TODO: forRoot??
-        RouterModule.forRoot([
+        // NOTE: forRoot is only for app.module
+        RouterModule.forChild([
             {
-                path: 'superheroes/:id/detail',
-                component: CharacterDetailComponent,
+                path: 'create',
+                component: CharacterFormComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
                     type: 'superhero',
                 },
             },
             {
-                path: 'superheroes/:id/form',
+                path: ':id',
+                component: CharacterDetailComponent,
+                // NOTE: Resolves also can load the info before the page loads so it doesn't load a blank page
+                resolve: { providers: CharacterServiceResolve },
+                data: {
+                    type: 'superhero',
+                },
+            },
+            {
+                path: ':id/edit',
                 component: CharacterFormComponent,
                 resolve: { providers: CharacterServiceResolve },
                 data: {
