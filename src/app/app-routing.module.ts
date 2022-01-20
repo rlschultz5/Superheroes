@@ -8,8 +8,7 @@ const routes: Routes = [
         path: 'characters',
         loadChildren: () => import('./features/characters/characters.module').then((m) => m.CharactersModule),
     },
-    // NOTE: '' can be at the bottom, or if it's at the top it needs to use " pathMatch: 'full' " tag
-    { path: '', redirectTo: 'home' },
+    { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];
 
 @NgModule({

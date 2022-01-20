@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     // NOTE: if it's characters/NOTHINGELSE => pathmatch: full
     { path: '', pathMatch: 'full', component: CharacterListPageComponent },
-    // NOTE: returns a promise and ".then" is giving contents of the file => returns Homepagemodule
     {
         path: 'superheroes',
         loadChildren: () => import('./modules/superheroes/superheroes.module').then((m) => m.SuperheroesModule),

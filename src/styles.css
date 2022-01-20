@@ -81,6 +81,10 @@ video {
   cursor: default;
 }
 
+h1 {
+  @apply text-9xl;
+}
+
 p {
   @apply mt-2;
   @apply text-xl;
@@ -99,26 +103,6 @@ p {
 /* body {
   @apply p-3;
 } */
-
-.navigation-display {
-  @apply bg-slate-700;
-  @apply block;
-  @apply py-3;
-  @apply bg-fixed;
-  @apply h-40;
-  @apply bg-fixed;
-  @apply bg-top;
-}
-
-.navigation-title {
-  @apply text-5xl;
-  @apply text-center;
-  @apply font-extrabold;
-  @apply text-white;
-  @apply m-2;
-  /* @apply cursor-default; */
-  /* @apply py-2; */
-}
 
 .basic-button {
   @apply py-2 px-6 mx-5 my-2;
@@ -147,13 +131,14 @@ p {
   @apply text-xs;
 }
 
-.h2 {
-  @apply text-4xl;
+h2 {
+  @apply text-9xl;
   @apply font-bold;
   @apply text-center;
   @apply pt-3;
   @apply text-slate-700
 }
+
 .h2-list {
   @apply text-xl;
   @apply font-bold;
@@ -216,18 +201,6 @@ p {
   border: 1px solid #d4d4d4;
   margin-bottom: 20px;
   position: relative;
-}
-
-.character-section {
-  /* @apply bg-slate-700; */
-  @apply bg-white;
-  @apply border-4 rounded-xl mx-5 border-slate-700;
-  @apply mb-8;
-  /* @apply max-h-96; */
-  /* border: 1px solid #d4d4d4; */
-  /* height: 150px; */
-  /* margin-bottom: 20px; */
-  /* position: relative; */
 }
 
 .character-name {

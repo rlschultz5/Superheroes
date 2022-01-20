@@ -1,14 +1,24 @@
 <div>
     <!-- LIST OF CHARACTERS HEADER -->
-    <h2 class="h2">List of Favorite Marvel Characters!</h2>
+    <h2 class="h2">List of Characters!</h2>
     <p>(View, modify, remove or create new Marvel characters here)</p>
     <br />
     <!-- SUPERHERO SECTION -->
     <div class="character-section">
-        <app-superheroes></app-superheroes>
+        <app-character-grid-display
+            [title]="'List of Superheroes:'"
+            [characters]="superheroes"
+            [characterType]="'superheroes'"
+        ></app-character-grid-display>
     </div>
+    <br />
+    <br />
     <!-- GRID OF VILLAINS -->
     <div class="character-section">
-        <app-villains></app-villains>
+        <app-character-grid-display
+            [title]="'List of Villains:'"
+            [characters]="villains"
+            [characterType]="'villains'"
+        ></app-character-grid-display>
     </div>
 </div>

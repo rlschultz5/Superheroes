@@ -1,0 +1,158 @@
+<!-- TITLE -->
+<h2>{{ pageTitle }}</h2>
+<div class="detail-view border">
+    <!-- SUPERHERO-COLORED BORDER -->
+    <div *ngIf="!isNewSuperhero">
+        <h3 class="border {{ characterColorMap[superhero!.color] }}">
+            {{ superheroForm.get("name")?.value }}
+        </h3>
+    </div>
+    <!-- NEW SUPERHERO BORDER -->
+    <div *ngIf="isNewSuperhero">
+        <h3 class="border border-white">New Superhero</h3>
+    </div>
+    <!-- SUPERHERO FORM -->
+    <div class="detail-subview border">
+        <form novalidate (ngSubmit)="saveSuperhero()" [formGroup]="superheroForm">
+            <!-- Value: {{ superheroForm.value | json }} -->
+            <div class="top-space">
+                <label class="form-label" for="superheroName">Name:</label>
+                <input
+                    class="container border-square"
+                    formControlName="name"
+                    id="superheroName"
+                    placeholder="Name (required)"
+                    type="text"
+                />
+                <div class="form-error" *ngIf="name!.invalid && name?.touched">
+                    {{ displayMessage.characterName.required }}
+                </div>
+            </div>
+
+            <div class="top-space">
+                <label class="form-label" for="superheroRealName">Real Name:</label>
+                <input
+                    class="container border-square"
+                    formControlName="realName"
+                    id="superheroRealName"
+                    placeholder="Real Name (required)"
+                    type="text"
+                />
+                <div class="form-error" *ngIf="realName!.invalid && realName?.touched">
+                    <span *ngIf="realName?.errors?.['required']">
+                        {{ displayMessage.realName.required }}
+                    </span>
+                    <span *ngIf="realName?.errors?.['maxlength']">
+                        {{ displayMessage.realName.maxlength(realName?.errors?.['maxlength']) }}
+                    </span>
+                    <!-- {{ displayMessage.realName(realName?.errors?.['required']) }} -->
+                    <!-- {{ displayMessage.realName | json }} -->
+                </div>
+            </div>
+            <label class="form-label">Power:</label>
+            <div formArrayName="powers">
+                <div *ngFor="let power of powerForms.controls; let powerIndex = index">
+                    <label class="form-label" [attr.for]="powerIndex">#{{ powerIndex + 1 }}</label>
+                    <div>
+                        <input
+                            class="container border-square"
+                            [id]="powerIndex"
+                            type="text"
+                            placeholder="Power"
+                            [formControlName]="powerIndex"
+                        />
+                    </div>
+                    <button
+                        class="basic-button button-remove-power"
+                        color="warn"
+                        type="button"
+                        (click)="removePower(powerIndex)"
+                    >
+                        Remove Power
+                    </button>
+                </div>
+            </div>
+            <button class="basic-button button-add-power" color="primary" type="button" (click)="addPower()">
+                Add Power
+            </button>
+
+            <div class="top-space">
+                <label class="form-label" for="superheroDescription">Description:</label>
+                <input
+                    class="container border-square"
+                    formControlName="description"
+                    id="superheroDescription"
+                    placeholder="Description"
+                    type="text"
+                />
+            </div>
+
+            <div class="top-space">
+                <label class="form-label" for="superheroLink">Link:</label>
+                <input
+                    class="container border-square"
+                    formControlName="link"
+                    id="superheroLink"
+                    placeholder="Link"
+                    type="text"
+                />
+            </div>
+
+            <fieldset class="container border-square top-space">
+                <legend>Color:</legend>
+                <label for="red"
+                    ><input type="radio" formControlName="color" name="color" value="red" id="red" />Red</label
+                ><br />
+                <label for="green"
+                    ><input type="radio" formControlName="color" name="color" value="green" id="green" />Green</label
+                ><br />
+                <label for="blue"
+                    ><input type="radio" formControlName="color" name="color" value="blue" id="blue" />Blue</label
+                ><br />
+                <label for="yellow"
+                    ><input type="radio" formControlName="color" name="color" value="yellow" id="yellow" />Yellow</label
+                ><br />
+                <label for="white"
+                    ><input type="radio" formControlName="color" name="color" value="white" id="white" />White</label
+                ><br />
+                <label for="purple"
+                    ><input type="radio" formControlName="color" name="color" value="purple" id="purple" />Purple</label
+                ><br />
+            </fieldset>
+
+            <!-- SUBMIT/CANCEL/DELETE BUTTONS -->
+            <div class="top-space">
+                <div>
+                    <button
+                        class="{{ this.buttonClass }}"
+                        [disabled]="submittable"
+                        (click)="saveSuperhero()"
+                        [title]="
+                            superheroForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'
+                        "
+                        [disabled]="superheroForm.pristine || !superheroForm.valid || !superheroDetermined"
+                    >
+                        {{ superheroDetermined }}
+                    </button>
+                    <button class="{{ this.buttonClass }}" type="button" title="Cancel your edits">
+                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
+
+                        Cancel
+                    </button>
+                    <button
+                        *ngIf="!isNewSuperhero"
+                        class="{{ this.buttonClass }}"
+                        type="button"
+                        title="Delete this superhero"
+                        (click)="deleteSuperhero()"
+                    >
+                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
+                        Delete
+                    </button>
+                </div>
+            </div>
+            <span class="form-error" *ngIf="superhero?.id && !superheroForm.valid">Form Not Valid</span>
+            <span class="form-error" *ngIf="isNewSuperhero && !superheroForm.valid">Form Not Valid</span>
+        </form>
+    </div>
+</div>

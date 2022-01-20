@@ -13,7 +13,6 @@ export class SuperheroesComponent implements OnInit {
     title: string = 'List of Superheroes:';
     superheroes?: Character[];
     initialSuperheroes: boolean = true;
-    characterCardDetails!: { characterName: string; characterRealName: string; characterColor: string };
 
     readonly characterColorMap = characterColorMap;
 

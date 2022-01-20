@@ -1,0 +1,156 @@
+<!-- TITLE -->
+<h2>{{ pageTitle }}</h2>
+<div class="detail-view border">
+    <!-- VILLAIN-COLORED BORDER -->
+    <div *ngIf="!isNewVillain">
+        <h3 class="border {{ characterColorMap[villain!.color] }}">
+            {{ villainForm.get("name")?.value }}
+        </h3>
+    </div>
+    <!-- NEW VILLAIN BORDER -->
+    <div *ngIf="isNewVillain">
+        <h3 class="border border-white">New Villain</h3>
+    </div>
+    <!-- VILLAIN FORM -->
+    <div class="detail-subview border">
+        <form novalidate (ngSubmit)="saveVillain()" [formGroup]="villainForm">
+            <!-- Value: {{ villainForm.value | json }} -->
+            <div class="top-space">
+                <label class="form-label" for="villainName">Name:</label>
+                <input
+                    class="container border-square"
+                    formControlName="name"
+                    id="villainName"
+                    placeholder="Name (required)"
+                    type="text"
+                />
+                <div class="form-error" *ngIf="name!.invalid && name?.touched">
+                    {{ displayMessage.characterName.required }}
+                </div>
+            </div>
+
+            <div class="top-space">
+                <label class="form-label" for="villainRealName">Real Name:</label>
+                <input
+                    class="container border-square"
+                    formControlName="realName"
+                    id="villainRealName"
+                    placeholder="Real Name (required)"
+                    type="text"
+                />
+                <div class="form-error" *ngIf="realName!.invalid && realName?.touched">
+                    <span *ngIf="realName?.errors?.['required']">
+                        {{ displayMessage.realName.required }}
+                    </span>
+                    <span *ngIf="realName?.errors?.['maxlength']">
+                        {{ displayMessage.realName.maxlength(realName?.errors?.['maxlength']) }}
+                    </span>
+                    <!-- {{ displayMessage.realName(realName?.errors?.['required']) }} -->
+                    <!-- {{ displayMessage.realName | json }} -->
+                </div>
+            </div>
+            <label class="form-label">Power:</label>
+            <div formArrayName="powers">
+                <div *ngFor="let power of powerForms.controls; let powerIndex = index">
+                    <label class="form-label" [attr.for]="powerIndex">#{{ powerIndex + 1 }}</label>
+                    <div>
+                        <input
+                            class="container border-square"
+                            [id]="powerIndex"
+                            type="text"
+                            placeholder="Power"
+                            [formControlName]="powerIndex"
+                        />
+                    </div>
+                    <button
+                        class="basic-button button-remove-power"
+                        color="warn"
+                        type="button"
+                        (click)="removePower(powerIndex)"
+                    >
+                        Remove Power
+                    </button>
+                </div>
+            </div>
+            <button class="basic-button button-add-power" color="primary" type="button" (click)="addPower()">
+                Add Power
+            </button>
+
+            <div class="top-space">
+                <label class="form-label" for="villainDescription">Description:</label>
+                <input
+                    class="container border-square"
+                    formControlName="description"
+                    id="villainDescription"
+                    placeholder="Description"
+                    type="text"
+                />
+            </div>
+
+            <div class="top-space">
+                <label class="form-label" for="villainLink">Link:</label>
+                <input
+                    class="container border-square"
+                    formControlName="link"
+                    id="villainLink"
+                    placeholder="Link"
+                    type="text"
+                />
+            </div>
+
+            <fieldset class="container border-square top-space">
+                <legend>Color:</legend>
+                <label for="red"
+                    ><input type="radio" formControlName="color" name="color" value="red" id="red" />Red</label
+                ><br />
+                <label for="green"
+                    ><input type="radio" formControlName="color" name="color" value="green" id="green" />Green</label
+                ><br />
+                <label for="blue"
+                    ><input type="radio" formControlName="color" name="color" value="blue" id="blue" />Blue</label
+                ><br />
+                <label for="yellow"
+                    ><input type="radio" formControlName="color" name="color" value="yellow" id="yellow" />Yellow</label
+                ><br />
+                <label for="white"
+                    ><input type="radio" formControlName="color" name="color" value="white" id="white" />White</label
+                ><br />
+                <label for="purple"
+                    ><input type="radio" formControlName="color" name="color" value="purple" id="purple" />Purple</label
+                ><br />
+            </fieldset>
+
+            <!-- SUBMIT/CANCEL/DELETE BUTTONS -->
+            <div class="top-space">
+                <div>
+                    <button
+                        class="{{ this.buttonClass }}"
+                        [disabled]="submittable"
+                        (click)="saveVillain()"
+                        [title]="villainForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                        [disabled]="villainForm.pristine || !villainForm.valid || !villainDetermined"
+                    >
+                        {{ villainDetermined }}
+                    </button>
+                    <button class="{{ this.buttonClass }}" type="button" title="Cancel your edits">
+                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
+
+                        Cancel
+                    </button>
+                    <button
+                        *ngIf="!isNewVillain"
+                        class="{{ this.buttonClass }}"
+                        type="button"
+                        title="Delete this villain"
+                        (click)="deleteVillain()"
+                    >
+                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
+                        Delete
+                    </button>
+                </div>
+            </div>
+            <span class="form-error" *ngIf="villain?.id && !villainForm.valid">Form Not Valid</span>
+            <span class="form-error" *ngIf="isNewVillain && !villainForm.valid">Form Not Valid</span>
+        </form>
+    </div>
+</div>

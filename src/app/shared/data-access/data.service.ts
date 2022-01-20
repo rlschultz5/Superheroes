@@ -1,8 +1,6 @@
-import { Character } from '../characters/types/character.interface';
 import * as rxjs from 'rxjs';
-import * as uuid from 'uuid';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as uuid from 'uuid';
 
 export abstract class DataService<DataT extends { id: string }> {
     key: string;

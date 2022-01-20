@@ -1,9 +1,9 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Character } from '../../types/character.interface';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { characterColorMap } from '../../configurations/character-color-map.config';
-import { DataService } from '../../../data-access/data.service';
 import { Location } from '@angular/common';
+import { Character } from '../../types/character.interface';
+import { characterColorMap } from '../../configurations/character-color-map.config';
+import { DataService } from 'src/app/shared/data-access/data.service';
 
 @Component({
     selector: 'app-character-detail',
@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
     styleUrls: ['./character-detail.component.css'],
 })
 export class CharacterDetailComponent implements OnInit {
-    @Input() character!: Character;
+    character!: Character;
     @Output() buttonClicked = new EventEmitter<string>();
     readonly characterColorMap = characterColorMap;
 

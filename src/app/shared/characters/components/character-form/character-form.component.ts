@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormArray, Validators, FormGroup } from '@angular/forms';
 import { SuperheroService } from 'src/app/shared/superheroes/superhero.service';
 import { VillainService } from 'src/app/shared/villains/villain.service';
-import { Character } from '../../types/character.interface';
-import { DataService } from '../../../data-access/data.service';
-import { characterColorMap } from '../../configurations/character-color-map.config';
 import { validationMessages } from 'src/app/shared/characters/configurations/validation-messages.config';
+import { Character } from '../../types/character.interface';
+import { DataService } from 'src/app/shared/data-access/data.service';
+import { characterColorMap } from '../../configurations/character-color-map.config';
 
 @Component({
     selector: 'app-character-form',

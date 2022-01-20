@@ -8,7 +8,7 @@
     </div>
     <!-- DETAILS & FORM LINKS -->
     <ul class="app-center">
-        <a class="character-button" (click)="onClicked('detail')"> Details </a>
-        <a class="character-button" (click)="onClicked('form')"> Edit </a>
+        <a class="character-button" [routerLink]="['/characters', routeFrom, character.id]"> Details </a>
+        <a class="character-button" [routerLink]="['/characters', routeFrom, character.id, 'edit']"> Edit </a>
     </ul>
 </div>
