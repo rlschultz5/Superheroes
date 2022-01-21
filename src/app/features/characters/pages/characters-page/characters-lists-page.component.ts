@@ -10,8 +10,8 @@ import { defaultVillains } from '../../modules/villains/configurations/default-v
 
 @Component({
     selector: 'app-character-list-page',
-    templateUrl: './character-list-page.component.html',
-    styleUrls: ['./character-list-page.component.css'],
+    templateUrl: './characters-lists-page.component.html',
+    styleUrls: ['./characters-lists-page.component.css'],
 })
 export class CharactersListsPageComponent implements OnInit {
     title: string = 'MARVEL CHARACTERS:';
