@@ -72,7 +72,7 @@ export class VillainsFormPageComponent implements OnInit {
             link: [this.villain?.link],
             color: new FormControl(this.villain?.color),
         });
-        console.log(this.villainForm.get('name')?.value);
+        // console.log(this.villainForm.get('name')?.value);
     }
     get name() {
         return this.villainForm.get('name');

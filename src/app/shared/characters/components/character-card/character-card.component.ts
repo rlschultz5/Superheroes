@@ -9,10 +9,13 @@ import { Character } from '../../types/character.interface';
 export class CharacterCardComponent {
     @Input() character!: Character;
     @Input() routeFrom!: string;
+    @Input() buttons: CardButtonConfig[] = [];
 
     @Output() buttonClicked = new EventEmitter<string>();
 
     readonly characterColorMap = characterColorMap;
-
-    constructor() {}
+}
+export interface CardButtonConfig {
+    label: string;
+    route: string[];
 }

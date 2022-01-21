@@ -7,8 +7,8 @@
         {{ character.realName }}
     </div>
     <!-- DETAILS & FORM LINKS -->
-    <ul class="app-center">
-        <a class="character-button" [routerLink]="['/characters', routeFrom, character.id]"> Details </a>
-        <a class="character-button" [routerLink]="['/characters', routeFrom, character.id, 'edit']"> Edit </a>
-    </ul>
+    <!-- TODO: not ul for buttons -->
+    <div class="app-center">
+        <a *ngFor="let button of buttons" class="character-button" [routerLink]="button.route"> {{ button.label }} </a>
+    </div>
 </div>

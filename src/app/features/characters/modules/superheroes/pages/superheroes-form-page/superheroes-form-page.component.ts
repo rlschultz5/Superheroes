@@ -39,12 +39,12 @@ export class SuperheroesFormPageComponent implements OnInit {
     ngOnInit(): void {
         this.superheroId = this.activatedRoute.snapshot.paramMap.get('id') as string;
         this.superheroForm = this.formBuilder.group({
-            name: ['', [Validators.required]],
-            realName: ['', [Validators.required, Validators.maxLength(25)]],
-            powers: this.formBuilder.array(['']),
-            description: [''],
-            link: [''],
-            color: ['white'],
+            name: [null, [Validators.required]],
+            realName: [null, [Validators.required, Validators.maxLength(25)]],
+            powers: this.formBuilder.array([null]),
+            description: [null],
+            link: [null],
+            color: [null],
         });
         // IF NEW SUPERHERO
         if (this.superheroId == undefined) {
@@ -60,17 +60,11 @@ export class SuperheroesFormPageComponent implements OnInit {
             this.buttonClass =
                 'cursor-pointer border button-edit-character ' + characterColorMap[this.superhero!.color] + '-hover';
             this.pageTitle = `Edit Superhero: ${this.superhero?.name}`;
+            // TODO: Is there another way to fill in the form if the form is already created?
+            this.superheroForm.patchValue(this.superhero);
         }
-        // NOTE: create an empty form first and do a patch load if they exist
-        this.superheroForm = this.formBuilder.group({
-            name: [this.superhero?.name, [Validators.required]],
-            realName: [this.superhero?.realName, [Validators.required, Validators.maxLength(25)]],
-            powers: this.formBuilder.array(this.superhero!.powers),
-            description: [this.superhero?.description],
-            link: [this.superhero?.link],
-            color: new FormControl(this.superhero?.color),
-        });
-        console.log(this.superheroForm.get('name')?.value);
+
+        // console.log(this.superheroForm.get('name')?.value);
     }
     get name() {
         return this.superheroForm.get('name');
