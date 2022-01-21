@@ -26,7 +26,7 @@ const routes: Routes = [
         // },
     },
     {
-        path: ':id/edit',
+        path: 'edit/:id',
         component: SuperheroesFormPageComponent,
         // component: CharacterFormComponent,
         // resolve: { providers: CharacterServiceResolve },

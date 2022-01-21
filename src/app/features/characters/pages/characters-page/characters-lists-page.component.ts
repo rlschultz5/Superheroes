@@ -1,3 +1,5 @@
+import { charactersRoutes } from '../../../../shared/characters/configurations/characters-routes.config';
+import { CardButtonConfig } from '../../../../shared/characters/components/character-card/character-card.component';
 import { Component, OnInit } from '@angular/core';
 import { characterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
@@ -11,21 +13,19 @@ import { defaultVillains } from '../../modules/villains/configurations/default-v
     templateUrl: './character-list-page.component.html',
     styleUrls: ['./character-list-page.component.css'],
 })
-export class CharacterListPageComponent implements OnInit {
+export class CharactersListsPageComponent implements OnInit {
     title: string = 'MARVEL CHARACTERS:';
-    routeFromSuperheroes: string = '/characters/superheroes';
     superheroes!: Character[];
     initialSuperheroes: boolean = true;
 
-    routeFromVillains: string = '/characters/villains';
     villains!: Character[];
     initialVillains: boolean = true;
 
     readonly characterColorMap = characterColorMap;
 
-    // Auto-constructs an instance shared with app and passes it in
     constructor(private readonly superheroService: SuperheroService, private readonly villainService: VillainService) {}
     ngOnInit(): void {
+        // CREATES DEFAULT SUPERHEROES FOR SITE IF SITE HAS NEVER BEEN LAUNCHED
         if (this.superheroService.isEmpty()) {
             // NOTE: Put this in assets or app.html
             for (let index = 0; index < defaultSuperheroes.length; index++) {
@@ -33,9 +33,12 @@ export class CharacterListPageComponent implements OnInit {
             }
             this.initialSuperheroes = false;
         }
+        var dnskldvn: string = charactersRoutes.CHARACTERS.MAIN;
+        console.log(dnskldvn);
 
         this.superheroes = this.superheroService.getAll();
 
+        // CREATES DEFAULT VILLAINS FOR SITE IF SITE HAS NEVER BEEN LAUNCHED
         if (this.villainService.isEmpty()) {
             for (let index = 0; index < defaultVillains.length; index++) {
                 this.villainService.create(defaultVillains[index]);
@@ -46,5 +49,18 @@ export class CharacterListPageComponent implements OnInit {
         }
 
         this.villains = this.villainService.getAll();
+    }
+
+    /**
+     * Creates an array of buttons with a label and route
+     * @param prefix /characters/prefix
+     * @param id character's id
+     * @returns and array of CardButtonConfig
+     */
+    getRoute(prefix: string, id: string): CardButtonConfig[] {
+        return [
+            { label: 'Details', route: '/characters/' + prefix + '/' + id },
+            { label: 'Edit', route: '/characters/' + prefix + '/edit/' + id },
+        ];
     }
 }

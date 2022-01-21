@@ -120,6 +120,20 @@ p {
   /* @apply shadow-2xl; */
 }
 
+.inlineblock {
+    /* @apply block; */
+    @apply inline-block;
+}
+
+.topright-corner {
+    @apply float-right;
+}
+
+.create-button {
+    @apply bg-slate-700;
+    @apply text-white;
+}
+
 .footer {
   @apply p-5;
   @apply mt-16

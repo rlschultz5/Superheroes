@@ -17,5 +17,5 @@ export class CharacterCardComponent {
 }
 export interface CardButtonConfig {
     label: string;
-    route: string[];
+    route: string;
 }

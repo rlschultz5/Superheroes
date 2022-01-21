@@ -1,4 +1,3 @@
-import { CharacterGridDisplayComponent } from './components/character-grid-display/character-grid-display.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,13 +7,8 @@ import { CharacterDetailComponent } from './components/character-detail/characte
 import { CharacterFormComponent } from './components/character-form/character-form.component';
 
 @NgModule({
-    declarations: [
-        CharacterCardComponent,
-        CharacterDetailComponent,
-        CharacterFormComponent,
-        CharacterGridDisplayComponent,
-    ],
-    exports: [CharacterCardComponent, CharacterDetailComponent, CharacterFormComponent, CharacterGridDisplayComponent],
+    declarations: [CharacterCardComponent, CharacterDetailComponent, CharacterFormComponent],
+    exports: [CharacterCardComponent, CharacterDetailComponent, CharacterFormComponent],
     imports: [CommonModule, ReactiveFormsModule, RouterModule],
 })
 export class CharactersSharedModule {}

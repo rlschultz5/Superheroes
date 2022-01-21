@@ -9,6 +9,7 @@ const routes: Routes = [
         loadChildren: () => import('./features/characters/characters.module').then((m) => m.CharactersModule),
     },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
+    { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({
