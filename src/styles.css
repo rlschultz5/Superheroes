@@ -235,9 +235,13 @@ h2 {
   @apply bg-purple-500 hover:bg-purple-700;
 }
 
+.character-grid {
+  display: grid;
+}
+
 .app-grid {
   @apply grid;
-  @apply grid-cols-4;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
   @apply gap-4;
   @apply mx-12;
 }
