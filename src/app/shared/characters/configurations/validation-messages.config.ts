@@ -12,5 +12,6 @@ export const validationMessages = {
     },
     power: {
         maxlength: "That's too many characters for a power. Must be 50 or less.",
+        minlength: 'Must enter a power.',
     },
 };

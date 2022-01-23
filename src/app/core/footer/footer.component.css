@@ -1,0 +1,10 @@
+.footer {
+    @apply my-3;
+    @apply h-fit;
+  }
+  
+  .footer-text {
+    @apply justify-center;
+    @apply text-xs;
+    @apply h-fit;
+  }

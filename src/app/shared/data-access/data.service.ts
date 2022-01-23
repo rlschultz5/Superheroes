@@ -49,12 +49,8 @@ export abstract class DataService<DataT extends { id: string }> {
      * Adds a DataT Object to add to the DataT map
      * @param DataT  DataT Object to add to DataT map
      */
-    //TODO: return DataT??
     create(character: DataT): Observable<DataT> {
         character.id = uuid.v4();
-        // TODO: Fix color issue
-        // character.color = 'green';
-        // added with key to all lowercase for searchability
         this.data.set(character.id, character);
         localStorage.setItem(this.key, JSON.stringify(this.data, this.replacer));
         return rxjs.of(character);

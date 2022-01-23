@@ -32,19 +32,14 @@ export class CharactersListsPageComponent implements OnInit {
             }
             this.initialSuperheroes = false;
         }
-
         this.superheroes = this.superheroService.getAll();
-
         // CREATES DEFAULT VILLAINS FOR SITE IF SITE HAS NEVER BEEN LAUNCHED
         if (this.villainService.isEmpty()) {
             for (let index = 0; index < defaultVillains.length; index++) {
                 this.villainService.create(defaultVillains[index]);
-                console.log(this.initialVillains);
             }
             this.initialVillains = false;
-            console.log(this.initialVillains);
         }
-
         this.villains = this.villainService.getAll();
     }
 

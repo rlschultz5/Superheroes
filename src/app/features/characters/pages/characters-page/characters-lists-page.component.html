@@ -13,7 +13,11 @@
         </div>
         <div class="app-grid app-center">
             <div *ngFor="let superhero of superheroes">
-                <app-character-card [character]="superhero" [buttons]="getRoute('superheroes', superhero.id)"></app-character-card>
+                <app-character-card
+                    class="flex-wrap shrink-0"
+                    [character]="superhero"
+                    [buttons]="getRoute('superheroes', superhero.id)"
+                ></app-character-card>
             </div>
         </div>
     </div>

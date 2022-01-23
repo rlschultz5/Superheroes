@@ -8,10 +8,6 @@
 
 .navigation-display {
   @apply bg-slate-700;
-  @apply block;
   @apply py-3;
-  @apply bg-fixed;
-  @apply h-40;
-  @apply bg-fixed;
-  @apply bg-top;
+  @apply h-fit;
 }
