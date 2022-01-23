@@ -14,7 +14,6 @@
     <!-- SUPERHERO FORM -->
     <div class="detail-subview border">
         <form novalidate (ngSubmit)="saveSuperhero()" [formGroup]="superheroForm">
-            <!-- Value: {{ superheroForm.value | json }} -->
             <div class="top-space">
                 <label class="form-label" for="superheroName">Name:</label>
                 <input
@@ -24,8 +23,10 @@
                     placeholder="Name (required)"
                     type="text"
                 />
-                <div class="form-error" *ngIf="name!.invalid && name?.touched">
-                    {{ displayMessage.characterName.required }}
+                <div class="form-error" *ngIf="(name!.invalid && name?.touched) || isSubmitted">
+                    <span *ngIf="name?.errors?.['required']">
+                        {{ displayMessage.characterName.required }}
+                    </span>
                 </div>
             </div>
 
@@ -38,7 +39,7 @@
                     placeholder="Real Name (required)"
                     type="text"
                 />
-                <div class="form-error" *ngIf="realName!.invalid && realName?.touched">
+                <div class="form-error" *ngIf="(realName!.invalid && realName?.touched) || isSubmitted">
                     <span *ngIf="realName?.errors?.['required']">
                         {{ displayMessage.realName.required }}
                     </span>
@@ -62,19 +63,12 @@
                             [formControlName]="powerIndex"
                         />
                     </div>
-                    <button
-                        class="basic-button button-remove-power"
-                        color="warn"
-                        type="button"
-                        (click)="removePower(powerIndex)"
-                    >
+                    <button class="basic-button button-remove-power" color="warn" type="button" (click)="removePower(powerIndex)">
                         Remove Power
                     </button>
                 </div>
+                <button class="basic-button button-add-power" color="primary" type="button" (click)="addPower()">Add Power</button>
             </div>
-            <button class="basic-button button-add-power" color="primary" type="button" (click)="addPower()">
-                Add Power
-            </button>
 
             <div class="top-space">
                 <label class="form-label" for="superheroDescription">Description:</label>
@@ -89,34 +83,20 @@
 
             <div class="top-space">
                 <label class="form-label" for="superheroLink">Link:</label>
-                <input
-                    class="container border-square"
-                    formControlName="link"
-                    id="superheroLink"
-                    placeholder="Link"
-                    type="text"
-                />
+                <input class="container border-square" formControlName="link" id="superheroLink" placeholder="Link" type="text" />
             </div>
 
             <fieldset class="container border-square top-space">
                 <legend>Color:</legend>
-                <label for="red"
-                    ><input type="radio" formControlName="color" name="color" value="red" id="red" />Red</label
+                <label for="red"><input type="radio" formControlName="color" name="color" value="red" id="red" />Red</label><br />
+                <label for="green"><input type="radio" formControlName="color" name="color" value="green" id="green" />Green</label
                 ><br />
-                <label for="green"
-                    ><input type="radio" formControlName="color" name="color" value="green" id="green" />Green</label
+                <label for="blue"><input type="radio" formControlName="color" name="color" value="blue" id="blue" />Blue</label><br />
+                <label for="yellow"><input type="radio" formControlName="color" name="color" value="yellow" id="yellow" />Yellow</label
                 ><br />
-                <label for="blue"
-                    ><input type="radio" formControlName="color" name="color" value="blue" id="blue" />Blue</label
+                <label for="white"><input type="radio" formControlName="color" name="color" value="white" id="white" />White</label
                 ><br />
-                <label for="yellow"
-                    ><input type="radio" formControlName="color" name="color" value="yellow" id="yellow" />Yellow</label
-                ><br />
-                <label for="white"
-                    ><input type="radio" formControlName="color" name="color" value="white" id="white" />White</label
-                ><br />
-                <label for="purple"
-                    ><input type="radio" formControlName="color" name="color" value="purple" id="purple" />Purple</label
+                <label for="purple"><input type="radio" formControlName="color" name="color" value="purple" id="purple" />Purple</label
                 ><br />
             </fieldset>
 
@@ -125,18 +105,13 @@
                 <div>
                     <button
                         class="{{ this.buttonClass }}"
-                        [disabled]="submittable"
-                        (click)="saveSuperhero()"
-                        [title]="
-                            superheroForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'
-                        "
-                        [disabled]="superheroForm.pristine || !superheroForm.valid || !superheroDetermined"
+                        (click)="verifySubmission()"
+                        type="submit"
+                        [title]="superheroForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
                     >
-                        {{ superheroDetermined }}
+                        Submit
                     </button>
-                    <button class="{{ this.buttonClass }}" type="button" title="Cancel your edits">
-                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
-
+                    <button class="{{ this.buttonClass }}" type="button" title="Cancel your edits" [routerLink]="['/characters']">
                         Cancel
                     </button>
                     <button
@@ -146,13 +121,12 @@
                         title="Delete this superhero"
                         (click)="deleteSuperhero()"
                     >
-                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
                         Delete
                     </button>
                 </div>
             </div>
-            <span class="form-error" *ngIf="superhero?.id && !superheroForm.valid">Form Not Valid</span>
-            <span class="form-error" *ngIf="isNewSuperhero && !superheroForm.valid">Form Not Valid</span>
+            <span class="form-error" *ngIf="isSubmitted && superhero?.id && !superheroForm.valid">Form Not Valid</span>
+            <span class="form-error" *ngIf="isSubmitted && isNewSuperhero && !superheroForm.valid">Form Not Valid</span>
         </form>
     </div>
 </div>

@@ -10,22 +10,12 @@ h3 {
     @apply text-center;
 }
 
-p {
-    @apply text-2xl;
-    @apply text-slate-700;
-    @apply text-left;
-}
-
 .form-error {
   @apply mt-8;
   @apply text-red-600;
   @apply text-xl;
   @apply max-w-6xl;
 }
-
-/* .detail-subview {
-  @apply bg-yellow-400;
-} */
 
 .button-remove-power {
   @apply bg-red-500 hover:bg-red-800;

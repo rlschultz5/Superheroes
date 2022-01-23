@@ -11,7 +11,6 @@ import { VillainService } from 'src/app/shared/villains/villain.service';
 })
 export class VillainsDetailPageComponent implements OnInit {
     character!: Character;
-    // @Output() buttonClicked = new EventEmitter<string>();
     readonly characterColorMap = characterColorMap;
 
     characterId!: string;

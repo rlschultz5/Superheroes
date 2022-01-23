@@ -17,8 +17,10 @@ export class SuperheroesFormPageComponent implements OnInit {
     superheroForm!: FormGroup;
     superheroId!: string;
     isNewSuperhero: boolean = false;
+    isSubmitted: boolean = false;
     submittable: boolean = false;
     buttonClass!: string;
+    addPowerDisabled: boolean = true;
     superheroDetermined: boolean = false;
 
     superhero?: Character;
@@ -41,10 +43,10 @@ export class SuperheroesFormPageComponent implements OnInit {
         this.superheroForm = this.formBuilder.group({
             name: [null, [Validators.required]],
             realName: [null, [Validators.required, Validators.maxLength(25)]],
-            powers: this.formBuilder.array([null]),
+            powers: this.formBuilder.array([null], [Validators.minLength(1), Validators.maxLength(30)]),
             description: [null],
             link: [null],
-            color: [null],
+            color: ['white'],
         });
         // IF NEW SUPERHERO
         if (this.superheroId == undefined) {
@@ -57,14 +59,11 @@ export class SuperheroesFormPageComponent implements OnInit {
         else {
             this.superheroDetermined = true;
             this.superhero = this.superheroService.getById(this.superheroId);
-            this.buttonClass =
-                'cursor-pointer border button-edit-character ' + characterColorMap[this.superhero!.color] + '-hover';
+            this.buttonClass = 'cursor-pointer border button-edit-character ' + characterColorMap[this.superhero!.color] + '-hover';
             this.pageTitle = `Edit Superhero: ${this.superhero?.name}`;
-            // TODO: Is there another way to fill in the form if the form is already created?
             this.superheroForm.patchValue(this.superhero);
+            this.addPowerDisabled = false;
         }
-
-        // console.log(this.superheroForm.get('name')?.value);
     }
     get name() {
         return this.superheroForm.get('name');
@@ -79,12 +78,20 @@ export class SuperheroesFormPageComponent implements OnInit {
     }
 
     addPower() {
-        this.powerForms.push(new FormControl(null, [Validators.minLength(1), Validators.maxLength(30)]));
+        if (!this.powerForms.valid) {
+            alert("Can't add an empty power");
+        } else {
+            this.powerForms.push(new FormControl(null, [Validators.minLength(1), Validators.maxLength(30)]));
+        }
     }
 
     removePower(index: number) {
-        this.powerForms.removeAt(index);
-        this.powerForms.markAsDirty();
+        if (index === 0 && this.powerForms.length === 1) {
+            alert("There aren't any powers to remove.");
+        } else {
+            this.powerForms.removeAt(index);
+            this.powerForms.markAsDirty();
+        }
     }
 
     get description() {
@@ -104,23 +111,12 @@ export class SuperheroesFormPageComponent implements OnInit {
     }
 
     async saveSuperhero() {
-        console.log('FIX: SAVE_SUPERHERO');
         if (this.superheroForm.valid) {
-            console.log('FIX: SAVE_SUPERHERO: VALID');
             if (this.superheroForm.dirty) {
-                console.log('FIX: SAVE_SUPERHERO: DIRTY');
                 this.updatedSuperhero = {
                     ...this.superhero,
                     ...this.superheroForm.value,
                 };
-                // DEBUGGING STATEMENTS
-                console.log('FIX: SAVE_SUPERHERO');
-                console.log('this.superhero:');
-                console.log(this.superhero);
-                console.log('this.updatedSuperhero:');
-                console.log(this.updatedSuperhero);
-                console.log('this.isNewSuperhero:');
-                console.log(this.isNewSuperhero);
 
                 if (this.isNewSuperhero) {
                     try {
@@ -132,12 +128,12 @@ export class SuperheroesFormPageComponent implements OnInit {
                 } else {
                     try {
                         await this.superheroService.update(this.updatedSuperhero).toPromise();
-                        this.onSaveComplete();
                     } catch (error) {
                         console.log('error');
                         console.error(error);
                     }
                 }
+                this.onSaveComplete();
             }
         } else {
             this.errorMessage = 'Please correct the validation errors.';
@@ -153,10 +149,14 @@ export class SuperheroesFormPageComponent implements OnInit {
     deleteSuperhero(): void {
         this.superheroService.delete(this.superheroId);
         alert('Superhero Successfully Deleted');
-        // Object.keys
+        this.router.navigate(['/characters']);
     }
-
-    handleError(error: any) {
-        // return this.displayMessage.realName['error'];
+    verifySubmission() {
+        this.isSubmitted = true;
+        if (!this.isNewSuperhero && this.superheroForm.pristine) {
+            alert('No changes made.');
+        } else if (!this.superheroForm.valid) {
+            alert('Form not valid.');
+        }
     }
 }

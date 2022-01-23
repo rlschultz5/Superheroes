@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CharacterDetailComponent } from 'src/app/shared/characters/components/character-detail/character-detail.component';
-import { CharacterFormComponent } from 'src/app/shared/characters/components/character-form/character-form.component';
-import { CharacterServiceResolve } from 'src/app/shared/characters/resolves/character.resolve';
 import { VillainsDetailPageComponent } from './pages/villains-detail-page/villains-detail-page.component';
 import { VillainsFormPageComponent } from './pages/villains-form-page/villains-form-page.component';
 

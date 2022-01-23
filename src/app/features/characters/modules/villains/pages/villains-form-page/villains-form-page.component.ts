@@ -17,8 +17,10 @@ export class VillainsFormPageComponent implements OnInit {
     villainForm!: FormGroup;
     villainId!: string;
     isNewVillain: boolean = false;
+    isSubmitted: boolean = false;
     submittable: boolean = false;
     buttonClass!: string;
+    addPowerDisabled: boolean = true;
     villainDetermined: boolean = false;
 
     villain?: Character;
@@ -39,40 +41,29 @@ export class VillainsFormPageComponent implements OnInit {
     ngOnInit(): void {
         this.villainId = this.activatedRoute.snapshot.paramMap.get('id') as string;
         this.villainForm = this.formBuilder.group({
-            name: ['', [Validators.required]],
-            realName: ['', [Validators.required, Validators.maxLength(25)]],
-            powers: this.formBuilder.array(['']),
-            description: [''],
-            link: [''],
+            name: [null, [Validators.required]],
+            realName: [null, [Validators.required, Validators.maxLength(25)]],
+            powers: this.formBuilder.array([null], [Validators.minLength(1), Validators.maxLength(30)]),
+            description: [null],
+            link: [null],
             color: ['white'],
         });
-
         // IF NEW VILLAIN
         if (this.villainId == undefined) {
             this.isNewVillain = true;
             this.pageTitle = 'Create Villain';
-            // this.villain = this.emptyVillain();
+            this.villain = this.emptyVillain();
             this.buttonClass = `cursor-pointer border button-create-character`;
         }
         // IF EXISTING VILLAIN
         else {
             this.villainDetermined = true;
             this.villain = this.villainService.getById(this.villainId);
-            this.buttonClass =
-                'cursor-pointer border button-edit-character ' + characterColorMap[this.villain!.color] + '-hover';
+            this.buttonClass = 'cursor-pointer border button-edit-character ' + characterColorMap[this.villain!.color] + '-hover';
             this.pageTitle = `Edit Villain: ${this.villain?.name}`;
+            this.villainForm.patchValue(this.villain);
+            this.addPowerDisabled = false;
         }
-        // NOTE: create an empty form first and do a patch load if they exist
-        this.villainForm = this.formBuilder.group({
-            id: [this.villain?.id],
-            name: [this.villain?.name, [Validators.required]],
-            realName: [this.villain?.realName, [Validators.required, Validators.maxLength(25)]],
-            powers: this.formBuilder.array(this.villain!.powers),
-            description: [this.villain?.description],
-            link: [this.villain?.link],
-            color: new FormControl(this.villain?.color),
-        });
-        // console.log(this.villainForm.get('name')?.value);
     }
     get name() {
         return this.villainForm.get('name');
@@ -87,12 +78,20 @@ export class VillainsFormPageComponent implements OnInit {
     }
 
     addPower() {
-        this.powerForms.push(new FormControl(null, [Validators.minLength(1), Validators.maxLength(30)]));
+        if (!this.powerForms.valid) {
+            alert("Can't add an empty power");
+        } else {
+            this.powerForms.push(new FormControl(null, [Validators.minLength(1), Validators.maxLength(30)]));
+        }
     }
 
     removePower(index: number) {
-        this.powerForms.removeAt(index);
-        this.powerForms.markAsDirty();
+        if (index === 0 && this.powerForms.length === 1) {
+            alert("There aren't any powers to remove.");
+        } else {
+            this.powerForms.removeAt(index);
+            this.powerForms.markAsDirty();
+        }
     }
 
     get description() {
@@ -112,23 +111,12 @@ export class VillainsFormPageComponent implements OnInit {
     }
 
     async saveVillain() {
-        console.log('FIX: SAVE_VILLAIN');
         if (this.villainForm.valid) {
-            console.log('FIX: SAVE_VILLAIN: VALID');
             if (this.villainForm.dirty) {
-                console.log('FIX: SAVE_VILLAIN: DIRTY');
                 this.updatedVillain = {
                     ...this.villain,
                     ...this.villainForm.value,
                 };
-                // DEBUGGING STATEMENTS
-                console.log('FIX: SAVE_VILLAIN');
-                console.log('this.villain:');
-                console.log(this.villain);
-                console.log('this.updatedVillain:');
-                console.log(this.updatedVillain);
-                console.log('this.isNewVillain:');
-                console.log(this.isNewVillain);
 
                 if (this.isNewVillain) {
                     try {
@@ -146,6 +134,7 @@ export class VillainsFormPageComponent implements OnInit {
                         console.error(error);
                     }
                 }
+                this.onSaveComplete();
             }
         } else {
             this.errorMessage = 'Please correct the validation errors.';
@@ -154,17 +143,21 @@ export class VillainsFormPageComponent implements OnInit {
     onSaveComplete(): void {
         // Reset the form to clear the flags
         this.villainForm.reset();
-        alert('Superhero Successfully Saved!');
+        alert('Villain Successfully Saved!');
         this.router.navigate(['/characters']);
     }
 
     deleteVillain(): void {
         this.villainService.delete(this.villainId);
-        alert('Superhero Successfully Deleted');
-        // Object.keys
+        alert('Villain Successfully Deleted');
+        this.router.navigate(['/characters']);
     }
-
-    handleError(error: any) {
-        // return this.displayMessage.realName['error'];
+    verifySubmission() {
+        this.isSubmitted = true;
+        if (!this.isNewVillain && this.villainForm.pristine) {
+            alert('No changes made.');
+        } else if (!this.villainForm.valid) {
+            alert('Form not valid.');
+        }
     }
 }

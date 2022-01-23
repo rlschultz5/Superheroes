@@ -1,4 +1,3 @@
-import { charactersRoutes } from '../../../../shared/characters/configurations/characters-routes.config';
 import { CardButtonConfig } from '../../../../shared/characters/components/character-card/character-card.component';
 import { Component, OnInit } from '@angular/core';
 import { characterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
@@ -33,8 +32,6 @@ export class CharactersListsPageComponent implements OnInit {
             }
             this.initialSuperheroes = false;
         }
-        var dnskldvn: string = charactersRoutes.CHARACTERS.MAIN;
-        console.log(dnskldvn);
 
         this.superheroes = this.superheroService.getAll();
 
@@ -51,12 +48,6 @@ export class CharactersListsPageComponent implements OnInit {
         this.villains = this.villainService.getAll();
     }
 
-    /**
-     * Creates an array of buttons with a label and route
-     * @param prefix /characters/prefix
-     * @param id character's id
-     * @returns and array of CardButtonConfig
-     */
     getRoute(prefix: string, id: string): CardButtonConfig[] {
         return [
             { label: 'Details', route: '/characters/' + prefix + '/' + id },

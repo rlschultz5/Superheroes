@@ -14,7 +14,6 @@
     <!-- VILLAIN FORM -->
     <div class="detail-subview border">
         <form novalidate (ngSubmit)="saveVillain()" [formGroup]="villainForm">
-            <!-- Value: {{ villainForm.value | json }} -->
             <div class="top-space">
                 <label class="form-label" for="villainName">Name:</label>
                 <input
@@ -24,8 +23,10 @@
                     placeholder="Name (required)"
                     type="text"
                 />
-                <div class="form-error" *ngIf="name!.invalid && name?.touched">
-                    {{ displayMessage.characterName.required }}
+                <div class="form-error" *ngIf="(name!.invalid && name?.touched) || isSubmitted">
+                    <span *ngIf="name?.errors?.['required']">
+                        {{ displayMessage.characterName.required }}
+                    </span>
                 </div>
             </div>
 
@@ -38,7 +39,7 @@
                     placeholder="Real Name (required)"
                     type="text"
                 />
-                <div class="form-error" *ngIf="realName!.invalid && realName?.touched">
+                <div class="form-error" *ngIf="(realName!.invalid && realName?.touched) || isSubmitted">
                     <span *ngIf="realName?.errors?.['required']">
                         {{ displayMessage.realName.required }}
                     </span>
@@ -62,19 +63,12 @@
                             [formControlName]="powerIndex"
                         />
                     </div>
-                    <button
-                        class="basic-button button-remove-power"
-                        color="warn"
-                        type="button"
-                        (click)="removePower(powerIndex)"
-                    >
+                    <button class="basic-button button-remove-power" color="warn" type="button" (click)="removePower(powerIndex)">
                         Remove Power
                     </button>
                 </div>
+                <button class="basic-button button-add-power" color="primary" type="button" (click)="addPower()">Add Power</button>
             </div>
-            <button class="basic-button button-add-power" color="primary" type="button" (click)="addPower()">
-                Add Power
-            </button>
 
             <div class="top-space">
                 <label class="form-label" for="villainDescription">Description:</label>
@@ -89,34 +83,20 @@
 
             <div class="top-space">
                 <label class="form-label" for="villainLink">Link:</label>
-                <input
-                    class="container border-square"
-                    formControlName="link"
-                    id="villainLink"
-                    placeholder="Link"
-                    type="text"
-                />
+                <input class="container border-square" formControlName="link" id="villainLink" placeholder="Link" type="text" />
             </div>
 
             <fieldset class="container border-square top-space">
                 <legend>Color:</legend>
-                <label for="red"
-                    ><input type="radio" formControlName="color" name="color" value="red" id="red" />Red</label
+                <label for="red"><input type="radio" formControlName="color" name="color" value="red" id="red" />Red</label><br />
+                <label for="green"><input type="radio" formControlName="color" name="color" value="green" id="green" />Green</label
                 ><br />
-                <label for="green"
-                    ><input type="radio" formControlName="color" name="color" value="green" id="green" />Green</label
+                <label for="blue"><input type="radio" formControlName="color" name="color" value="blue" id="blue" />Blue</label><br />
+                <label for="yellow"><input type="radio" formControlName="color" name="color" value="yellow" id="yellow" />Yellow</label
                 ><br />
-                <label for="blue"
-                    ><input type="radio" formControlName="color" name="color" value="blue" id="blue" />Blue</label
+                <label for="white"><input type="radio" formControlName="color" name="color" value="white" id="white" />White</label
                 ><br />
-                <label for="yellow"
-                    ><input type="radio" formControlName="color" name="color" value="yellow" id="yellow" />Yellow</label
-                ><br />
-                <label for="white"
-                    ><input type="radio" formControlName="color" name="color" value="white" id="white" />White</label
-                ><br />
-                <label for="purple"
-                    ><input type="radio" formControlName="color" name="color" value="purple" id="purple" />Purple</label
+                <label for="purple"><input type="radio" formControlName="color" name="color" value="purple" id="purple" />Purple</label
                 ><br />
             </fieldset>
 
@@ -125,16 +105,13 @@
                 <div>
                     <button
                         class="{{ this.buttonClass }}"
-                        [disabled]="submittable"
-                        (click)="saveVillain()"
+                        (click)="verifySubmission()"
+                        type="submit"
                         [title]="villainForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                        [disabled]="villainForm.pristine || !villainForm.valid || !villainDetermined"
                     >
-                        {{ villainDetermined }}
+                        Submit
                     </button>
-                    <button class="{{ this.buttonClass }}" type="button" title="Cancel your edits">
-                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
-
+                    <button class="{{ this.buttonClass }}" type="button" title="Cancel your edits" [routerLink]="['/characters']">
                         Cancel
                     </button>
                     <button
@@ -144,13 +121,12 @@
                         title="Delete this villain"
                         (click)="deleteVillain()"
                     >
-                        <!-- [routerLink]="['/characters']" TODO: Emit back to parent page -->
                         Delete
                     </button>
                 </div>
             </div>
-            <span class="form-error" *ngIf="villain?.id && !villainForm.valid">Form Not Valid</span>
-            <span class="form-error" *ngIf="isNewVillain && !villainForm.valid">Form Not Valid</span>
+            <span class="form-error" *ngIf="isSubmitted && villain?.id && !villainForm.valid">Form Not Valid</span>
+            <span class="form-error" *ngIf="isSubmitted && isNewVillain && !villainForm.valid">Form Not Valid</span>
         </form>
     </div>
 </div>

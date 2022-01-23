@@ -7,7 +7,6 @@
         {{ character.realName }}
     </div>
     <!-- DETAILS & FORM LINKS -->
-    <!-- TODO: not ul for buttons -->
     <div class="app-center">
         <a *ngFor="let button of buttons" class="character-button" [routerLink]="button.route"> {{ button.label }} </a>
     </div>
