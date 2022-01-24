@@ -235,10 +235,6 @@ h2 {
   @apply bg-purple-500 hover:bg-purple-700;
 }
 
-.character-grid {
-  display: grid;
-}
-
 .app-grid {
   @apply grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
@@ -254,6 +250,7 @@ h2 {
   @apply bg-slate-700;
   @apply shadow-2xl;
 }
+
 .detail-subview {
   @apply border-4 border-slate-700 rounded-2xl;
   @apply bg-white;

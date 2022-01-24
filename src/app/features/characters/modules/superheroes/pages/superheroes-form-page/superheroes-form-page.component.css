@@ -3,7 +3,7 @@ h2 {
     @apply text-left;
     @apply px-5;
     @apply pt-5;
-  }
+}
   
 h3 {
     @apply text-6xl;
@@ -75,14 +75,14 @@ p {
     @apply p-3;
     @apply text-xl;
     @apply mx-5;
-  }
+}
 
 .border-square {
   @apply border-4 border-slate-700 rounded-none;
 }
 
 .top-space {
-    @apply mt-2;
+  @apply mt-2;
 }
 
 .button-edit-character {

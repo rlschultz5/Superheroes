@@ -13,11 +13,7 @@
         </div>
         <div class="app-grid app-center">
             <div *ngFor="let superhero of superheroes">
-                <app-character-card
-                    class="flex-wrap shrink-0"
-                    [character]="superhero"
-                    [buttons]="getRoute('superheroes', superhero.id)"
-                ></app-character-card>
+                <app-character-card [character]="superhero" [buttons]="getRoute('superheroes', superhero.id)"></app-character-card>
             </div>
         </div>
     </div>
@@ -25,11 +21,9 @@
     <br />
     <!-- GRID OF VILLAINS -->
     <div class="character-section">
-        <div>
+        <div class="flex justify-between">
             <h3 class="inline-block">List of Villains:</h3>
-            <a class="inline-block basic-button create-button topright-corner" [routerLink]="'/characters/villains/create'"
-                >Create a Villain</a
-            >
+            <a class="basic-button create-button" [routerLink]="'/characters/villains/create'">Create a Villain</a>
         </div>
         <div class="app-grid app-center">
             <div *ngFor="let villain of villains">
