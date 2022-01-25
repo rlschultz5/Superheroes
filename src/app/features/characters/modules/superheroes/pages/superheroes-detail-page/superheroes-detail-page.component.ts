@@ -1,7 +1,7 @@
 import { SuperheroService } from './../../../../../../shared/superheroes/superhero.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { characterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
+import { CharacterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
 
 @Component({
@@ -12,7 +12,7 @@ import { Character } from 'src/app/shared/characters/types/character.interface';
 export class SuperheroesDetailPageComponent implements OnInit {
     character!: Character;
     // @Output() buttonClicked = new EventEmitter<string>();
-    readonly characterColorMap = characterColorMap;
+    readonly characterColorMap = CharacterColorMap;
 
     characterId!: string;
     characterColor!: string;
@@ -20,7 +20,7 @@ export class SuperheroesDetailPageComponent implements OnInit {
 
     constructor(private readonly activatedRoute: ActivatedRoute, private readonly superheroService: SuperheroService) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         // Retrieve Id from URL
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id') as string;
         // Use resolve to determine character type
@@ -28,7 +28,7 @@ export class SuperheroesDetailPageComponent implements OnInit {
         // Retrieve character
         this.character = this.superheroService.getById(this.characterId);
         // Set character's custom color
-        this.characterColor = characterColorMap[this.character!.color];
-        this.buttonClass = 'basic-button border ' + characterColorMap[this.character!.color] + '-hover';
+        this.characterColor = CharacterColorMap[this.character!.color];
+        this.buttonClass = 'basic-button border ' + CharacterColorMap[this.character!.color] + '-hover';
     }
 }

@@ -1,4 +1,4 @@
-import { CharactersListsPageComponent } from './pages/characters-page/characters-lists-page.component';
+import { CharactersListsPageComponent } from './pages/characters-lists-page/characters-lists-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

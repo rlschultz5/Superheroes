@@ -1,11 +1,11 @@
 import { CardButtonConfig } from '../../../../shared/characters/components/character-card/character-card.component';
 import { Component, OnInit } from '@angular/core';
-import { characterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
+import { CharacterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
 import { SuperheroService } from 'src/app/shared/superheroes/superhero.service';
 import { VillainService } from 'src/app/shared/villains/villain.service';
-import { defaultSuperheroes } from '../../modules/superheroes/configurations/default-superheroes.config';
-import { defaultVillains } from '../../modules/villains/configurations/default-villains.config';
+import { DefaultSuperheroes } from '../../modules/superheroes/configurations/default-superheroes.config';
+import { DefaultVillains } from '../../modules/villains/configurations/default-villains.config';
 
 @Component({
     selector: 'app-character-list-page',
@@ -20,23 +20,23 @@ export class CharactersListsPageComponent implements OnInit {
     villains!: Character[];
     initialVillains: boolean = true;
 
-    readonly characterColorMap = characterColorMap;
+    readonly characterColorMap = CharacterColorMap;
 
     constructor(private readonly superheroService: SuperheroService, private readonly villainService: VillainService) {}
-    ngOnInit(): void {
+    ngOnInit() {
         // CREATES DEFAULT SUPERHEROES FOR SITE IF SITE HAS NEVER BEEN LAUNCHED
         if (this.superheroService.isEmpty()) {
             // NOTE: Put this in assets or app.html
-            for (let index = 0; index < defaultSuperheroes.length; index++) {
-                this.superheroService.create(defaultSuperheroes[index]);
+            for (let index = 0; index < DefaultSuperheroes.length; index++) {
+                this.superheroService.create(DefaultSuperheroes[index]);
             }
             this.initialSuperheroes = false;
         }
         this.superheroes = this.superheroService.getAll();
         // CREATES DEFAULT VILLAINS FOR SITE IF SITE HAS NEVER BEEN LAUNCHED
         if (this.villainService.isEmpty()) {
-            for (let index = 0; index < defaultVillains.length; index++) {
-                this.villainService.create(defaultVillains[index]);
+            for (let index = 0; index < DefaultVillains.length; index++) {
+                this.villainService.create(DefaultVillains[index]);
             }
             this.initialVillains = false;
         }

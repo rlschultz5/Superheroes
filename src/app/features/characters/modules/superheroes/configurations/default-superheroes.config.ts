@@ -1,6 +1,6 @@
 import { Character } from '../../../../../shared/characters/types/character.interface';
 
-export const defaultSuperheroes: Character[] = [
+export const DefaultSuperheroes: Character[] = [
     {
         id: '',
         name: 'Beast',

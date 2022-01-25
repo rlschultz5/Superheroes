@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { characterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
-import { validationMessages } from 'src/app/shared/characters/configurations/validation-messages.config';
+import { CharacterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
+import { ValidationMessages } from 'src/app/shared/characters/configurations/validation-messages.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
 import { SuperheroService } from 'src/app/shared/superheroes/superhero.service';
 
@@ -26,9 +26,9 @@ export class SuperheroesFormPageComponent implements OnInit {
     superhero?: Character;
     updatedSuperhero!: Character;
 
-    readonly characterColorMap = characterColorMap;
+    readonly characterColorMap = CharacterColorMap;
 
-    displayMessage = validationMessages;
+    displayMessage = ValidationMessages;
     errorMess: string = '';
 
     constructor(
@@ -38,7 +38,7 @@ export class SuperheroesFormPageComponent implements OnInit {
         private readonly superheroService: SuperheroService
     ) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.superheroId = this.activatedRoute.snapshot.paramMap.get('id') as string;
         this.superheroForm = this.formBuilder.group({
             name: [null, [Validators.required]],
@@ -59,7 +59,7 @@ export class SuperheroesFormPageComponent implements OnInit {
         else {
             this.superheroDetermined = true;
             this.superhero = this.superheroService.getById(this.superheroId);
-            this.buttonClass = 'cursor-pointer border button-edit-character ' + characterColorMap[this.superhero!.color] + '-hover';
+            this.buttonClass = 'cursor-pointer border button-edit-character ' + CharacterColorMap[this.superhero!.color] + '-hover';
             this.pageTitle = `Edit Superhero: ${this.superhero?.name}`;
             this.superheroForm.patchValue(this.superhero);
             this.addPowerDisabled = false;
@@ -139,14 +139,14 @@ export class SuperheroesFormPageComponent implements OnInit {
             this.errorMessage = 'Please correct the validation errors.';
         }
     }
-    onSaveComplete(): void {
+    onSaveComplete() {
         // Reset the form to clear the flags
         this.superheroForm.reset();
         alert('Superhero Successfully Saved!');
         this.router.navigate(['/characters']);
     }
 
-    deleteSuperhero(): void {
+    deleteSuperhero() {
         this.superheroService.delete(this.superheroId);
         alert('Superhero Successfully Deleted');
         this.router.navigate(['/characters']);

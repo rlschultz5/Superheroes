@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { characterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
+import { CharacterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
 import { VillainService } from 'src/app/shared/villains/villain.service';
 
@@ -11,7 +11,7 @@ import { VillainService } from 'src/app/shared/villains/villain.service';
 })
 export class VillainsDetailPageComponent implements OnInit {
     character!: Character;
-    readonly characterColorMap = characterColorMap;
+    readonly characterColorMap = CharacterColorMap;
 
     characterId!: string;
     characterColor!: string;
@@ -19,7 +19,7 @@ export class VillainsDetailPageComponent implements OnInit {
 
     constructor(private readonly activatedRoute: ActivatedRoute, private readonly villainService: VillainService) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         // Retrieve Id from URL
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id') as string;
         // Use resolve to determine character type
@@ -27,7 +27,7 @@ export class VillainsDetailPageComponent implements OnInit {
         // Retrieve character
         this.character = this.villainService.getById(this.characterId);
         // Set character's custom color
-        this.characterColor = characterColorMap[this.character!.color];
-        this.buttonClass = 'basic-button border ' + characterColorMap[this.character!.color] + '-hover';
+        this.characterColor = CharacterColorMap[this.character!.color];
+        this.buttonClass = 'basic-button border ' + CharacterColorMap[this.character!.color] + '-hover';
     }
 }

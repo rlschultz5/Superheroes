@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { characterColorMap } from '../../configurations/character-color-map.config';
+import { CharacterColorMap } from '../../configurations/character-color-map.config';
 import { Character } from '../../types/character.interface';
 
 @Component({
@@ -13,7 +13,7 @@ export class CharacterCardComponent {
 
     @Output() buttonClicked = new EventEmitter<string>();
 
-    readonly characterColorMap = characterColorMap;
+    readonly characterColorMap = CharacterColorMap;
 }
 export interface CardButtonConfig {
     label: string;

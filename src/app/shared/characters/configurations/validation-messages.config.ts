@@ -1,4 +1,4 @@
-export const validationMessages = {
+export const ValidationMessages = {
     characterName: {
         required: 'Character name is required.',
     },

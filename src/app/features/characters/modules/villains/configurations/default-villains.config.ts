@@ -1,6 +1,6 @@
 import { Character } from '../../../../../shared/characters/types/character.interface';
 
-export const defaultVillains: Character[] = [
+export const DefaultVillains: Character[] = [
     {
         id: '',
         name: 'Magneto',

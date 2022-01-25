@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { characterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
-import { validationMessages } from 'src/app/shared/characters/configurations/validation-messages.config';
+import { CharacterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
+import { ValidationMessages } from 'src/app/shared/characters/configurations/validation-messages.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
 import { VillainService } from 'src/app/shared/villains/villain.service';
 
@@ -26,9 +26,9 @@ export class VillainsFormPageComponent implements OnInit {
     villain?: Character;
     updatedVillain!: Character;
 
-    readonly characterColorMap = characterColorMap;
+    readonly characterColorMap = CharacterColorMap;
 
-    displayMessage = validationMessages;
+    displayMessage = ValidationMessages;
     errorMess: string = '';
 
     constructor(
@@ -38,7 +38,7 @@ export class VillainsFormPageComponent implements OnInit {
         private readonly villainService: VillainService
     ) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.villainId = this.activatedRoute.snapshot.paramMap.get('id') as string;
         this.villainForm = this.formBuilder.group({
             name: [null, [Validators.required]],
@@ -59,7 +59,7 @@ export class VillainsFormPageComponent implements OnInit {
         else {
             this.villainDetermined = true;
             this.villain = this.villainService.getById(this.villainId);
-            this.buttonClass = 'cursor-pointer border button-edit-character ' + characterColorMap[this.villain!.color] + '-hover';
+            this.buttonClass = 'cursor-pointer border button-edit-character ' + CharacterColorMap[this.villain!.color] + '-hover';
             this.pageTitle = `Edit Villain: ${this.villain?.name}`;
             this.villainForm.patchValue(this.villain);
             this.addPowerDisabled = false;
@@ -140,14 +140,14 @@ export class VillainsFormPageComponent implements OnInit {
             this.errorMessage = 'Please correct the validation errors.';
         }
     }
-    onSaveComplete(): void {
+    onSaveComplete() {
         // Reset the form to clear the flags
         this.villainForm.reset();
         alert('Villain Successfully Saved!');
         this.router.navigate(['/characters']);
     }
 
-    deleteVillain(): void {
+    deleteVillain() {
         this.villainService.delete(this.villainId);
         alert('Villain Successfully Deleted');
         this.router.navigate(['/characters']);

@@ -1,4 +1,4 @@
-export const charactersRoutes = {
+export const CharactersRoutes = {
     CHARACTERS: {
         MAIN: '/characters',
         SUPERHEROES: '/characters/superheroes',

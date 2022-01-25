@@ -11,9 +11,9 @@ h3 {
 }
 
 p {
-    @apply text-2xl;
-    @apply text-slate-700;
-    @apply text-left;
+  @apply text-2xl;
+  @apply text-slate-700;
+  @apply text-left;
 }
 
 .form-error {

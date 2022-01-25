@@ -51,7 +51,7 @@
                 </div>
             </div>
             <label class="form-label">Power:</label>
-            <div formArrayName="powers">
+            <div formArrayName="powers" class="form-error">
                 <div *ngFor="let power of powerForms.controls; let powerIndex = index">
                     <label class="form-label" [attr.for]="powerIndex">#{{ powerIndex + 1 }}</label>
                     <div>
@@ -62,6 +62,14 @@
                             placeholder="Power"
                             [formControlName]="powerIndex"
                         />
+                        <div class="form-error" *ngIf="(power?.invalid && power?.touched) || isSubmitted">
+                            <span *ngIf="power?.errors?.['minlength']">
+                                {{ displayMessage.power.minlength }}
+                            </span>
+                            <span *ngIf="power?.errors?.['maxlength']">
+                                {{ displayMessage.power.maxlength }}
+                            </span>
+                        </div>
                     </div>
                     <button class="basic-button button-remove-power" color="warn" type="button" (click)="removePower(powerIndex)">
                         Remove Power

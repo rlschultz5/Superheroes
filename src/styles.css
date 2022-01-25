@@ -109,11 +109,6 @@ p {
   @apply text-white;
 }
 
-.inline-block {
-    @apply block;
-    @apply inline-block;
-}
-
 .topright-corner {
     @apply float-right;
 }
@@ -294,7 +289,7 @@ h2 {
 @apply bg-purple-500 hover:bg-purple-700;
 }
 
-.create-input-boxes {
+/* .create-input-boxes {
     box-shadow: inset 0 1px 0 0 #ffffff;
     background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
     border-radius: 6px;
@@ -313,7 +308,7 @@ h2 {
     outline: 0;
     @apply m-5;
     @apply cursor-text;
-}
+} */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

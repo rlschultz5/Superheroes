@@ -1,4 +1,4 @@
-export const characterColorMap = {
+export const CharacterColorMap = {
     blue: 'app-button button-blue',
     green: 'app-button button-green',
     red: 'app-button button-red',
