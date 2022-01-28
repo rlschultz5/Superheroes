@@ -81,17 +81,32 @@ video {
   cursor: default;
 }
 
-h1 {
-  @apply text-9xl;
-}
+@layer components {
+  .button-app {
+    @apply rounded-lg shadow-2xl px-5 py-3 border-2 border-white bg-slate-700 hover:bg-slate-500
+    text-white uppercase tracking-wider font-semibold text-sm sm:text-base cursor-pointer focus:outline-none focus:ring 
+    focus:ring-offset-2 focus:ring-slate-900 active:bg-slate-900;
+  }
 
-p {
-  @apply mt-2;
-  @apply text-xl;
-  @apply text-center;
-  @apply font-bold;
-  /* @apply py-2; */
-  @apply text-slate-700
+  .app-title {
+    @apply text-5xl text-center text-white font-extrabold mt-2 mb-1;
+  }
+
+  .page-title {
+    @apply text-4xl text-center text-slate-700 font-extrabold mt-2 mb-1;
+  }
+  
+  .page-subtitle {
+    @apply text-xl text-center text-slate-700 font-extrabold mt-2 mb-1;
+  }
+  
+  .section-title {
+    @apply text-3xl text-center text-slate-700 font-extrabold mt-2 mb-1;
+  }
+  
+  .app-box-slate {
+    @apply bg-slate-700 border-4 rounded-xl mx-5 border-slate-500 m-8 p-5 shadow-2xl;    
+  }
 }
 
 .basic-button {
@@ -116,14 +131,6 @@ p {
 .create-button {
     @apply bg-slate-700;
     @apply text-white;
-}
-
-h2 {
-  @apply text-9xl;
-  @apply font-bold;
-  @apply text-center;
-  @apply pt-3;
-  @apply text-slate-700
 }
 
 .h2-list {

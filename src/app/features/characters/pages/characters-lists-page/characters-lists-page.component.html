@@ -1,28 +1,26 @@
-<div>
+<div class="max-w-6xl mx-auto">
     <!-- LIST OF CHARACTERS HEADER -->
-    <h2 class="h2">List of Characters!</h2>
-    <p>(View, modify, remove or create new Marvel characters here)</p>
+    <h2 class="page-title">List of Characters!</h2>
+    <h3 class="page-subtitle">(View, modify, remove or create new Marvel characters here)</h3>
     <br />
     <!-- SUPERHERO SECTION -->
-    <div class="character-section">
+    <section class="app-box-slate">
         <div class="flex justify-between">
-            <h3>List of Superheroes:</h3>
-            <a class="basic-button create-button topright-corner" [routerLink]="'/characters/superheroes/create'"
-                >Create a Superhero</a
-            >
+            <h4 class="section-title text-white">List of Superheroes:</h4>
+            <a class="button-app create-button topright-corner" [routerLink]="'/characters/superheroes/create'">Create a Superhero</a>
         </div>
         <div class="app-grid app-center">
             <div *ngFor="let superhero of superheroes">
                 <app-character-card [character]="superhero" [buttons]="getRoute('superheroes', superhero.id)"></app-character-card>
             </div>
         </div>
-    </div>
+    </section>
     <br />
     <br />
     <!-- GRID OF VILLAINS -->
-    <div class="character-section">
+    <section class="app-box-slate">
         <div class="flex justify-between">
-            <h3>List of Villains:</h3>
+            <h4 class="section-title text-white">List of Villains:</h4>
             <a class="basic-button create-button" [routerLink]="'/characters/villains/create'">Create a Villain</a>
         </div>
         <div class="app-grid app-center">
@@ -30,5 +28,5 @@
                 <app-character-card [character]="villain" [buttons]="getRoute('villains', villain.id)"></app-character-card>
             </div>
         </div>
-    </div>
+    </section>
 </div>
