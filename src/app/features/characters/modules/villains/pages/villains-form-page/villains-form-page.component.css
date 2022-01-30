@@ -1,4 +1,4 @@
-h2 {
+/* h2 {
   @apply text-4xl;
   @apply text-left;
   @apply px-5;
@@ -21,13 +21,13 @@ p {
 @apply text-red-600;
 @apply text-xl;
 @apply max-w-6xl;
-}
+} */
 
 /* .detail-subview {
 @apply bg-yellow-400;
 } */
 
-.button-remove-power {
+/* .button-remove-power {
 @apply bg-red-500 hover:bg-red-800;
 }
 
@@ -67,10 +67,10 @@ p {
 }
 
 .container {
-  @apply text-slate-700;
-  /* border-radius: 5px; */
-  /* background-color: #f2f2f2; */
-  /* padding: 20px; */
+  @apply text-slate-700; */
+  /* border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
   @apply bg-neutral-100;
   @apply p-3;
   @apply text-xl;
@@ -116,4 +116,4 @@ p {
 
 .cursor-pointer {
 @apply cursor-pointer;
-}
+} */

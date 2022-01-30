@@ -1,13 +1,13 @@
 <!-- CHARACTER CARD INFORMATION -->
-<div class="{{ characterColorMap[character.color] }}">
-    <div class="character-name">
+<div class="{{ characterColorMap[character.color] }} border-2 border-white">
+    <div class="card-title">
         {{ character.name }}
     </div>
-    <div class="character-realname">
+    <div class="card-subtitle">
         {{ character.realName }}
     </div>
     <!-- DETAILS & FORM LINKS -->
-    <div class="app-center">
-        <a *ngFor="let button of buttons" class="character-button" [routerLink]="button.route"> {{ button.label }} </a>
+    <div class="flex justify-center">
+        <a *ngFor="let button of buttons" class="button-sub-app w-24" [routerLink]="button.route"> {{ button.label }} </a>
     </div>
 </div>

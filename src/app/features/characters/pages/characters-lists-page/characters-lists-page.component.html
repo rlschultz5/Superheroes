@@ -1,32 +1,43 @@
-<div class="max-w-6xl mx-auto">
-    <!-- LIST OF CHARACTERS HEADER -->
-    <h2 class="page-title">List of Characters!</h2>
-    <h3 class="page-subtitle">(View, modify, remove or create new Marvel characters here)</h3>
-    <br />
-    <!-- SUPERHERO SECTION -->
-    <section class="app-box-slate">
-        <div class="flex justify-between">
-            <h4 class="section-title text-white">List of Superheroes:</h4>
-            <a class="button-app create-button topright-corner" [routerLink]="'/characters/superheroes/create'">Create a Superhero</a>
-        </div>
-        <div class="app-grid app-center">
-            <div *ngFor="let superhero of superheroes">
-                <app-character-card [character]="superhero" [buttons]="getRoute('superheroes', superhero.id)"></app-character-card>
+<div class="xl:grid xl:grid-cols-5">
+    <img
+        src="./../../../../../assets/images/superheroes-banner.png"
+        class="hidden xl:block col-start-1 col-end-2 h-full w-full object-cover object-center"
+        alt="Superheroes"
+    />
+    <div class="col-start-2 col-span-3">
+        <!-- LIST OF CHARACTERS HEADER -->
+        <h2 class="page-title">List of Characters!</h2>
+        <h3 class="page-subtitle">(View, modify, remove or create new Marvel characters here)</h3>
+        <br />
+        <!-- SUPERHERO SECTION -->
+        <section class="app-box-slate">
+            <div class="flex justify-between">
+                <h4 class="section-title text-white">List of Superheroes:</h4>
+                <a class="button-app create-button float-right" [routerLink]="'/characters/superheroes/create'">Create a Superhero</a>
             </div>
-        </div>
-    </section>
-    <br />
-    <br />
-    <!-- GRID OF VILLAINS -->
-    <section class="app-box-slate">
-        <div class="flex justify-between">
-            <h4 class="section-title text-white">List of Villains:</h4>
-            <a class="basic-button create-button" [routerLink]="'/characters/villains/create'">Create a Villain</a>
-        </div>
-        <div class="app-grid app-center">
-            <div *ngFor="let villain of villains">
-                <app-character-card [character]="villain" [buttons]="getRoute('villains', villain.id)"></app-character-card>
+            <div class="app-grid">
+                <div *ngFor="let superhero of superheroes">
+                    <app-character-card [character]="superhero" [buttons]="getRoute('superheroes', superhero.id)"></app-character-card>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <br />
+        <br />
+        <!-- GRID OF VILLAINS -->
+        <section class="app-box-slate">
+            <div class="flex justify-between">
+                <h4 class="section-title text-white">List of Villains:</h4>
+                <a class="button-app create-button float-right" [routerLink]="'/characters/villains/create'">Create a Villain</a>
+            </div>
+            <div class="app-grid">
+                <div *ngFor="let villain of villains">
+                    <app-character-card [character]="villain" [buttons]="getRoute('villains', villain.id)"></app-character-card>
+                </div>
+            </div>
+        </section>
+    </div>
+    <img
+        src="./../../../../../assets/images/villains-banner.png"
+        class="hidden xl:block col-start-5 col-span-1 h-full w-full object-cover object-center"
+    />
 </div>

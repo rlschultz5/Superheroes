@@ -7,7 +7,6 @@ import { VillainService } from 'src/app/shared/villains/villain.service';
 @Component({
     selector: 'app-villains-detail-page',
     templateUrl: './villains-detail-page.component.html',
-    styleUrls: ['./villains-detail-page.component.css'],
 })
 export class VillainsDetailPageComponent implements OnInit {
     character!: Character;
@@ -28,6 +27,6 @@ export class VillainsDetailPageComponent implements OnInit {
         this.character = this.villainService.getById(this.characterId);
         // Set character's custom color
         this.characterColor = CharacterColorMap[this.character!.color];
-        this.buttonClass = 'basic-button border ' + CharacterColorMap[this.character!.color] + '-hover';
+        this.buttonClass = 'app-border-slate ' + CharacterColorMap[this.character!.color] + '-hover';
     }
 }

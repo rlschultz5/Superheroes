@@ -7,7 +7,6 @@ import { Character } from 'src/app/shared/characters/types/character.interface';
 @Component({
     selector: 'app-superheroes-detail-page',
     templateUrl: './superheroes-detail-page.component.html',
-    styleUrls: ['./superheroes-detail-page.component.css'],
 })
 export class SuperheroesDetailPageComponent implements OnInit {
     character!: Character;
@@ -29,6 +28,6 @@ export class SuperheroesDetailPageComponent implements OnInit {
         this.character = this.superheroService.getById(this.characterId);
         // Set character's custom color
         this.characterColor = CharacterColorMap[this.character!.color];
-        this.buttonClass = 'basic-button border ' + CharacterColorMap[this.character!.color] + '-hover';
+        this.buttonClass = 'app-border-slate ' + CharacterColorMap[this.character!.color] + '-hover';
     }
 }

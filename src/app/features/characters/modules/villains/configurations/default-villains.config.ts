@@ -40,7 +40,7 @@ export const DefaultVillains: Character[] = [
             'on Titan, and Sui-San, the last survivor of the original settlement of Eternals in this ' +
             'moon. He was born with purple, hide-like skin and a massive body due to his Deviant Syndrome. ' +
             'The very first time his mother laid her eyes on the baby, she was driven mad and tried to kill him.',
-        link: '',
+        link: 'https://marvelcinematicuniverse.fandom.com/wiki/Thanos',
         color: 'purple',
     },
     {

@@ -12,14 +12,14 @@ import { SuperheroService } from 'src/app/shared/superheroes/superhero.service';
     styleUrls: ['./superheroes-form-page.component.css'],
 })
 export class SuperheroesFormPageComponent implements OnInit {
-    pageTitle!: string;
-    errorMessage!: string;
+    pageTitle: string = '';
+    errorMessage: string = '';
     superheroForm!: FormGroup;
-    superheroId!: string;
+    superheroId: string = '';
     isNewSuperhero: boolean = false;
     isSubmitted: boolean = false;
     submittable: boolean = false;
-    buttonClass!: string;
+    buttonClass: string = '';
     addPowerDisabled: boolean = true;
     superheroDetermined: boolean = false;
 
@@ -51,15 +51,15 @@ export class SuperheroesFormPageComponent implements OnInit {
         // IF NEW SUPERHERO
         if (this.superheroId == undefined) {
             this.isNewSuperhero = true;
-            this.pageTitle = 'Create Superhero';
+            this.pageTitle = 'Create Superhero:';
             this.superhero = this.emptySuperhero();
-            this.buttonClass = `cursor-pointer border button-create-character`;
+            this.buttonClass = `button-app`;
         }
         // IF EXISTING SUPERHERO
         else {
             this.superheroDetermined = true;
             this.superhero = this.superheroService.getById(this.superheroId);
-            this.buttonClass = 'cursor-pointer border button-edit-character ' + CharacterColorMap[this.superhero!.color] + '-hover';
+            this.buttonClass = 'app-border-slate text-base font-semibold ' + CharacterColorMap[this.superhero!.color] + '-hover';
             this.pageTitle = `Edit Superhero: ${this.superhero?.name}`;
             this.superheroForm.patchValue(this.superhero);
             this.addPowerDisabled = false;
@@ -139,6 +139,7 @@ export class SuperheroesFormPageComponent implements OnInit {
             this.errorMessage = 'Please correct the validation errors.';
         }
     }
+
     onSaveComplete() {
         // Reset the form to clear the flags
         this.superheroForm.reset();
@@ -151,6 +152,7 @@ export class SuperheroesFormPageComponent implements OnInit {
         alert('Superhero Successfully Deleted');
         this.router.navigate(['/characters']);
     }
+
     verifySubmission() {
         this.isSubmitted = true;
         if (!this.isNewSuperhero && this.superheroForm.pristine) {

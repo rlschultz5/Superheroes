@@ -12,14 +12,14 @@ import { VillainService } from 'src/app/shared/villains/villain.service';
     styleUrls: ['./villains-form-page.component.css'],
 })
 export class VillainsFormPageComponent implements OnInit {
-    pageTitle!: string;
-    errorMessage!: string;
+    pageTitle: string = '';
+    errorMessage: string = '';
     villainForm!: FormGroup;
-    villainId!: string;
+    villainId: string = '';
     isNewVillain: boolean = false;
     isSubmitted: boolean = false;
     submittable: boolean = false;
-    buttonClass!: string;
+    buttonClass: string = '';
     addPowerDisabled: boolean = true;
     villainDetermined: boolean = false;
 
@@ -51,15 +51,15 @@ export class VillainsFormPageComponent implements OnInit {
         // IF NEW VILLAIN
         if (this.villainId == undefined) {
             this.isNewVillain = true;
-            this.pageTitle = 'Create Villain';
+            this.pageTitle = 'Create Villain:';
             this.villain = this.emptyVillain();
-            this.buttonClass = `cursor-pointer border button-create-character`;
+            this.buttonClass = `button-app`;
         }
         // IF EXISTING VILLAIN
         else {
             this.villainDetermined = true;
             this.villain = this.villainService.getById(this.villainId);
-            this.buttonClass = 'cursor-pointer border button-edit-character ' + CharacterColorMap[this.villain!.color] + '-hover';
+            this.buttonClass = 'app-border-slate text-base font-semibold ' + CharacterColorMap[this.villain!.color] + '-hover';
             this.pageTitle = `Edit Villain: ${this.villain?.name}`;
             this.villainForm.patchValue(this.villain);
             this.addPowerDisabled = false;
@@ -128,7 +128,6 @@ export class VillainsFormPageComponent implements OnInit {
                 } else {
                     try {
                         await this.villainService.update(this.updatedVillain).toPromise();
-                        this.onSaveComplete();
                     } catch (error) {
                         console.log('error');
                         console.error(error);
@@ -140,6 +139,7 @@ export class VillainsFormPageComponent implements OnInit {
             this.errorMessage = 'Please correct the validation errors.';
         }
     }
+
     onSaveComplete() {
         // Reset the form to clear the flags
         this.villainForm.reset();
@@ -152,6 +152,7 @@ export class VillainsFormPageComponent implements OnInit {
         alert('Villain Successfully Deleted');
         this.router.navigate(['/characters']);
     }
+
     verifySubmission() {
         this.isSubmitted = true;
         if (!this.isNewVillain && this.villainForm.pristine) {
