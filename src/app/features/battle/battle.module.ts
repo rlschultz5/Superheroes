@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BattleRoutingModule } from './battle-routing.module';
-import { BattleHomePageComponent } from './pages/battle-home-page/battle-home-page.component';
+import { BattlePageComponent } from './pages/battle-page/battle-page.component';
 
 @NgModule({
-    declarations: [BattleHomePageComponent],
+    declarations: [BattlePageComponent],
     imports: [CommonModule, BattleRoutingModule],
 })
 export class BattleModule {}

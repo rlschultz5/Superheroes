@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BattleVersusPageComponent } from './pages/battle-versus-page/battle-versus-page.component';
+import { VersusPageComponent } from './pages/versus-page/versus-page.component';
+import { VersusRoutingModule } from './versus-routing.module';
 
 @NgModule({
-    declarations: [BattleVersusPageComponent],
-    imports: [CommonModule],
+    declarations: [VersusPageComponent],
+    exports: [],
+    imports: [CommonModule, VersusRoutingModule],
+    providers: [],
 })
 export class VersusModule {}

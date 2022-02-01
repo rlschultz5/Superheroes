@@ -1,9 +1,9 @@
-import { BattleHomePageComponent } from './pages/battle-home-page/battle-home-page.component';
+import { BattlePageComponent } from './pages/battle-page/battle-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', component: BattleHomePageComponent },
+    { path: '', pathMatch: 'full', component: BattlePageComponent },
     {
         path: 'versus',
         loadChildren: () => import('./modules/versus/versus.module').then((m) => m.VersusModule),

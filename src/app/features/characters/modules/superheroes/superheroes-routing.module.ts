@@ -1,6 +1,6 @@
-import { SuperheroesFormPageComponent } from './pages/superheroes-form-page/superheroes-form-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SuperheroesFormPageComponent } from './pages/superheroes-form-page/superheroes-form-page.component';
 import { SuperheroesDetailPageComponent } from './pages/superheroes-detail-page/superheroes-detail-page.component';
 
 const routes: Routes = [
