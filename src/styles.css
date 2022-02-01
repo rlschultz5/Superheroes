@@ -146,7 +146,7 @@ video {
 }
 
   .form-error {
-    @apply mt-8 text-red-600 text-xl max-w-6xl;
+    @apply mt-1 text-red-600 text-xl max-w-6xl;
   }
 
   .button-remove-power {

@@ -6,7 +6,7 @@
     />
     <!-- CHARACTER-COLORED BORDER -->
     <div class="app-box-slate app-box mx-auto lg:col-start-3 lg:col-span-2 lg:max-w-2xl">
-        <h2 class="text-white app-border-slate {{ characterColor }} section-title">
+        <h2 class="app-border-slate {{ characterColor }} section-title">
             {{ character?.name }}
         </h2>
         <!-- CHARACTER'S INFORMATION -->
@@ -14,6 +14,7 @@
             <p class="page-subtitle text-left">Real Name:</p>
             <p class="detail-information">{{ character?.realName }}</p>
             <p class="page-subtitle text-left">Powers:</p>
+            <!-- TODO: bullet points of powers in a ul->li -->
             <p class="detail-information">{{ character?.powers }}</p>
             <p class="page-subtitle text-left">Description:</p>
             <p class="detail-information">{{ character?.description }}</p>

@@ -33,6 +33,7 @@
     "@taiga-ui/core": "^2.27.1",
     "@taiga-ui/icons": "^2.27.1",
     "@taiga-ui/kit": "^2.27.1",
+    "@tailwindcss/forms": "^0.4.0",
     "@tinkoff/ng-dompurify": "3.0.0",
     "autoprefixer": "^10.4.0",
     "dompurify": "2.2.9",
