@@ -1,3 +1,4 @@
+import { Battle } from 'src/app/shared/battles/types/battle.interface';
 import { Character } from '../../../../../shared/characters/types/character.interface';
 
 export const DefaultVillains: Character[] = [
@@ -17,6 +18,7 @@ export const DefaultVillains: Character[] = [
             'become the dominant species on Earth.',
         link: 'https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)#Powers',
         color: 'red',
+        battles: [''],
     },
     {
         id: '',
@@ -42,6 +44,7 @@ export const DefaultVillains: Character[] = [
             'The very first time his mother laid her eyes on the baby, she was driven mad and tried to kill him.',
         link: 'https://marvelcinematicuniverse.fandom.com/wiki/Thanos',
         color: 'purple',
+        battles: [''],
     },
     {
         id: '',
@@ -63,5 +66,6 @@ export const DefaultVillains: Character[] = [
             'Marvel Comics, most commonly in association with the X-Men, in particular as an enemy of Wolverine.',
         link: 'https://marvel.fandom.com/wiki/Victor_Creed_(Earth-616)',
         color: 'yellow',
+        battles: [''],
     },
 ];

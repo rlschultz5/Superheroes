@@ -8,4 +8,5 @@ export interface Character {
     description: string;
     link: string;
     color: ColorType;
+    battles: string[];
 }

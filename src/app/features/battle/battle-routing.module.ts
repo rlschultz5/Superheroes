@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     { path: '', pathMatch: 'full', component: BattlePageComponent },
     {
-        path: 'versus',
+        path: 'versus/:superheroid/vs/:villainid',
         loadChildren: () => import('./modules/versus/versus.module').then((m) => m.VersusModule),
     },
     { path: '**', redirectTo: '/battle' },

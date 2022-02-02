@@ -1,1 +1,52 @@
-<p class="text-purple-700">battle-versus-page works!</p>
+<div
+    style="background-image: url(./../../../../../../../assets/images/background-texture-white.jpg)"
+    class="relative flex bg-scroll bg-cover h-fit w-screen justify-center"
+>
+    <!-- SUPERHERO -->
+    <section class="flex-col w-1/4 ml-20 bg-blue-500 bg-opacity-60 col-span-2">
+        <h2 class="page-title text-white uppercase tracking-widest mt-20">
+            {{ superhero.name }}
+        </h2>
+        <p class="detail-information mt-20 text-center px-0">Name:</p>
+        <p class="detail-information font-normal text-center px-0">{{ superhero.name }}</p>
+        <p class="detail-information mt-10 text-center px-0">Real name:</p>
+        <p class="detail-information font-normal text-center px-0">{{ superhero.name }}</p>
+        <p class="detail-information mt-10 text-center px-0">Powers:</p>
+        <p class="detail-information font-normal text-center px-0">{{ superhero.powers }}</p>
+        <p class="detail-information mt-10 text-center px-0">Description:</p>
+        <p class="detail-information font-normal text-center px-0">{{ superhero.description }}</p>
+        <p class="detail-information mt-10 text-center px-0">Battle Record:</p>
+        <p class="detail-information font-normal text-center px-0">
+            {{ getRecord(superhero.id).wins }}-{{ getRecord(superhero.id).losses }}
+        </p>
+        <p class="detail-information mt-10 text-center px-0">Link:</p>
+        <p class="font-link text-center px-0">{{ superhero.link }}</p>
+    </section>
+    <!-- VERSUS -->
+    <section class="w-1/4 mx-15 page-title col-span-2 py-60">
+        <img class="mx-auto max-h-24" src="./../../../../../assets/images/captain-america-shield.png" alt="" /><br />
+        <p class="mx-auto page-title text-black">VS</p>
+        <br />
+        <img class="mx-auto max-h-24" src="./../../../../../assets/images/infinity-gauntlet.png" alt="" />
+    </section>
+    <!-- VILLAIN -->
+    <section class="flex-col w-1/4 mr-20 bg-red-500 bg-opacity-60 col-span-2">
+        <h2 class="page-title text-white uppercase tracking-widest mt-20">
+            {{ villain.name }}
+        </h2>
+        <p class="detail-information mt-20 text-center px-0">Name:</p>
+        <p class="detail-information font-normal text-center px-0">{{ villain.name }}</p>
+        <p class="detail-information mt-10 text-center px-0">Real name:</p>
+        <p class="detail-information font-normal text-center px-0">{{ villain.name }}</p>
+        <p class="detail-information mt-10 text-center px-0">Powers:</p>
+        <p class="detail-information font-normal text-center px-0">{{ villain.powers }}</p>
+        <p class="detail-information mt-10 text-center px-0">Description:</p>
+        <p class="detail-information font-normal text-center px-0">{{ villain.description }}</p>
+        <p class="detail-information mt-10 text-center px-0">Battle Record:</p>
+        <p class="detail-information font-normal text-center px-0">
+            {{ getRecord(villain.id).wins }}-{{ getRecord(villain.id).losses }}
+        </p>
+        <p class="detail-information mt-10 text-center px-0">Link:</p>
+        <p class="font-link text-center px-0">{{ villain.link }}</p>
+    </section>
+</div>
