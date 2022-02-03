@@ -92,15 +92,15 @@ video {
   }
 
   .page-title {
-    @apply text-4xl text-center text-slate-700 font-extrabold mb-1 pt-3;
+    @apply text-4xl text-center text-slate-700 font-extrabold mt-3;
   }
   
   .page-subtitle {
-    @apply text-xl text-center text-slate-700 font-extrabold mt-2 mb-1;
+    @apply text-xl text-center text-slate-700 font-extrabold mt-2;
   }
   
   .section-title {
-    @apply text-3xl text-center text-slate-700 font-extrabold mt-2 mb-1;
+    @apply text-3xl text-center text-slate-700 font-extrabold;
   }
   
   .app-box {
