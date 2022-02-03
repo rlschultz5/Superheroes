@@ -25,7 +25,7 @@ export const DefaultSuperheroes: Character[] = [
             'books published by Marvel Comics and is a founding member of the X-Men.',
         link: 'https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)#Powers_and_Abilities',
         color: 'blue',
-        battles: [''],
+        battles: [],
     },
     {
         id: '',
@@ -48,7 +48,7 @@ export const DefaultSuperheroes: Character[] = [
             'superhero film series X-Men',
         link: 'https://marvel.fandom.com/wiki/James_Howlett_(Earth-616)',
         color: 'yellow',
-        battles: [''],
+        battles: [],
     },
     {
         id: '',
@@ -62,6 +62,6 @@ export const DefaultSuperheroes: Character[] = [
             'appearing in Giant-Size X-Men #1.',
         link: 'https://marvel.fandom.com/wiki/Ororo_Munroe_(Earth-616)?so=search',
         color: 'white',
-        battles: [''],
+        battles: [],
     },
 ];

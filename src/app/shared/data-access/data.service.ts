@@ -1,5 +1,3 @@
-import * as rxjs from 'rxjs';
-import { Observable } from 'rxjs';
 import * as uuid from 'uuid';
 
 export abstract class DataService<DataT extends { id: string }> {
@@ -49,11 +47,11 @@ export abstract class DataService<DataT extends { id: string }> {
      * Adds a DataT Object to add to the DataT map
      * @param DataT  DataT Object to add to DataT map
      */
-    create(character: DataT): Observable<DataT> {
-        character.id = uuid.v4();
-        this.data.set(character.id, character);
+    create(data: DataT): DataT {
+        data.id = uuid.v4();
+        this.data.set(data.id, data);
         localStorage.setItem(this.key, JSON.stringify(this.data, this.replacer));
-        return rxjs.of(character);
+        return data;
     }
 
     /**
@@ -68,9 +66,9 @@ export abstract class DataService<DataT extends { id: string }> {
     }
 
     /**
-     * Searches through characterMap to find DataT by name
-     * @param findName Name of superhero to find in characterMap
-     * @returns DataT object found in characterMap with same name, else
+     * Searches through dataMap to find DataT by name
+     * @param findName Name of superhero to find in dataMap
+     * @returns DataT object found in dataMap with same name, else
      *   undefined
      */
     // Only searching through predefined lists
@@ -88,10 +86,10 @@ export abstract class DataService<DataT extends { id: string }> {
      * @param id  DataT Object to update
      * @returns updated DataT object
      */
-    update(data: DataT): Observable<DataT> {
+    update(data: DataT): DataT {
         this.data.set(data.id, data);
         localStorage.setItem(this.key, JSON.stringify(this.data, this.replacer));
-        return rxjs.of(data);
+        return data;
     }
 
     private replacer(key: any, value: any) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as rxjs from 'rxjs';
 import { CharacterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
 import { ValidationMessages } from 'src/app/shared/characters/configurations/validation-messages.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
@@ -120,14 +121,14 @@ export class VillainsFormPageComponent implements OnInit {
 
                 if (this.isNewVillain) {
                     try {
-                        await this.villainService.create(this.updatedVillain).toPromise();
+                        await rxjs.of(this.villainService.create(this.updatedVillain)).toPromise();
                     } catch (error) {
                         console.log('error');
                         console.error(error);
                     }
                 } else {
                     try {
-                        await this.villainService.update(this.updatedVillain).toPromise();
+                        await rxjs.of(this.villainService.update(this.updatedVillain)).toPromise();
                     } catch (error) {
                         console.log('error');
                         console.error(error);

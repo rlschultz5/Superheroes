@@ -1,11 +1,10 @@
-import { Battle } from 'src/app/shared/battles/types/battle.interface';
-import { Superhero } from './../../../../../characters/modules/superheroes/types/superhero.interface';
-import { ActivatedRoute } from '@angular/router';
-import { Character } from './../../../../../../shared/characters/types/character.interface';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BattleService } from 'src/app/shared/battles/battle.service';
+import { Battle } from 'src/app/shared/battles/types/battle.interface';
 import { SuperheroService } from 'src/app/shared/superheroes/superhero.service';
 import { VillainService } from 'src/app/shared/villains/villain.service';
-import { BattleService } from 'src/app/shared/battles/battle.service';
+import { Character } from './../../../../../../shared/characters/types/character.interface';
 
 @Component({
     selector: 'app-versus-page',
@@ -27,9 +26,7 @@ export class VersusPageComponent implements OnInit {
     ngOnInit(): void {
         this.superhero = this.superheroService.getById(this.activatedRoute.snapshot.paramMap.get('superheroid') as string);
         this.villain = this.villainService.getById(this.activatedRoute.snapshot.paramMap.get('villainid') as string);
-        this.battleService.create({ superheroId: this.superhero.id, villainId: this.villain.id, winner: this.superhero.id } as Battle);
         this.battles = this.battleService.getAll();
-        console.log(this.battles);
     }
 
     getRecord(characterId: string): { wins: number; losses: number } {

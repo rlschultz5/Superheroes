@@ -1,7 +1,9 @@
+import { BattleService } from 'src/app/shared/battles/battle.service';
 import { Component, OnInit } from '@angular/core';
 import { Character } from 'src/app/shared/characters/types/character.interface';
 import { SuperheroService } from 'src/app/shared/superheroes/superhero.service';
 import { VillainService } from 'src/app/shared/villains/villain.service';
+import { Battle } from 'src/app/shared/battles/types/battle.interface';
 
 @Component({
     selector: 'app-battle-page',
@@ -18,7 +20,11 @@ export class BattlePageComponent implements OnInit {
     villainIsSelected: boolean = false;
     submitted: boolean = false;
 
-    constructor(private readonly superheroService: SuperheroService, private readonly villainService: VillainService) {}
+    constructor(
+        private readonly battleService: BattleService,
+        private readonly superheroService: SuperheroService,
+        private readonly villainService: VillainService
+    ) {}
 
     ngOnInit(): void {
         this.superheroes = this.superheroService.getAll();
@@ -33,5 +39,16 @@ export class BattlePageComponent implements OnInit {
     selectedVillain(villain: Character) {
         this.chosenVillain = villain;
         this.villainIsSelected = true;
+    }
+    logFight() {
+        const battle = this.battleService.create({
+            superheroId: this.chosenSuperhero.id,
+            superheroName: this.chosenSuperhero.name,
+            villainId: this.chosenVillain.id,
+            villainName: this.chosenVillain.name,
+            winner: this.chosenSuperhero.id,
+        } as Battle);
+        this.superheroService.getById(this.chosenSuperhero.id).battles.push(battle);
+        this.villainService.getById(this.chosenVillain.id).battles.push(battle);
     }
 }

@@ -1,65 +1,74 @@
-<div class="flex flex-wrap">
+<div style="background-image: url(./../../../../../../../assets/images/background-texture-white.jpg)" class="bg-cover h-fit w-screen">
     <!-- PAGE TITLE -->
-    <div class="max-h-24 w-full">
+    <div class="w-full">
         <h2 class="page-title">Prepare for Battle</h2>
         <h3 class="page-subtitle">Choose a superhero and villain to fight!</h3>
-    </div>
-    <!-- CHOSEN FOR BATTLE -->
-    <section class="grid grid-cols-5 app-box w-full outline outline-offset-2 outline-slate-700 bg-slate-500">
-        <h4 class="bg-slate-700 section-title text-white col-span-1 mt-0 mb-0 px-2 flex items-center">Chosen for Battle:</h4>
-        <div class="flex bg-blue-500 col-span-2 items-center justify-center">
-            <img class="max-h-24 my-auto" src="./../../../../../assets/images/captain-america.png" alt="Captain America" />
-            <h4 class="section-title app-box h-fit mt-0 mb-0 p-2">
-                <ng-container *ngIf="!superheroIsSelected">(Choose your superhero)</ng-container>
-                <ng-container *ngIf="superheroIsSelected">{{ chosenSuperhero.name }}</ng-container>
-            </h4>
-        </div>
-        <div class="flex bg-red-500 col-span-2 items-center justify-center">
-            <img class="max-h-24 my-auto" src="./../../../../../assets/images/thanos.png" alt="Thanos" />
-            <h4 class="section-title app-box h-fit mt-0 mb-0 p-2">
-                <ng-container *ngIf="!villainIsSelected">(Choose your villain)</ng-container>
-                <ng-container *ngIf="villainIsSelected">{{ chosenVillain.name }}</ng-container>
-            </h4>
-        </div>
-    </section>
-    <ng-container class="flex w-full" *ngIf="superheroIsSelected && villainIsSelected">
         <a
             style="right: 36.5%"
-            class="button-app py-8 px-12 mx-auto text-white font-bold text-2xl tracking-widest bg-amber-400 hover:bg-amber-500 outline outline-offset-2 outline-amber-400 hover:outline-4 hover:outline-black hover:text-3xl hover:text-black hover:underline hover:decoration-2 hover:decoration-black cursor-pointer shadow-xl rounded-2xl"
-            [routerLink]="'/battle/versus/' + chosenSuperhero.id + '/vs/' + chosenVillain.id"
-            >Fight!</a
+            class="my-36 mx-auto py-6 px-10 text-white font-bold text-2xl tracking-widest bg-black hover:bg-white outline outline-offset-2 outline-black hover:outline-4 hover:outline-white hover:text-black hover:underline hover:decoration-2 hover:decoration-black cursor-pointer hover:border-4 hover:border-black shadow-xl rounded-2xl"
+            [routerLink]="'/battle/records'"
+            >Battle Records</a
         >
-    </ng-container>
-    <section class="grid grid-cols-2 w-full justify-center mx-3">
-        <!-- SUPERHEROES -->
-        <div class="flex flex-wrap justify-around col-start-1 col-span-1 app-box bg-slate-500">
-            <img class="max-h-48" src="./../../../../../assets/images/captain-america.png" alt="Captain America" />
-            <h4 class="app-box section-title w-full text-left p-3 mx-5">Superheroes:</h4>
-            <ul *ngFor="let superhero of superheroes">
-                <li
-                    (click)="selectedSuperhero(superhero)"
-                    class="p-2 m-4 h-48 w-60 hover:bg-blue-700 outline outline-offset-2 outline-blue-500 hover:outline-4 hover:outline-blue-700 cursor-pointer shadow-xl rounded-2xl bg-blue-500"
-                >
-                    <p class="text-white text-center text-2xl font-bold uppercase tracking-widest">{{ superhero.name }}</p>
-                    <img class="max-h-24 my-2 mx-auto" src="./../../../../../assets/images/captain-america-shield.png" alt="" />
-                    <p class="text-white text-center text-base tracking-widest">{{ superhero.realName }}</p>
-                </li>
-            </ul>
-        </div>
-        <!-- VILLAINS -->
-        <div class="flex flex-wrap justify-around col-start-2 col-span-1 app-box bg-slate-500">
-            <img class="max-h-48" src="./../../../../../assets/images/thanos.png" alt="Thanos" />
-            <h4 class="app-box section-title w-full text-left p-3 mx-5">Villains:</h4>
-            <ul *ngFor="let villain of villains">
-                <li
-                    (click)="selectedVillain(villain)"
-                    class="p-2 m-4 h-48 w-60 bg-red-500 hover:bg-red-700 outline outline-offset-2 outline-red-500 hover:outline-4 hover:outline-red-700 cursor-pointer shadow-xl rounded-2xl"
-                >
-                    <p class="text-white text-center text-2xl font-bold uppercase tracking-widest">{{ villain.name }}</p>
-                    <img class="max-h-24 my-2 mx-auto" src="./../../../../../assets/images/infinity-gauntlet.png" alt="" />
-                    <p class="text-white text-center text-base tracking-widest">{{ villain.realName }}</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+    </div>
+    <div class="flex flex-wrap">
+        <!-- CHOSEN FOR BATTLE -->
+        <section class="grid grid-cols-5 app-box w-full outline outline-offset-2 outline-slate-700 bg-slate-500">
+            <h4 class="bg-slate-700 section-title text-white col-span-1 mt-0 mb-0 px-2 flex items-center">Chosen for Battle:</h4>
+            <div class="flex bg-blue-500 col-span-2 items-center justify-center">
+                <img class="max-h-24 my-auto" src="./../../../../../assets/images/captain-america.png" alt="Captain America" />
+                <h4 class="section-title app-box h-fit mt-0 mb-0 p-2">
+                    <ng-container *ngIf="!superheroIsSelected">(Choose your superhero)</ng-container>
+                    <ng-container *ngIf="superheroIsSelected">{{ chosenSuperhero.name }}</ng-container>
+                </h4>
+            </div>
+            <div class="flex bg-red-500 col-span-2 items-center justify-center">
+                <img class="max-h-24 my-auto" src="./../../../../../assets/images/thanos.png" alt="Thanos" />
+                <h4 class="section-title app-box h-fit mt-0 mb-0 p-2">
+                    <ng-container *ngIf="!villainIsSelected">(Choose your villain)</ng-container>
+                    <ng-container *ngIf="villainIsSelected">{{ chosenVillain.name }}</ng-container>
+                </h4>
+            </div>
+        </section>
+        <ng-container class="flex w-full" *ngIf="superheroIsSelected && villainIsSelected">
+            <a
+                (click)="logFight()"
+                style="right: 36.5%"
+                class="button-app py-8 px-12 mx-auto text-white font-bold text-2xl tracking-widest bg-amber-400 hover:bg-amber-500 outline outline-offset-2 outline-amber-400 hover:outline-4 hover:outline-black hover:text-3xl hover:text-black hover:underline hover:decoration-2 hover:decoration-black cursor-pointer shadow-xl rounded-2xl"
+                [routerLink]="'/battle/versus/' + chosenSuperhero.id + '/vs/' + chosenVillain.id"
+                >Fight!</a
+            >
+        </ng-container>
+        <section class="grid grid-cols-2 w-full justify-center mx-3">
+            <!-- CHOOSE A SUPERHERO -->
+            <div class="flex flex-wrap justify-around col-start-1 col-span-1 app-box bg-slate-500">
+                <img class="max-h-48" src="./../../../../../assets/images/captain-america.png" alt="Captain America" />
+                <h4 class="app-box section-title w-full text-left p-3 mx-5">Superheroes:</h4>
+                <ul *ngFor="let superhero of superheroes">
+                    <li
+                        (click)="selectedSuperhero(superhero)"
+                        class="p-2 m-4 h-48 w-60 hover:bg-blue-700 outline outline-offset-2 outline-blue-500 hover:outline-4 hover:outline-blue-700 cursor-pointer shadow-xl rounded-2xl bg-blue-500"
+                    >
+                        <p class="text-white text-center text-2xl font-bold uppercase tracking-widest">{{ superhero.name }}</p>
+                        <img class="max-h-24 my-2 mx-auto" src="./../../../../../assets/images/captain-america-shield.png" alt="" />
+                        <p class="text-white text-center text-base tracking-widest">{{ superhero.realName }}</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- CHOOSE A VILLAIN -->
+            <div class="flex flex-wrap justify-around col-start-2 col-span-1 app-box bg-slate-500">
+                <img class="max-h-48" src="./../../../../../assets/images/thanos.png" alt="Thanos" />
+                <h4 class="app-box section-title w-full text-left p-3 mx-5">Villains:</h4>
+                <ul *ngFor="let villain of villains">
+                    <li
+                        (click)="selectedVillain(villain)"
+                        class="p-2 m-4 h-48 w-60 bg-red-500 hover:bg-red-700 outline outline-offset-2 outline-red-500 hover:outline-4 hover:outline-red-700 cursor-pointer shadow-xl rounded-2xl"
+                    >
+                        <p class="text-white text-center text-2xl font-bold uppercase tracking-widest">{{ villain.name }}</p>
+                        <img class="max-h-24 my-2 mx-auto" src="./../../../../../assets/images/infinity-gauntlet.png" alt="" />
+                        <p class="text-white text-center text-base tracking-widest">{{ villain.realName }}</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
 </div>

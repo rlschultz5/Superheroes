@@ -8,6 +8,10 @@ const routes: Routes = [
         path: 'versus/:superheroid/vs/:villainid',
         loadChildren: () => import('./modules/versus/versus.module').then((m) => m.VersusModule),
     },
+    {
+        path: 'records',
+        loadChildren: () => import('./modules/battle-records/battle-records.module').then((m) => m.BattleRecordsModule),
+    },
     { path: '**', redirectTo: '/battle' },
 ];
 

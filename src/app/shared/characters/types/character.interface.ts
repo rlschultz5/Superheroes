@@ -1,3 +1,4 @@
+import { Battle } from '../../battles/types/battle.interface';
 import { ColorType } from './character-color-type';
 
 export interface Character {
@@ -8,5 +9,5 @@ export interface Character {
     description: string;
     link: string;
     color: ColorType;
-    battles: string[];
+    battles: Battle[];
 }

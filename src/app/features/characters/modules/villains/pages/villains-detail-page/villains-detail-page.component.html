@@ -12,6 +12,8 @@
             <p class="detail-information">{{ character?.powers }}</p>
             <p class="page-subtitle text-left">Description:</p>
             <p class="detail-information">{{ character?.description }}</p>
+            <p class="page-subtitle text-left">Battles:</p>
+            <p class="detail-information" *ngFor="let battle of character.battles">{{ battle.superheroName }}</p>
             <p class="page-subtitle text-left">Link:</p>
             <a href="character?.link" class="font-link">{{ character?.link }}</a>
             <ul class="flex justify-center pt-8">
@@ -24,6 +26,6 @@
     <img
         src="./../../../../../assets/images/villains-banner.png"
         class="hidden lg:block col-start-3 col-span-2 h-screen py-8 w-full object-cover object-center"
-        alt="Superheroes"
+        alt="Villains"
     />
 </div>

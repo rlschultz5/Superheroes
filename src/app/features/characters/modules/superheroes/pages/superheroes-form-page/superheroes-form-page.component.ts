@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as rxjs from 'rxjs';
 import { CharacterColorMap } from 'src/app/shared/characters/configurations/character-color-map.config';
 import { ValidationMessages } from 'src/app/shared/characters/configurations/validation-messages.config';
 import { Character } from 'src/app/shared/characters/types/character.interface';
@@ -120,14 +121,14 @@ export class SuperheroesFormPageComponent implements OnInit {
 
                 if (this.isNewSuperhero) {
                     try {
-                        await this.superheroService.create(this.updatedSuperhero).toPromise();
+                        await rxjs.of(this.superheroService.create(this.updatedSuperhero)).toPromise();
                     } catch (error) {
                         console.log('error');
                         console.error(error);
                     }
                 } else {
                     try {
-                        await this.superheroService.update(this.updatedSuperhero).toPromise();
+                        await rxjs.of(this.superheroService.update(this.updatedSuperhero)).toPromise();
                     } catch (error) {
                         console.log('error');
                         console.error(error);
