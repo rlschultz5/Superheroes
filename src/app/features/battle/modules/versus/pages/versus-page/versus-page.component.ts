@@ -9,7 +9,6 @@ import { Character } from './../../../../../../shared/characters/types/character
 @Component({
     selector: 'app-versus-page',
     templateUrl: './versus-page.component.html',
-    styleUrls: ['./versus-page.component.css'],
 })
 export class VersusPageComponent implements OnInit {
     superhero: Character = {} as Character;

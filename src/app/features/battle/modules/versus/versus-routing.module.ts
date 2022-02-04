@@ -7,11 +7,6 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: VersusPageComponent,
-        // component: CharacterFormComponent,
-        // resolve: { providers: CharacterServiceResolve },
-        // data: {
-        //     type: 'superhero',
-        // },
     },
     { path: '**', redirectTo: '' },
 ];

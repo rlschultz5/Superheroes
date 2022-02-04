@@ -10,7 +10,6 @@ import { VillainService } from 'src/app/shared/villains/villain.service';
 @Component({
     selector: 'app-villains-form-page',
     templateUrl: './villains-form-page.component.html',
-    styleUrls: ['./villains-form-page.component.css'],
 })
 export class VillainsFormPageComponent implements OnInit {
     pageTitle: string = '';

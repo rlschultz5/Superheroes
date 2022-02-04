@@ -1,0 +1,7 @@
+a {
+    @apply hidden;
+}
+
+div:hover + a {
+    @apply block;
+}

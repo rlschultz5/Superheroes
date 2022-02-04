@@ -10,7 +10,6 @@ import { SuperheroService } from 'src/app/shared/superheroes/superhero.service';
 @Component({
     selector: 'app-superheroes-form-page',
     templateUrl: './superheroes-form-page.component.html',
-    styleUrls: ['./superheroes-form-page.component.css'],
 })
 export class SuperheroesFormPageComponent implements OnInit {
     pageTitle: string = '';

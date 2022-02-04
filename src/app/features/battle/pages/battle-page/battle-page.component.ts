@@ -41,7 +41,7 @@ export class BattlePageComponent implements OnInit {
         this.villainIsSelected = true;
     }
     logFight() {
-        const battle = this.battleService.create({
+        const battle: Battle = this.battleService.create({
             superheroId: this.chosenSuperhero.id,
             superheroName: this.chosenSuperhero.name,
             villainId: this.chosenVillain.id,

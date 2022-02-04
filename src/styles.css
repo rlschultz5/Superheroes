@@ -92,7 +92,7 @@ video {
   }
 
   .page-title {
-    @apply text-4xl text-center text-slate-700 font-extrabold mt-3;
+    @apply text-4xl text-center text-slate-700 font-extrabold pt-3;
   }
   
   .page-subtitle {
