@@ -14,6 +14,7 @@ export class VersusPageComponent implements OnInit {
     superhero: Character = {} as Character;
     villain: Character = {} as Character;
     battles!: Battle[];
+    battleId!: string;
 
     constructor(
         private readonly activatedRoute: ActivatedRoute,
@@ -23,8 +24,15 @@ export class VersusPageComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.superhero = this.superheroService.getById(this.activatedRoute.snapshot.paramMap.get('superheroid') as string);
-        this.villain = this.villainService.getById(this.activatedRoute.snapshot.paramMap.get('villainid') as string);
+        this.battleId = this.activatedRoute.snapshot.paramMap.get('battleid') as string;
+        if (this.battleId == undefined) {
+            this.superhero = this.superheroService.getById(this.activatedRoute.snapshot.paramMap.get('superheroid') as string);
+            this.villain = this.villainService.getById(this.activatedRoute.snapshot.paramMap.get('villainid') as string);
+        } else {
+            const battle: Battle = this.battleService.getById(this.battleId);
+            this.superhero = this.superheroService.getById(battle.superheroId);
+            this.villain = this.villainService.getById(battle.villainId);
+        }
         this.battles = this.battleService.getAll();
     }
 
@@ -33,10 +41,10 @@ export class VersusPageComponent implements OnInit {
         let wins: number = 0;
 
         for (let index = 0; index < this.battles.length; index++) {
-            const element = this.battles[index];
-            if (element.superheroId == characterId || element.villainId == characterId) {
+            const currentBattle = this.battles[index];
+            if (currentBattle.superheroId == characterId || currentBattle.villainId == characterId) {
                 matches++;
-                if (element.winner == characterId) {
+                if (currentBattle.winner == characterId) {
                     wins++;
                 }
             }

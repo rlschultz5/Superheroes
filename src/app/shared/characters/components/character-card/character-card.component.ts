@@ -12,8 +12,6 @@ export class CharacterCardComponent {
     @Input() routeFrom!: string;
     @Input() buttons: CardButtonConfig[] = [];
 
-    @Output() buttonClicked = new EventEmitter<string>();
-
     readonly characterColorMap = CharacterColorMap;
 }
 export interface CardButtonConfig {

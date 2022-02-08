@@ -14,12 +14,15 @@
             <p class="page-subtitle text-left">Real Name:</p>
             <p class="detail-information font-normal">{{ character?.realName }}</p>
             <p class="page-subtitle text-left">Powers:</p>
-            <!-- TODO: bullet points of powers in a ul->li -->
-            <p class="detail-information font-normal">{{ character?.powers }}</p>
+            <ul class="detail-information font-normal list-inside list-disc" *ngFor="let power of character.powers">
+                <li>{{ power }}</li>
+            </ul>
             <p class="page-subtitle text-left">Description:</p>
             <p class="detail-information font-normal">{{ character?.description }}</p>
             <p class="page-subtitle text-left">Battles:</p>
-            <p class="detail-information font-normal" *ngFor="let battle of character.battles">{{ battle.villainName }}</p>
+            <ul class="detail-information font-normal list-inside list-disc" *ngFor="let battle of character.battles">
+                <li>{{ battle.villainName }}</li>
+            </ul>
             <p class="page-subtitle text-left">Link:</p>
             <a href="character?.link" class="font-link">{{ character?.link }}</a>
             <ul class="flex justify-center pt-8">

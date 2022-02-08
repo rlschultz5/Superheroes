@@ -48,7 +48,9 @@ export class BattlePageComponent implements OnInit {
             villainName: this.chosenVillain.name,
             winner: this.chosenSuperhero.id,
         } as Battle);
-        this.superheroService.getById(this.chosenSuperhero.id).battles.push(battle);
-        this.villainService.getById(this.chosenVillain.id).battles.push(battle);
+        this.chosenSuperhero.battles.push(battle);
+        this.chosenVillain.battles.push(battle);
+        this.superheroService.update(this.chosenSuperhero);
+        this.villainService.update(this.chosenVillain);
     }
 }

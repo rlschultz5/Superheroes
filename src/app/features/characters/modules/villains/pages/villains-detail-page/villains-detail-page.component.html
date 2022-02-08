@@ -9,11 +9,15 @@
             <p class="page-subtitle text-left">Real Name:</p>
             <p class="detail-information">{{ character?.realName }}</p>
             <p class="page-subtitle text-left">Powers:</p>
-            <p class="detail-information">{{ character?.powers }}</p>
+            <ul class="detail-information font-normal list-inside list-disc" *ngFor="let power of character.powers">
+                <li>{{ power }}</li>
+            </ul>
             <p class="page-subtitle text-left">Description:</p>
             <p class="detail-information">{{ character?.description }}</p>
             <p class="page-subtitle text-left">Battles:</p>
-            <p class="detail-information" *ngFor="let battle of character.battles">{{ battle.superheroName }}</p>
+            <ul class="detail-information font-normal list-inside list-disc" *ngFor="let battle of character.battles">
+                <li>{{ battle.superheroName }}</li>
+            </ul>
             <p class="page-subtitle text-left">Link:</p>
             <a href="character?.link" class="font-link">{{ character?.link }}</a>
             <ul class="flex justify-center pt-8">

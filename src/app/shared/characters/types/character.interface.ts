@@ -1,4 +1,4 @@
-import { Battle } from '../../battles/types/battle.interface';
+import { Battle } from 'src/app/shared/battles/types/battle.interface';
 import { ColorType } from './character-color-type';
 
 export interface Character {

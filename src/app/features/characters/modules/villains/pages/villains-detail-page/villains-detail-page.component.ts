@@ -19,13 +19,9 @@ export class VillainsDetailPageComponent implements OnInit {
     constructor(private readonly activatedRoute: ActivatedRoute, private readonly villainService: VillainService) {}
 
     ngOnInit() {
-        // Retrieve Id from URL
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id') as string;
-        // Use resolve to determine character type
         // this.characterService = this.activatedRoute.snapshot.data['providers'].service;
-        // Retrieve character
         this.character = this.villainService.getById(this.characterId);
-        // Set character's custom color
         this.characterColor = CharacterColorMap[this.character!.color];
         this.buttonClass = 'app-border-slate ' + CharacterColorMap[this.character!.color] + '-hover';
     }
